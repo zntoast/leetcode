@@ -16,3 +16,9 @@ func TestReverseLeftWords(T *testing.T) {
 	s := "abcdefg"
 	fmt.Println(ReverseLeftWords(s, 2))
 }
+
+func TestMaxSlidingWindow(T *testing.T) {
+	arr := []int{1, 3, -1, -3, 5, 3, 6, 7}
+	aa := MaxSlidingWindow(arr, 3)
+	fmt.Printf("aa: %v\n", aa)
+}

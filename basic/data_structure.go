@@ -1,6 +1,7 @@
 package basic
 
 import (
+	"container/list"
 	"strings"
 )
 
@@ -77,10 +78,50 @@ func ReverseList(head *ListNode) *ListNode {
 
 /*
 ----剑指Offer 58-II 左旋转字符串
+执行用时：0 ms, 在所有 Go 提交中击败了100.00%的用户
+内存消耗：3 MB, 在所有 Go 提交中击败了99.92%的用户
 */
 func ReverseLeftWords(s string, n int) string {
 	n = n % len(s)
-	s1 := s[:n]
-	s2 := s[n:]
-	return s2 + s1
+	return s[n:] + s[:n]
+}
+
+/*
+剑指Offer 59 - I 滑动窗口的最大值
+*/
+func MaxSlidingWindow(nums []int, k int) []int {
+	//暴力穷举，超时,数据量少时可以通过
+	/* 	arr := make([]int, 0)
+	   	left := 0
+	   	right := left + k
+	   	length := len(nums)
+	   	if length == 0 {
+	   		return arr
+	   	}
+	   	max := func(nums []int) int {
+	   		max := nums[0]
+	   		for _, v := range nums {
+	   			if max < v {
+	   				max = v
+	   			}
+	   		}
+	   		return max
+	   	}
+	   	if right > length {
+	   		arr = append(arr, max(nums))
+	   	}
+	   	for right <= length {
+	   		num := nums[left:right]
+	   		arr = append(arr, max(num))
+	   		left++
+	   		right++
+	   	}
+	   	return arr */
+	arr := make([]int, 0)
+	l := list.New()
+	for k := range nums {
+
+	}
+
+	return nil
 }
