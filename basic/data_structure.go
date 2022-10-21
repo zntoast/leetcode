@@ -1,7 +1,6 @@
 package basic
 
 import (
-	"container/list"
 	"strings"
 )
 
@@ -117,11 +116,11 @@ func MaxSlidingWindow(nums []int, k int) []int {
 	   		right++
 	   	}
 	   	return arr */
-	arr := make([]int, 0)
-	l := list.New()
-	for k := range nums {
+	// arr := make([]int, 0)
+	// l := list.New()
+	// for k := range nums {
 
-	}
+	// }
 
 	return nil
 }
