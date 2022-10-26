@@ -13,7 +13,7 @@ type ListNode struct {
 	Next *ListNode
 }
 
-//两数之和
+// 两数之和
 func TwoSum(nums []int, target int) []int {
 	length := len(nums)
 	index := make([]int, 2)
@@ -28,7 +28,7 @@ func TwoSum(nums []int, target int) []int {
 	return index
 }
 
-//两数相加
+// 两数相加
 func AddTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	var left *ListNode
 	var right *ListNode
@@ -59,7 +59,7 @@ func AddTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	return left
 }
 
-//无重复字符的最长子串
+// 无重复字符的最长子串
 func LengthOfLongestSubstring(s string) int {
 	count := 0
 	for i := 0; i < len(s); i++ {
@@ -82,7 +82,7 @@ func LengthOfLongestSubstring(s string) int {
 	return count
 }
 
-//寻找两个正序数组的中位数
+// 寻找两个正序数组的中位数
 func FindMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 	list := make([]int, 0)
 	list = append(list, nums1...)
@@ -96,12 +96,12 @@ func FindMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 	}
 }
 
-//最长回文子串
+// 最长回文子串
 func LongestPalindrome(s string) string {
 	return ""
 }
 
-//最长公共子序列
+// 最长公共子序列
 func LongestCommonSubsequence(text1 string, text2 string) int {
 	len1 := len(text1)
 	len2 := len(text2)
@@ -127,7 +127,7 @@ func max(a, b int) int {
 	return b
 }
 
-//回文数
+// 回文数
 func IsPalindrome(x int) bool {
 	aa := x
 	if x < 0 {
@@ -146,7 +146,7 @@ func IsPalindrome(x int) bool {
 
 }
 
-//10.正则表达式匹配
+// 10.正则表达式匹配
 func IsMatch(s string, p string) bool {
 	reg, err := regexp.Compile(p)
 	if err != nil {
@@ -157,7 +157,7 @@ func IsMatch(s string, p string) bool {
 	return new == s
 }
 
-//11.盛最多水的容器
+// 11.盛最多水的容器
 func MaxArea(height []int) int {
 	l := 0
 	r := len(height) - 1
@@ -181,7 +181,7 @@ func min(a, b int) int {
 	return a
 }
 
-//15.三数之和
+// 15.三数之和
 func ThreeSum(nums []int) [][]int {
 	n := len(nums)
 	sort.Ints(nums)
@@ -210,7 +210,7 @@ func ThreeSum(nums []int) [][]int {
 	return ans
 }
 
-//最接近的三数之和
+// 最接近的三数之和
 func ThreeSumClosest(nums []int, target int) int {
 	return 0
 }
@@ -227,7 +227,7 @@ var phoneMap map[string]string = map[string]string{
 	"9": "wxyz",
 }
 
-//17.电话号码和字母的组合
+// 17.电话号码和字母的组合
 func LetterCombinations(digits string) []string {
 	if len(digits) == 0 {
 		return []string{}
@@ -267,7 +267,7 @@ func RemoveNthFromEnd(head *ListNode, n int) *ListNode {
 	return head
 }
 
-//33. 搜索旋转排序数组
+// 33. 搜索旋转排序数组
 func Search(nums []int, target int) int {
 	left := 0
 	right := len(nums) - 1
@@ -293,7 +293,7 @@ func Search(nums []int, target int) int {
 	return -1
 }
 
-//移除元素
+// 移除元素
 func RemoveElement(nums []int, val int) int {
 	left := 0
 	for _, v := range nums {
@@ -307,7 +307,7 @@ func RemoveElement(nums []int, val int) int {
 	return left
 }
 
-//串联所有单词的子串
+// 串联所有单词的子串
 func FindSubstring(s string, words []string) []int {
 	ans := []int{}
 	flag := make([]bool, len(words))
