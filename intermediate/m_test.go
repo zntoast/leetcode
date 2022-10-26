@@ -10,3 +10,9 @@ func TestThreeSum(t *testing.T) {
 	array := ThreeSum(nums)
 	fmt.Printf("array: %v\n", array)
 }
+
+func TestSetZeroes(t *testing.T) {
+	nums := [][]int{{0, 1, 2, 0}, {3, 4, 5, 2}, {1, 3, 1, 5}}
+	SetZeroes(nums)
+	fmt.Printf("nums: %v\n", nums)
+}
