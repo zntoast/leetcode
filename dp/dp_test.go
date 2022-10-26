@@ -40,8 +40,14 @@ func TestMinimumTotal(t *testing.T) {
 	fmt.Printf("i: %v\n", i)
 }
 
-func TestMinFallingPathSum(t *testing.T) {
+func TestMinfallingpathsumI(t *testing.T) {
 	grid := [][]int{{2, 1, 3}, {6, 5, 4}, {7, 8, 9}}
-	i := MinFallingPathSum(grid)
+	i := MinFallingPathSumI(grid)
+	fmt.Printf("i: %v\n", i)
+}
+
+func TestMinFallingPathSumII(t *testing.T) {
+	grid := [][]int{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}
+	i := MinFallingPathSumII(grid)
 	fmt.Printf("i: %v\n", i)
 }

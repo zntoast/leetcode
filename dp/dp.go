@@ -156,9 +156,9 @@ func MinimumTotal(triangle [][]int) int {
 }
 
 /*
-LC 931.下降路径最小和
+LC 931.下降路径最小和I
 */
-func MinFallingPathSum(matrix [][]int) int {
+func MinFallingPathSumI(matrix [][]int) int {
 	m := len(matrix)
 	n := len(matrix[0])
 	dp := make([][]int, m)
@@ -188,4 +188,45 @@ func MinFallingPathSum(matrix [][]int) int {
 	}
 	sort.Ints(dp[m-1])
 	return dp[m-1][0]
+}
+
+/*
+LC 1289.下降路径最小和 II
+*/
+func MinFallingPathSumII(grid [][]int) int {
+	m := len(grid)
+	n := len(grid[0])
+	dp := make([][]int, m)
+	for k := range dp {
+		dp[k] = make([]int, n)
+	}
+	copy(dp[0], grid[0])
+	min := func(a, b int) int {
+		if a > b {
+			return b
+		}
+		return a
+	}
+	//最后一排有多少个数就循环多少次
+	for i := 1; i < m; i++ {
+		for j := 0; j < n; j++ {
+			dp[i][j] = math.MaxInt32
+			val := grid[i][j]
+			for k := 0; k < n; k++ {
+				if j == k {
+					continue
+				}
+				dp[i][j] = min(dp[i][j], dp[i-1][k]+val)
+			}
+		}
+	}
+	sort.Ints(dp[m-1])
+	return dp[m-1][0]
+}
+
+/*
+LC 1575. 统计所有可行路径
+*/
+func CountRoutes(locations []int, start int, finish int, fuel int) int {
+	return 0
 }
