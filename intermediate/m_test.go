@@ -16,3 +16,9 @@ func TestSetZeroes(t *testing.T) {
 	SetZeroes(nums)
 	fmt.Printf("nums: %v\n", nums)
 }
+
+func TestGroupAnagrams(t *testing.T) {
+	nums := []string{"eat", "tea", "tan", "ate", "nat", "bat"}
+	m := GroupAnagrams(nums)
+	fmt.Printf("m: %v\n", m)
+}

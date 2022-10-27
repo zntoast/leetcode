@@ -2,6 +2,7 @@ package intermediate
 
 import (
 	"sort"
+	"strings"
 )
 
 /*
@@ -58,4 +59,30 @@ func SetZeroes(matrix [][]int) {
 			}
 		}
 	}
+}
+
+/*
+LC 字母异位词分组
+*/
+func GroupAnagrams(strs []string) [][]string {
+	if len(strs) == 0 {
+		return [][]string{}
+	}
+	m := make([][]string, 0)
+	temp := map[string]int{}
+	index := 0
+	for _, s := range strs {
+		w := strings.Split(s, "")
+		sort.Strings(w)
+		s1 := strings.Join(w, "")
+		if v, ok := temp[s1]; ok {
+			m[v] = append(m[v], s)
+		} else {
+			m = append(m, []string{})
+			m[index] = append(m[index], s)
+			temp[s1] = index
+			index++
+		}
+	}
+	return m
 }
