@@ -16,3 +16,7 @@ func TestFindString(T *testing.T) {
 	str2 := "bcccccfg"
 	fmt.Println(FindString(str1, str2))
 }
+
+func TestFibonacciSequence(t *testing.T) {
+	FibonacciSequence(1000)
+}

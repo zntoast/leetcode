@@ -3,7 +3,9 @@ package interview
 import (
 	"fmt"
 	"leetcode/array"
+	"math/big"
 	"strings"
+	"time"
 )
 
 // 给定一个数组，数组全是整数。要求将奇数全部按顺序排在数组前面，偶数排在后面，不能新建其它数组
@@ -99,4 +101,24 @@ func do(min, max string) string {
 	}
 	return str
 
+}
+
+/*
+斐波那契数列
+*/
+func FibonacciSequence(num int) {
+	start := time.Now()
+	nums := make([]*big.Int, num)
+	for i := 0; i < num; i++ {
+		if i <= 1 {
+			nums[i] = big.NewInt(1)
+		} else {
+			temp := new(big.Int)
+			nums[i] = temp.Add(nums[i-1], nums[i-2])
+		}
+		fmt.Printf("数位第%v位: %v\n", i, nums[i])
+	}
+	end := time.Now()
+	delta := end.Sub(start)
+	fmt.Printf("执行所耗: %v\n", delta)
 }
