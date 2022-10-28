@@ -86,3 +86,26 @@ func GroupAnagrams(strs []string) [][]string {
 	}
 	return m
 }
+
+/*
+LC 无重复字符的最长子串
+*/
+func LengthOfLongestSubstring(s string) int {
+	result := 0
+	for k := range s {
+		temp := map[byte]bool{}
+		l := 1
+		temp[s[k]] = true
+		for i := k + 1; i < len(s); i++ {
+			if temp[s[i]] {
+				break
+			}
+			temp[s[i]] = true
+			l++
+		}
+		if len(temp) > result {
+			result = len(temp)
+		}
+	}
+	return result
+}

@@ -22,3 +22,8 @@ func TestGroupAnagrams(t *testing.T) {
 	m := GroupAnagrams(nums)
 	fmt.Printf("m: %v\n", m)
 }
+
+func TestLengthOfLongestSubstring(t *testing.T) {
+	i := LengthOfLongestSubstring("abcabcbb")
+	fmt.Printf("i: %v\n", i)
+}
