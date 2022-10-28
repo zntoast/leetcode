@@ -1,6 +1,7 @@
 package intermediate
 
 import (
+	"math"
 	"sort"
 	"strings"
 )
@@ -135,4 +136,22 @@ func LongestPalindrome(s string) string {
 		}
 	}
 	return s[start : end+1]
+}
+
+/*
+LC 递增的三元子序列
+*/
+func IncreasingTriplet(nums []int) bool {
+	min := math.MaxInt32
+	mid := math.MaxInt32
+	for i := 0; i < len(nums); i++ {
+		if nums[i] <= min {
+			min = nums[i]
+		} else if nums[i] <= mid {
+			mid = nums[i]
+		} else {
+			return true
+		}
+	}
+	return false
 }

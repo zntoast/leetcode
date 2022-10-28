@@ -35,3 +35,11 @@ func TestLongestPalindrome(t *testing.T) {
 		fmt.Printf("s1: %v\n", s1)
 	}
 }
+
+func TestIncreasingTriplet(t *testing.T) {
+	s := [][]int{{1, 2, 3, 4, 5}, {2, 1, 5, 0, 4, 6}, {20, 100, 10, 12, 5, 13}, {5, 4, 3, 2, 1}}
+	for k, v := range s {
+		s1 := IncreasingTriplet(v)
+		fmt.Printf("s%d: %v\n", k, s1)
+	}
+}
