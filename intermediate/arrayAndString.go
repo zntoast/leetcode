@@ -109,3 +109,30 @@ func LengthOfLongestSubstring(s string) int {
 	}
 	return result
 }
+
+/*
+LC 最长回文子串
+*/
+func LongestPalindrome(s string) string {
+	start, end := 0, 0
+	context := func(left, right int) (int, int) {
+		for left >= 0 && right < len(s) && s[left] == s[right] {
+			left--
+			right++
+		}
+		return left + 1, right - 1
+	}
+	for k := range s {
+		left1, right1 := context(k, k)
+		left2, right2 := context(k, k+1)
+		if right1-left1 > end-start {
+			start = left1
+			end = right1
+		}
+		if right2-left2 > end-start {
+			start = left2
+			end = right2
+		}
+	}
+	return s[start : end+1]
+}

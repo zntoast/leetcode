@@ -27,3 +27,11 @@ func TestLengthOfLongestSubstring(t *testing.T) {
 	i := LengthOfLongestSubstring("abcabcbb")
 	fmt.Printf("i: %v\n", i)
 }
+
+func TestLongestPalindrome(t *testing.T) {
+	s := []string{"cbbd", "babad"}
+	for _, v := range s {
+		s1 := LongestPalindrome(v)
+		fmt.Printf("s1: %v\n", s1)
+	}
+}
