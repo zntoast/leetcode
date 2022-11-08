@@ -20,3 +20,9 @@ func TestFindString(T *testing.T) {
 func TestFibonacciSequence(t *testing.T) {
 	FibonacciSequence(1000)
 }
+
+func TestFastSort(t *testing.T) {
+	list := []int{5, 10, 2, 1, 6, 7, 4, 3, 9}
+	FastSort(list)
+	fmt.Printf("list: %v\n", list)
+}

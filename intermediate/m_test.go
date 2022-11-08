@@ -43,3 +43,33 @@ func TestIncreasingTriplet(t *testing.T) {
 		fmt.Printf("s%d: %v\n", k, s1)
 	}
 }
+
+func TestAddTwoNumbers(t *testing.T) {
+	li2 := &ListNode{3, nil}
+	li1 := &ListNode{4, li2}
+	li := &ListNode{2, li1}
+	le2 := &ListNode{4, nil}
+	le1 := &ListNode{6, le2}
+	le := &ListNode{5, le1}
+	head := AddTwoNumbers(li, le)
+	fmt.Printf("head: %v\n", head)
+}
+
+func TestOddEvenList(t *testing.T) {
+	li4 := &ListNode{5, nil}
+	li3 := &ListNode{4, li4}
+	li2 := &ListNode{3, li3}
+	li1 := &ListNode{2, li2}
+	li := &ListNode{1, li1}
+	OddEvenList(li)
+}
+
+func TestZigzagLevelOrder(t *testing.T) {
+	node7 := &TreeNode{7, nil, nil}
+	node15 := &TreeNode{15, nil, nil}
+	node20 := &TreeNode{20, node15, node7}
+	node9 := &TreeNode{9, nil, nil}
+	head := &TreeNode{3, node9, node20}
+	res := ZigzagLevelOrder(head)
+	fmt.Printf("res: %v\n", res)
+}

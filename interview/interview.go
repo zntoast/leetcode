@@ -9,7 +9,8 @@ import (
 )
 
 // 给定一个数组，数组全是整数。要求将奇数全部按顺序排在数组前面，偶数排在后面，不能新建其它数组
-func Array(list []int) []int {
+// 题解一、
+func Array1(list []int) []int {
 	length := 0
 	for i := 0; i < len(list); i++ {
 		if list[i]%2 == 1 {
@@ -39,6 +40,14 @@ func Array(list []int) []int {
 	return list
 }
 
+// 题解二、
+func Array(list []int) []int {
+	for i := 0; i < len(list); i++ {
+
+	}
+	return nil
+}
+
 // 给定一个数组1表示种有花,0表示没有。花与花之间不能紧挨着种。n表示可以种植的数量，可以则返回true，否则false
 func Flower(list []int, n int) bool {
 	left := 0
@@ -58,7 +67,6 @@ func Flower(list []int, n int) bool {
 					m++
 					i++
 				}
-
 			} else if right >= len(list) {
 				if list[left] == 0 {
 					m++
@@ -121,4 +129,38 @@ func FibonacciSequence(num int) {
 	end := time.Now()
 	delta := end.Sub(start)
 	fmt.Printf("执行所耗: %v\n", delta)
+}
+
+/*
+快速排序
+*/
+func FastSort(values []int) {
+	if len(values) <= 1 {
+		return
+	}
+	mid, i := values[0], 1
+	head, end := 0, len(values)-1
+	for head < end {
+		if values[i] > mid {
+			values[i], values[end] = values[end], values[i]
+			end--
+		} else {
+			values[i], values[head] = values[head], values[i]
+			head++
+			i++
+		}
+	}
+	values[head] = mid
+	FastSort(values[:head])
+	FastSort(values[head+1:])
+}
+
+func Cmp(a, b int) bool {
+	// 判断ab是否同为奇数或偶数
+	if a%2 != b%2 {
+		// 判断a是否为偶数数
+		return a%2 == 0
+	} else {
+		return a > b
+	}
 }
