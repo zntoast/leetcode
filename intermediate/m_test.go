@@ -73,3 +73,10 @@ func TestZigzagLevelOrder(t *testing.T) {
 	res := ZigzagLevelOrder(head)
 	fmt.Printf("res: %v\n", res)
 }
+
+func TestBuildTree(t *testing.T) {
+	preorder := []int{3, 9, 8, 5, 2, 20, 15, 7}
+	inorder := []int{5, 8, 9, 2, 3, 15, 20, 7}
+	node := BuildTree(preorder, inorder)
+	fmt.Printf("node: %v\n", node)
+}
