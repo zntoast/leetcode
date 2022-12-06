@@ -80,3 +80,8 @@ func TestBuildTree(t *testing.T) {
 	node := BuildTree(preorder, inorder)
 	fmt.Printf("node: %v\n", node)
 }
+
+func TestLetterCombinations(t *testing.T) {
+	s := LetterCombinations("235")
+	fmt.Printf("s: %v\n", s)
+}
