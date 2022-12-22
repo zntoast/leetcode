@@ -138,9 +138,11 @@ func FastSort(values []int) {
 	if len(values) <= 1 {
 		return
 	}
+	//mid中间值(假定mid = values[0] 为中间值)	, i下标
 	mid, i := values[0], 1
 	head, end := 0, len(values)-1
 	for head < end {
+		// 把 小于mid 的值放到 head前面 反则亦然
 		if values[i] > mid {
 			values[i], values[end] = values[end], values[i]
 			end--
@@ -150,12 +152,28 @@ func FastSort(values []int) {
 			i++
 		}
 	}
+	// 中间值替换成mid
 	values[head] = mid
 	FastSort(values[:head])
 	FastSort(values[head+1:])
 }
 
-func Cmp(a, b int) bool {
+/*
+冒泡排序
+*/
+func BubbleSort(values []int) {
+	length := len(values)
+	for i := 0; i < length; i++ {
+		for j := i + 1; j < length; j++ {
+			if values[i] > values[j] {
+				values[i], values[j] = values[j], values[i]
+			}
+		}
+	}
+	time.Sleep(time.Nanosecond * 100)
+}
+
+/* func Cmp(a, b int) bool {
 	// 判断ab是否同为奇数或偶数
 	if a%2 != b%2 {
 		// 判断a是否为偶数数
@@ -164,3 +182,25 @@ func Cmp(a, b int) bool {
 		return a > b
 	}
 }
+*/
+/* func fast(values []int) {
+	if len(values) == 0 {
+		return
+	}
+	mid, i := values[0], 1
+	head, end := 0, len(values)-1
+	for head < end {
+		if values[i] > mid {
+			values[i], values[end] = values[end], values[i]
+			end--
+		} else {
+			values[head], values[i] = values[i], values[head]
+			i++
+			head++
+		}
+	}
+	values[head] = mid
+	fast(values[:head])
+	fast(values[head+1:])
+}
+*/

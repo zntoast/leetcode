@@ -3,6 +3,7 @@ package interview
 import (
 	"fmt"
 	"testing"
+	"time"
 )
 
 func TestFlower(T *testing.T) {
@@ -22,7 +23,13 @@ func TestFibonacciSequence(t *testing.T) {
 }
 
 func TestFastSort(t *testing.T) {
-	list := []int{5, 10, 2, 1, 6, 7, 4, 3, 9}
-	FastSort(list)
+	list := []int{5, 10, 2, 1, 6, 7, 4, 4, 3, 9, 5, 10, 2, 1, 6, 7, 4, 4, 3, 9, 5, 10, 2, 1, 6, 7, 4, 4, 3, 9, 5, 10, 2, 1, 6, 7, 4, 4, 3, 9, 5, 10, 2, 1, 6, 7, 4, 4, 3, 9}
+	start := time.Now()
+	// 快速排序
+	// FastSort(list)
+	// 冒泡排序
+	BubbleSort(list)
+	end := time.Now()
+	fmt.Printf("时间开销:%v \n", end.Sub(start))
 	fmt.Printf("list: %v\n", list)
 }

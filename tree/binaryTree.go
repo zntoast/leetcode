@@ -1,6 +1,8 @@
 package tree
 
-import "container/list"
+import (
+	"container/list"
+)
 
 // 二叉树遍历常用的五种遍历方式
 // 1、前序遍历
@@ -64,22 +66,42 @@ func PostorderTraversal(root *TreeNode) []int {
 	return list
 }
 
-// 迭代算法
+// 迭代算法 二叉树的中序遍历前序遍历
 func PreorderTraversal1(head *TreeNode) []int {
 	// 栈
 	stack := list.New()
 	// 数组
-	list := []int{}
+	result := []int{}
 	root := head
+	//	栈不为空的时候 或者 节点不为空
 	for root != nil || stack.Len() != 0 {
 		for root != nil {
 			stack.PushBack(root)
-			list = append(list, root.Val)
+			result = append(result, root.Val)
 			root = root.Left
 		}
 		root = stack.Back().Value.(*TreeNode)
 		stack.Remove(stack.Back())
 		root = root.Right
 	}
-	return list
+	return result
+}
+
+// 迭代算法 二叉树的中序遍历中序遍历
+func PreorderTraversal2(head *TreeNode) []int {
+	// 栈
+	stack := list.New()
+	result := []int{}
+	root := head
+	for root != nil || stack.Len() != 0 {
+		for root != nil {
+			stack.PushBack(root)
+			root = root.Left
+		}
+		root = stack.Back().Value.(*TreeNode)
+		stack.Remove(stack.Back())
+		result = append(result, root.Val)
+		root = root.Right
+	}
+	return result
 }
