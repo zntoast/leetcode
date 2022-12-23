@@ -1,9 +1,5 @@
 package algorithm
 
-import (
-	"sort"
-)
-
 //插入排序
 func InsertionSort(nums []int) []int {
 	for j := 1; j < len(nums); j++ {
@@ -18,8 +14,8 @@ func InsertionSort(nums []int) []int {
 	return nums
 }
 
-//分治排序
-func Merge(nums []int) []int {
+//合并排序 有bug
+/* func Merge(nums []int) []int {
 	mid := len(nums) / 2
 	sort.Ints(nums[:mid])
 	sort.Ints(nums[mid:])
@@ -37,3 +33,4 @@ func Merge(nums []int) []int {
 	}
 	return newNums
 }
+*/

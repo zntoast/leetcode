@@ -134,43 +134,115 @@ func FibonacciSequence(num int) {
 /*
 快速排序
 */
-func FastSort(values []int) {
-	if len(values) <= 1 {
+func FastSort(nums []int) {
+	if len(nums) <= 1 {
 		return
 	}
 	//mid中间值(假定mid = values[0] 为中间值)	, i下标
-	mid, i := values[0], 1
-	head, end := 0, len(values)-1
+	mid, i := nums[0], 1
+	head, end := 0, len(nums)-1
 	for head < end {
 		// 把 小于mid 的值放到 head前面 反则亦然
-		if values[i] > mid {
-			values[i], values[end] = values[end], values[i]
+		if nums[i] > mid {
+			nums[i], nums[end] = nums[end], nums[i]
 			end--
 		} else {
-			values[i], values[head] = values[head], values[i]
+			nums[i], nums[head] = nums[head], nums[i]
 			head++
 			i++
 		}
 	}
 	// 中间值替换成mid
-	values[head] = mid
-	FastSort(values[:head])
-	FastSort(values[head+1:])
+	nums[head] = mid
+	FastSort(nums[:head])
+	FastSort(nums[head+1:])
 }
 
 /*
 冒泡排序
 */
-func BubbleSort(values []int) {
-	length := len(values)
+func BubbleSort(nums []int) {
+	length := len(nums)
 	for i := 0; i < length; i++ {
 		for j := i + 1; j < length; j++ {
-			if values[i] > values[j] {
-				values[i], values[j] = values[j], values[i]
+			if nums[i] > nums[j] {
+				nums[i], nums[j] = nums[j], nums[i]
 			}
 		}
 	}
 	time.Sleep(time.Nanosecond * 100)
+}
+
+/*
+插入排序
+*/
+func InsertSort(nums []int) {
+	for i := 0; i < len(nums); i++ {
+		key := nums[i]
+		j := i - 1
+		for j >= 0 && nums[j] > key {
+			nums[j+1], nums[j] = nums[j], key
+			j--
+		}
+	}
+}
+
+/*
+合并排序 将两个或多个有序数组进行排序
+*/
+func MergeSort(a []int, left, right int) {
+	if left == right {
+		return
+	}
+	if left < right {
+		//拆分成n份进行排序
+		mid := (left + right) / 2
+		MergeSort(a, left, mid)
+		MergeSort(a, mid+1, right)
+		merge(a, left, right)
+	}
+}
+
+//合并数组
+func merge(a []int, left, right int) {
+	m := right - left + 1
+	//临时数组b
+	b := make([]int, m)
+	left0 := left
+	// 数组下标
+	i := 0
+	//中间数组的中间值
+	mid := (left + right) / 2
+	k := mid + 1
+	for left <= mid && k <= right {
+		if a[left] < a[k] {
+			b[i] = a[left]
+			i++
+			left++
+		} else {
+			b[i] = a[k]
+			i++
+			k++
+		}
+	}
+	if left > mid {
+		for k <= right {
+			b[i] = a[k]
+			i++
+			k++
+		}
+	}
+	if k > right {
+		for left <= mid {
+			b[i] = a[left]
+			left++
+			i++
+		}
+	}
+	for j := 0; j < m; j++ {
+		a[left0] = b[j]
+		left0++
+	}
 }
 
 /* func Cmp(a, b int) bool {
