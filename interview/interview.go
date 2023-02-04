@@ -268,3 +268,58 @@ func Eratosthenes(n int) int {
 	}
 	return count
 }
+
+/*
+删除有序数组的重复项,每个元素只能出现一次,返回删除后数组的长度
+考察双指针
+*/
+func RemoveDuplicates(nums []int) int {
+	left := 0
+	for right := 1; right < len(nums); right++ {
+		if nums[left] != nums[right] {
+			left++
+			nums[left] = nums[right]
+		}
+	}
+	return left + 1
+}
+
+/*
+寻找数组的中心下标,使得左边数组的和跟右边数组的和相等
+*/
+func PivotIndex(nums []int) int {
+	num := 0
+	for i := 0; i < len(nums); i++ {
+		num += nums[i]
+	}
+	total := 0
+	for i := 0; i < len(nums); i++ {
+		total += nums[i]
+		if total == num {
+			return i
+		}
+		num -= nums[i]
+	}
+	return -1
+}
+
+/*
+ 在不使用官方包情况, 算x的平方根 取整数
+ 二分查找
+*/
+func BinarySearch(x int) int {
+	if x < 2 {
+		return 1
+	}
+	index, left, right := -1, 0, x
+	for left <= right {
+		mid := left + (right-left)/2
+		if mid*mid <= x {
+			index = mid
+			left = mid + 1
+		} else {
+			right = mid - 1
+		}
+	}
+	return index
+}

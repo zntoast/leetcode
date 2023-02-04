@@ -49,3 +49,51 @@ func TestEratosthenes(t *testing.T) {
 		fmt.Printf("第 %d 次测试 有 %d 个素数 \n", k+1, c)
 	}
 }
+
+func TestRemoveDuplicates(t *testing.T) {
+	date := []struct {
+		nums []int
+	}{
+		{[]int{1, 1, 2, 3, 3, 4, 5}},
+		{[]int{2, 2, 2, 3, 3, 4, 5}},
+		{[]int{2, 2, 3, 3, 4, 5}},
+		{[]int{2, 2, 2, 2, 2, 3, 3, 4, 5}},
+		{[]int{2, 2, 2, 3, 3, 4, 4, 5, 5}},
+	}
+	for k, v := range date {
+		num := RemoveDuplicates(v.nums)
+		fmt.Printf("第 %d 次测试 数组新长度: %d \n", k+1, num)
+	}
+}
+
+func TestPivotIndex(t *testing.T) {
+	date := []struct {
+		nums []int
+	}{
+		{[]int{1, 7, 3, 6, 5, 6}},
+		{[]int{1, 7, 3, 6, 5, 6, 2}},
+		{[]int{1, 7, 3, 6, 2, 5, 6}},
+		{[]int{1, 7, 3, 6, 5, 5, 6}},
+	}
+	for k, v := range date {
+		index := PivotIndex(v.nums)
+		fmt.Printf("第 %d 次测试 中间下标: %d \n", k+1, index)
+	}
+}
+
+func TestBinarySearch(t *testing.T) {
+	date := []struct {
+		num int
+	}{
+		{24},
+		{28},
+		{29},
+		{88},
+		{100},
+		{105},
+	}
+	for k, v := range date {
+		index := BinarySearch(v.num)
+		fmt.Printf("第 %d 次测试 平方根: %d \n", k+1, index)
+	}
+}
