@@ -17,6 +17,26 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+func (head *TreeNode) TreeAdd(num int) {
+	add(head, num)
+}
+
+func add(fater *TreeNode, num int) {
+	if fater.Val < num {
+		if fater.Right == nil {
+			fater.Right = &TreeNode{num, nil, nil}
+		} else {
+			add(fater.Right, num)
+		}
+	} else {
+		if fater.Left == nil {
+			fater.Left = &TreeNode{num, nil, nil}
+		} else {
+			add(fater.Right, num)
+		}
+	}
+}
+
 // 递归········································
 //1、前序遍历
 func PreorderTraversal(head *TreeNode) []int {

@@ -13,3 +13,11 @@ func TestPreorderTraversal1(T *testing.T) {
 	list := PreorderTraversal2(head)
 	fmt.Printf("list: %v\n", list)
 }
+
+func TestAddNode(T *testing.T) {
+	head := &TreeNode{5, nil, nil}
+	nums := []int{4, 6, 8, 7, 9}
+	for _, v := range nums {
+		head.TreeAdd(v)
+	}
+}

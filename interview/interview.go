@@ -245,34 +245,26 @@ func merge(a []int, left, right int) {
 	}
 }
 
-/* func Cmp(a, b int) bool {
-	// 判断ab是否同为奇数或偶数
-	if a%2 != b%2 {
-		// 判断a是否为偶数数
-		return a%2 == 0
-	} else {
-		return a > b
-	}
-}
+/*
+统计n位数以内有多少个素数,不计入 0 ,1 ,埃筛法
 */
-/* func fast(values []int) {
-	if len(values) == 0 {
-		return
+func Eratosthenes(n int) int {
+	if n < 2 {
+		fmt.Println("n 不能小于2")
+		return n
 	}
-	mid, i := values[0], 1
-	head, end := 0, len(values)-1
-	for head < end {
-		if values[i] > mid {
-			values[i], values[end] = values[end], values[i]
-			end--
-		} else {
-			values[head], values[i] = values[i], values[head]
-			i++
-			head++
+	count := 0
+	// 素数存储
+	isPrims := make([]bool, n)
+	for i := 2; i < n; i++ {
+		//判断是否为素数 ,是则进入
+		if !isPrims[i] {
+			count++
+			for j := 2 * i; j < n; j += i {
+				//将非素数改为true
+				isPrims[j] = true
+			}
 		}
 	}
-	values[head] = mid
-	fast(values[:head])
-	fast(values[head+1:])
+	return count
 }
-*/

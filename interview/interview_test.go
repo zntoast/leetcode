@@ -41,3 +41,11 @@ func TestFastSort(t *testing.T) {
 	fmt.Printf("时间开销:%v \n", end.Sub(start))
 	fmt.Printf("list: %v\n", list)
 }
+
+func TestEratosthenes(t *testing.T) {
+	date := []int{15, 98, 100, 1000, 10000}
+	for k, v := range date {
+		c := Eratosthenes(v)
+		fmt.Printf("第 %d 次测试 有 %d 个素数 \n", k+1, c)
+	}
+}
