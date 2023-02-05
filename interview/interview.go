@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"leetcode/array"
 	"math/big"
+	"sort"
 	"strings"
 	"time"
 )
@@ -322,4 +323,52 @@ func BinarySearch(x int) int {
 		}
 	}
 	return index
+}
+
+type ListNote struct {
+	Val  int
+	Next *ListNote
+}
+
+/*
+反转链表,递归实现
+*/
+func Recursion(head *ListNote) *ListNote {
+	if head == nil || head.Next == nil {
+		return head
+	}
+	node := Recursion(head.Next)
+	head.Next.Next = head
+	head.Next = nil
+	return node
+}
+
+/*
+数组三个数的最大乘积
+*/
+func Sort(nums []int) int {
+	sort.Ints(nums)
+	n := len(nums)
+	max := func(a, b int) int {
+		if a > b {
+			return a
+		}
+		return b
+	}
+	return max(nums[0]*nums[1]*nums[n-1], nums[n-1]*nums[n-2]*nums[n-3])
+}
+
+/*
+两数之和，无序数组,获取两个数的下标(用数组返回)
+*/
+func Solution(nums []int, tager int) []int {
+	isExist := make(map[int]int)
+	for i := 0; i < len(nums); i++ {
+		a := tager - nums[i]
+		if _, ok := isExist[a]; ok {
+			return []int{isExist[a], i}
+		}
+		isExist[nums[i]] = i
+	}
+	return nil
 }

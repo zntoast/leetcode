@@ -94,6 +94,47 @@ func TestBinarySearch(t *testing.T) {
 	}
 	for k, v := range date {
 		index := BinarySearch(v.num)
-		fmt.Printf("第 %d 次测试 平方根: %d \n", k+1, index)
+		fmt.Printf("第 %d 次测试 %d平方根: %d \n", k+1, v.num, index)
+	}
+}
+
+func TestRecursion(t *testing.T) {
+	h4 := &ListNote{4, nil}
+	h3 := &ListNote{3, h4}
+	h2 := &ListNote{2, h3}
+	head := &ListNote{1, h2}
+	new_head := Recursion(head)
+	fmt.Printf("new_head: %v\n", new_head)
+}
+
+func TestSort(t *testing.T) {
+	date := []struct {
+		nums []int
+	}{
+		{[]int{-4, -6, 0, 2, 5}},
+		{[]int{-1, -4, 0, 2, 5}},
+		{[]int{-4, -6, 0, 2, 5, 10}},
+	}
+	for k, v := range date {
+		result := Sort(v.nums)
+		fmt.Printf("第 %d 次测试 数组的最大乘积:%d \n", k+1, result)
+	}
+}
+
+func TestSolution(t *testing.T) {
+	date := []struct {
+		nums  []int
+		tager int
+	}{
+		{[]int{-4, -6, 0, 2, 5}, 28},
+		{[]int{-1, -4, 0, 2, 5}, -5},
+		{[]int{-4, -6, 0, 2, 5, 10}, 10},
+		{[]int{-4, -6, 0, 2, 2, 5, 9, 10}, 10},
+		{[]int{-4, -6, 0, 5, 10}, -10},
+		{[]int{-4, -6, 0, 2, 10}, 10},
+	}
+	for k, v := range date {
+		result := Solution(v.nums, v.tager)
+		fmt.Printf("第 %d 次测试 数组下标:%d \n", k+1, result)
 	}
 }
