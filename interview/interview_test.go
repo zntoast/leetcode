@@ -138,3 +138,38 @@ func TestSolution(t *testing.T) {
 		fmt.Printf("第 %d 次测试 数组下标:%d \n", k+1, result)
 	}
 }
+
+func TestMerge(t *testing.T) {
+	date := []struct {
+		num1 []int
+		num2 []int
+	}{
+		// {[]int{1, 5, 9, 10, 10}, []int{2, 4, 8, 9}},
+		// {[]int{1, 3, 4, 5, 9, 10, 10}, []int{2, 4, 5, 6, 8, 9}},
+		{[]int{1, 5, 6, 7, 8}, []int{2, 4, 8, 9}},
+	}
+	for k, v := range date {
+
+		v.num1 = append(v.num1, v.num2...)
+		//仅限两个数组长度相差不超过1
+		Merge(v.num1, 0, len(v.num1)-1)
+		fmt.Printf("第 %d 次测试 数组排序后:%v \n", k+1, v.num1)
+	}
+}
+
+func TestArrangeCoins(t *testing.T) {
+	date := []struct {
+		tager int
+	}{
+		{16},
+		{18},
+		{90},
+		{46},
+		{55},
+		{464},
+	}
+	for k, v := range date {
+		result, count := ArrangeCoins(v.tager)
+		fmt.Printf("第 %d 次测试 阶梯的行数:%d ,累加:%d \n", k+1, result, count)
+	}
+}

@@ -109,7 +109,6 @@ func do(min, max string) string {
 		}
 	}
 	return str
-
 }
 
 /*
@@ -200,12 +199,12 @@ func MergeSort(a []int, left, right int) {
 		mid := (left + right) / 2
 		MergeSort(a, left, mid)
 		MergeSort(a, mid+1, right)
-		merge(a, left, right)
+		Merge(a, left, right)
 	}
 }
 
 //合并数组
-func merge(a []int, left, right int) {
+func Merge(a []int, left, right int) {
 	m := right - left + 1
 	//临时数组b
 	b := make([]int, m)
@@ -371,4 +370,21 @@ func Solution(nums []int, tager int) []int {
 		isExist[nums[i]] = i
 	}
 	return nil
+}
+
+/*
+排列硬币,摆成阶梯,第k行有k枚硬币 .n枚硬币能摆多少行(完成的)
+*/
+func ArrangeCoins(n int) (int, int) {
+	if n < 1 {
+		return 0, 0
+	}
+	count := 0
+	for k := 1; k < n; k++ {
+		count += k
+		if ((k+1)*k/2 <= n) && ((k+2)*(k+1)/2 > n) {
+			return k, count
+		}
+	}
+	return -1, 0
 }
