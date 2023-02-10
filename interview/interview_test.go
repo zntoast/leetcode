@@ -173,3 +173,18 @@ func TestArrangeCoins(t *testing.T) {
 		fmt.Printf("第 %d 次测试 阶梯的行数:%d ,累加:%d \n", k+1, result, count)
 	}
 }
+
+func TestFindStrings(t *testing.T) {
+	date := []struct {
+		a string
+		b string
+	}{
+		{"服务提供商提供不了服务服务", "服务"},
+		{"aadbbdowabdow", "do"},
+		{"aadbbdowabdow", "dow"},
+	}
+	for k, v := range date {
+		count := FindStrings(v.a, v.b)
+		fmt.Printf("第 %d 次测试 找到:%d个 \n", k+1, count)
+	}
+}

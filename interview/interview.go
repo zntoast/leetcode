@@ -388,3 +388,17 @@ func ArrangeCoins(n int) (int, int) {
 	}
 	return -1, 0
 }
+
+/*
+寻找符合要求的字符串
+*/
+func FindStrings(a, b string) int {
+	count := 0
+	l := len(b)
+	for i := l; i <= len(a); i++ {
+		if a[i-l:i] == b {
+			count += 1
+		}
+	}
+	return count
+}
