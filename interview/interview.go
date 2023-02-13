@@ -402,3 +402,78 @@ func FindStrings(a, b string) int {
 	}
 	return count
 }
+
+/*
+华为第一题
+*/
+func test1(nums []int) {
+	n := 0
+	ans := -1
+	values := map[int][]int{}
+	fmt.Scan(&n)
+	for i := 0; i < n; i++ {
+		x := 0
+		fmt.Scan(&x)
+		values[x] = append(values[x], i)
+	}
+	max := func(a, b int) int {
+		if a > b {
+			return a
+		} else {
+			return b
+		}
+	}
+	for _, v := range values {
+		sort.Ints(v)
+		if len(v) >= 2 {
+			ans = max(ans, v[len(v)-1]-v[0])
+		}
+	}
+	fmt.Printf("%d\n", ans)
+}
+
+/*
+华为面试第二题
+*/
+func test2() {
+	n := 0
+	ans := ""
+	j := 0
+	res := map[int]string{}
+	invert := func(s string) string {
+		result := ""
+		for k := range s {
+			result = result + string(s[k])
+		}
+		return result
+	}
+	fmt.Scan(&n)
+	for i := 0; i < n; i++ {
+		x := ""
+		fmt.Scan(&x)
+		if x == " " {
+			// 反转
+			ans += invert(res[j])
+			j++
+		}
+		res[j] += x
+	}
+	fmt.Printf("%s\n", ans)
+}
+
+/*
+华为面试第三题 Excel单元格数值统计
+*/
+func test3() {
+	// table := map[int][]string{}
+	// a := 0
+	// b := 0
+	// for {
+	// 	n, _ := fmt.Scan(&a, &b)
+	// 	if n == 0 {
+	// 		break
+	// 	} else {
+	// 		fmt.Printf("%d\n", a+b)
+	// 	}
+	// }
+}

@@ -18,3 +18,16 @@ func TestAlertNames(t *testing.T) {
 		fmt.Printf("第%d次测试的结果 : %v\n", k+1, count)
 	}
 }
+
+func TestPartitionLabels(t *testing.T) {
+	date := []struct {
+		s string
+	}{
+		{"ababcbacadefegdehijhklij"},
+		{"eccbbbbdec"},
+	}
+	for k, d := range date {
+		result := PartitionLabels(d.s)
+		fmt.Printf("第%d次测试的结果 : 分割的数组%v\n", k+1, result)
+	}
+}
