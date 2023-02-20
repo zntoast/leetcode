@@ -2,6 +2,7 @@ package medium
 
 import (
 	"sort"
+	"strconv"
 )
 
 /*
@@ -54,4 +55,65 @@ func AlertNames(keyName []string, keyTime []string) (ans []string) {
 	}
 	sort.Strings(ans)
 	return
+}
+
+/*
+LC 738. 单调递增的数字
+*/
+func MonotoneIncreasingDigits(n int) int {
+	str := []rune(strconv.Itoa(n))
+	flag := len(str)
+	for i := len(str) - 1; i > 0; i-- {
+		if str[i-1] > str[i] {
+			flag = i
+			str[i-1]--
+		}
+	}
+	result := 0
+	for i := 0; i < len(str); i++ {
+		if i >= flag {
+			str[i] = '9'
+		}
+		result = result*10 + int(str[i]-'0')
+	}
+	return result
+}
+
+/*
+LC 6. N字型变换
+*/
+func Convert(s string, numRows int) string {
+	if numRows == 1 {
+		return s
+	}
+	res := make([][]string, numRows)
+	index := 0
+	row := 0
+	s_len := len(s)
+	for index < s_len {
+		for index < s_len && row < numRows {
+			ch := s[index]
+			res[row] = append(res[row], string(ch))
+			row++
+			index++
+		}
+		if index == s_len {
+			break
+		}
+		row = numRows - 2
+		for index < s_len && row >= 0 {
+			ch := s[index]
+			res[row] = append(res[row], string(ch))
+			row--
+			index++
+		}
+		row += 2
+	}
+	ans := ""
+	for _, v := range res {
+		for _, v1 := range v {
+			ans += v1
+		}
+	}
+	return ans
 }

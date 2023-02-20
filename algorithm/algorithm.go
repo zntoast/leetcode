@@ -14,23 +14,3 @@ func InsertionSort(nums []int) []int {
 	return nums
 }
 
-//合并排序 有bug
-/* func Merge(nums []int) []int {
-	mid := len(nums) / 2
-	sort.Ints(nums[:mid])
-	sort.Ints(nums[mid:])
-	left := 0
-	right := mid
-	newNums := make([]int, len(nums))
-	for k := range newNums {
-		if nums[left] < nums[right] && left < mid {
-			newNums[k] = nums[left]
-			left++
-		} else {
-			newNums[k] = nums[right]
-			right++
-		}
-	}
-	return newNums
-}
-*/

@@ -406,7 +406,7 @@ func FindStrings(a, b string) int {
 /*
 华为第一题
 */
-func test1(nums []int) {
+func test1() {
 	n := 0
 	ans := -1
 	values := map[int][]int{}
@@ -433,7 +433,7 @@ func test1(nums []int) {
 }
 
 /*
-华为面试第二题
+华为面试第二题 (未完成)
 */
 func test2() {
 	n := 0
