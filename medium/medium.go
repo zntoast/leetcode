@@ -1,6 +1,7 @@
 package medium
 
 import (
+	"container/list"
 	"sort"
 	"strconv"
 )
@@ -69,14 +70,14 @@ func MonotoneIncreasingDigits(n int) int {
 			str[i-1]--
 		}
 	}
-	result := 0
+	ans := 0
 	for i := 0; i < len(str); i++ {
 		if i >= flag {
 			str[i] = '9'
 		}
-		result = result*10 + int(str[i]-'0')
+		ans = ans*10 + int(str[i]-'0')
 	}
-	return result
+	return ans
 }
 
 /*
@@ -116,4 +117,32 @@ func Convert(s string, numRows int) string {
 		}
 	}
 	return ans
+}
+
+/*
+LC 739. 每日温度
+*/
+func DailyTemperatures(temperatures []int) []int {
+	stack := list.New()
+	t_len := len(temperatures)
+	result := make([]int, t_len)
+	stack.PushFront(0)
+	for i := 1; i < t_len; i++ {
+		// 小于栈头时插入
+		if temperatures[i] < temperatures[stack.Front().Value.(int)] {
+			stack.PushFront(i)
+			// 等于栈头时插入
+		} else if temperatures[i] == temperatures[stack.Front().Value.(int)] {
+			stack.PushFront(i)
+			// 大于栈头时循环弹出
+		} else {
+			for stack.Len() != 0 && temperatures[i] > temperatures[stack.Front().Value.(int)] {
+				result[stack.Front().Value.(int)] = i - stack.Front().Value.(int)
+				stack.Remove(stack.Front())
+			}
+			// 插入下标
+			stack.PushFront(i)
+		}
+	}
+	return result
 }

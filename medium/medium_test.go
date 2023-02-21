@@ -59,3 +59,17 @@ func TestConvert(t *testing.T) {
 		fmt.Printf("第%d次测试的结果 : 输出字符：%v\n", k+1, result)
 	}
 }
+
+func TestDailyTemperatures(t *testing.T) {
+	date := []struct {
+		temperatures []int
+	}{
+		{[]int{73, 74, 75, 71, 69, 72, 76, 73}},
+		{[]int{30, 40, 50, 60}},
+		{[]int{30, 60, 90}},
+	}
+	for k, data := range date {
+		result := DailyTemperatures(data.temperatures)
+		fmt.Printf("第%d次测试的结果 : 结果数组：%v\n", k+1, result)
+	}
+}
