@@ -18,7 +18,15 @@ func TestReverseLeftWords(T *testing.T) {
 }
 
 func TestMaxSlidingWindow(T *testing.T) {
-	arr := []int{1, 3, -1, -3, 5, 3, 6, 7}
-	aa := MaxSlidingWindow(arr, 3)
-	fmt.Printf("aa: %v\n", aa)
+	datas := []struct {
+		nums []int
+		k    int
+	}{
+		// {[]int{7, 2, 4}, 2},
+		{[]int{1, 3, -1, -3, 5, 3, 6, 7}, 3},
+	}
+	for k, data := range datas {
+		result := MaxSlidingWindow(data.nums, data.k)
+		fmt.Printf("第%d次测试的结果 : 结果数组：%v\n", k+1, result)
+	}
 }

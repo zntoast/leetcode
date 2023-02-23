@@ -1,6 +1,7 @@
 package basic
 
 import (
+	"sort"
 	"strings"
 )
 
@@ -85,42 +86,35 @@ func ReverseLeftWords(s string, n int) string {
 	return s[n:] + s[:n]
 }
 
+type hp struct {
+	sort.IntSlice
+}
+
 /*
 剑指Offer 59 - I 滑动窗口的最大值
 */
 func MaxSlidingWindow(nums []int, k int) []int {
-	//暴力穷举，超时,数据量少时可以通过
-	/* 	arr := make([]int, 0)
-	   	left := 0
-	   	right := left + k
-	   	length := len(nums)
-	   	if length == 0 {
-	   		return arr
-	   	}
-	   	max := func(nums []int) int {
-	   		max := nums[0]
-	   		for _, v := range nums {
-	   			if max < v {
-	   				max = v
-	   			}
-	   		}
-	   		return max
-	   	}
-	   	if right > length {
-	   		arr = append(arr, max(nums))
-	   	}
-	   	for right <= length {
-	   		num := nums[left:right]
-	   		arr = append(arr, max(num))
-	   		left++
-	   		right++
-	   	}
-	   	return arr */
-	// arr := make([]int, 0)
-	// l := list.New()
-	// for k := range nums {
+	//单调队列
+	q := []int{}
+	push := func(i int) {
+		for len(q) > 0 && nums[i] > nums[q[len(q)-1]] {
+			q = q[:len(q)-1]
+		}
+		q = append(q, i)
+	}
+	for i := 0; i < k; i++ {
+		push(i)
+	}
+	ans := []int{}
+	ans = append(ans, nums[q[0]])
+	for i := k; i < len(nums); i++ {
+		push(i)
+		// 下标如果不在窗口内,则弹出窗口
+		for q[0] <= i-k {
+			q = q[1:]
+		}
+		ans = append(ans, nums[q[0]])
+	}
+	return ans
 
-	// }
-
-	return nil
 }
