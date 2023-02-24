@@ -6,7 +6,7 @@ import (
 )
 
 func TestDivide(T *testing.T) {
-	a := -2147483648
-	b := 1
+	a := 15
+	b := 2
 	fmt.Println(Divide(a, b))
 }
