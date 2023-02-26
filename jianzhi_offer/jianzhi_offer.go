@@ -24,7 +24,9 @@ func Divide(a int, b int) int {
 	}
 	ans := 0
 	for i := 31; i >= 0; i-- {
+		// a / b = (2^i)...余数
 		if (a>>i)-b >= 0 {
+			// a = a - (b * (2^i))
 			a -= (b << i)
 			ans += (1 << i)
 		}

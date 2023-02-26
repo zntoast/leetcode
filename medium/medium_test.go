@@ -73,3 +73,18 @@ func TestDailyTemperatures(t *testing.T) {
 		fmt.Printf("第%d次测试的结果 : 结果数组：%v\n", k+1, result)
 	}
 }
+
+func TestIntToRoman(t *testing.T) {
+	date := []struct {
+		num int
+	}{
+		{500},
+		{300},
+		{58},
+		{1994},
+	}
+	for k, data := range date {
+		result := IntToRoman(data.num)
+		fmt.Printf("第%d次测试的结果 : 结果数组：%v\n", k+1, result)
+	}
+}
