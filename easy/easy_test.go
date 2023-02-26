@@ -19,3 +19,16 @@ func TestLargestSumAfterKNegations(t *testing.T) {
 		fmt.Printf("第%d次测试的结果 : 数组合：%v\n", k+1, result)
 	}
 }
+
+func TestRomanToInt(t *testing.T) {
+	date := []struct {
+		s string
+	}{
+		{"M"},
+		{"MCMXCIV"},
+	}
+	for k, data := range date {
+		result := RomanToInt(data.s)
+		fmt.Printf("第%d次测试的结果 : 数组合：%v\n", k+1, result)
+	}
+}

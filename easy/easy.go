@@ -26,3 +26,31 @@ func LargestSumAfterKNegations(nums []int, k int) int {
 	}
 	return result
 }
+
+/*
+LC 13. 罗马数字转整数
+*/
+func RomanToInt(s string) int {
+	//罗马数字对应的阿拉伯数字
+	symbolValues := map[byte]int{
+		'M': 1000,
+		'D': 500,
+		'C': 100,
+		'L': 50,
+		'X': 10,
+		'V': 5,
+		'I': 1,
+	}
+	ans := 0
+	n := len(s)
+	for i := range s {
+		value := symbolValues[s[i]]
+		//下一个字符对应的数值大于当前字符对应数值
+		if i < n-1 && value < symbolValues[s[i+1]] {
+			ans -= value
+		} else {
+			ans += value
+		}
+	}
+	return ans
+}
