@@ -6,6 +6,11 @@ import (
 	"strconv"
 )
 
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
+
 /*
 LC 763. 划分字母区间
 */
@@ -181,4 +186,56 @@ func IntToRoman(num int) string {
 		}
 	}
 	return ans
+}
+
+/*
+LC 22.括号生成(深度优先遍历)
+*/
+func GenerateParenthesis(n int) []string {
+	ans := []string{}
+	dfs := func(curStr string, left, right int, ans []string) []string { return []string{} }
+	dfs = func(curStr string, left, right int, ans []string) []string {
+		if left == 0 && right == 0 {
+			ans = append(ans, curStr)
+			return ans
+		}
+		if left > right {
+			return ans
+		}
+		if left > 0 {
+			ans = dfs(curStr+"(", left-1, right, ans)
+		}
+		if right > 0 {
+			ans = dfs(curStr+")", left, right-1, ans)
+		}
+		return ans
+	}
+	ans = dfs("", n, n, ans)
+	return ans
+}
+
+/*
+LC 18.四数之和
+*/
+func FourSum(nums []int, target int) [][]int {
+	//暂时不写
+	return [][]int{}
+}
+
+/*
+LC 24.两两交换链表中的节点
+*/
+func SwapPairs(head *ListNode) *ListNode {
+	pre := &ListNode{}
+	pre.Next = head
+	node := pre
+	for node.Next != nil && node.Next.Next != nil {
+		start := node.Next
+		end := node.Next.Next
+		node.Next = end
+		start.Next = end.Next
+		end.Next = start
+		node = start
+	}
+	return pre.Next
 }

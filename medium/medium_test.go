@@ -88,3 +88,26 @@ func TestIntToRoman(t *testing.T) {
 		fmt.Printf("第%d次测试的结果 : 结果数组：%v\n", k+1, result)
 	}
 }
+
+func TestGenerateParenthesis(t *testing.T) {
+	date := []struct {
+		num int
+	}{
+		// {4},
+		// {1},
+		{3},
+	}
+	for k, data := range date {
+		result := GenerateParenthesis(data.num)
+		fmt.Printf("第%d次测试的结果 : 结果数组：%v\n", k+1, result)
+	}
+}
+
+func TestSwapPairs(t *testing.T) {
+	n3 := &ListNode{4, nil}
+	n2 := &ListNode{3, n3}
+	n1 := &ListNode{2, n2}
+	head := &ListNode{1, n1}
+	SwapPairs(head)
+	fmt.Printf("head: %v\n", head)
+}

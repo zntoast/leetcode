@@ -1,6 +1,7 @@
 package jianzhioffer
 
 import (
+	"fmt"
 	"math"
 )
 
@@ -33,4 +34,19 @@ func Divide(a int, b int) int {
 	}
 
 	return ans * sign
+}
+
+func Divide1(a int, b int) int {
+	ans := 0
+	for i := 31; i >= 0; i-- {
+		for (a>>i)-b > 0 {
+			a -= (b << i)
+			ans += (1 << i)
+		}
+	}
+
+	fmt.Printf("值1:%v\n", 1<<31)
+	fmt.Printf("值2:%v\n", math.MaxInt32)
+
+	return ans
 }
