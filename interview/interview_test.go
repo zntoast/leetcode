@@ -188,3 +188,18 @@ func TestFindStrings(t *testing.T) {
 		fmt.Printf("第 %d 次测试 找到:%d个 \n", k+1, count)
 	}
 }
+
+func TestStrToInt(t *testing.T) {
+	date := []struct {
+		a string
+	}{
+		{" "},
+		// {"3.14"},
+		{"  -42"},
+		{"42"},
+	}
+	for k, v := range date {
+		reuslt := StrToInt(v.a)
+		fmt.Printf("第 %d 次测试 值:%d \n", k+1, reuslt)
+	}
+}

@@ -3,6 +3,7 @@ package interview
 import (
 	"fmt"
 	"leetcode/array"
+	"math"
 	"math/big"
 	"sort"
 	"strings"
@@ -476,4 +477,54 @@ func test3() {
 	// 		fmt.Printf("%d\n", a+b)
 	// 	}
 	// }
+}
+
+/*
+面试题67. 把字符串转换成整数
+*/
+func StrToInt(str string) int {
+	if len(str) == 0 {
+		return 0
+	}
+	ans := 0
+	isSigna := 0
+	sign := 1
+	//删除前面的空格
+	for str[0] == ' ' && len(str) >= 2 {
+		str = str[1:]
+	}
+	if str == " " {
+		return 0
+	}
+	for i := 0; i < len(str); i++ {
+		// 传入的字符 不是数值
+		if str[i] < '0' || str[i] > '9' {
+			// 是否为+号
+			isAdd := str[i] == '+'
+			// 是否为-号
+			isMinus := str[i] == '-'
+			// 不是加号也不是减号
+			if !isAdd && !isMinus {
+				break
+			}
+		}
+		if str[i] == '-' || str[i] == '+' {
+			isSigna++
+			if str[i] == '-' {
+				sign = -1
+			}
+			if isSigna > 1 {
+				return 0
+			}
+			continue
+		}
+		ans = ans*10 + int((str[i] - '0'))
+	}
+	ans = ans * sign
+	if ans < math.MinInt32 {
+		return math.MinInt32
+	} else if ans > math.MaxInt32 {
+		return math.MaxInt32
+	}
+	return ans
 }

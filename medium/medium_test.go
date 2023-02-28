@@ -89,7 +89,7 @@ func TestIntToRoman(t *testing.T) {
 	}
 }
 
-func TestGenerateParenthesis(t *testing.T) {
+func TestGeneratetarenthesis(t *testing.T) {
 	date := []struct {
 		num int
 	}{

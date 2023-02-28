@@ -47,6 +47,5 @@ func Divide1(a int, b int) int {
 
 	fmt.Printf("值1:%v\n", 1<<31)
 	fmt.Printf("值2:%v\n", math.MaxInt32)
-
 	return ans
 }

@@ -4,7 +4,8 @@ import "sort"
 
 //数组序号转换
 func ArrayRankTransform(arr []int) []int {
-	newArr := append([]int{}, arr...)
+	newArr := make([]int, len(arr))
+	copy(newArr, arr)
 	sort.Ints(newArr)
 	ranks := map[int]int{}
 	for _, v := range newArr {

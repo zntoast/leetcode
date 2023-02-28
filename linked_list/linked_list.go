@@ -5,13 +5,13 @@ type ListNode struct {
 	Next *ListNode
 }
 
-//删除链表头节点
+// 删除链表头节点
 func DeleteHeadNode(node *ListNode) {
 	node.Val = node.Next.Val
 	node.Next = node.Next.Next
 }
 
-//删除链表的倒数第N个节点
+// 删除链表的倒数第N个节点
 func RemoveNthFromEnd(head *ListNode, n int) *ListNode {
 	leftNode := head
 	rightNode := head
@@ -29,7 +29,7 @@ func RemoveNthFromEnd(head *ListNode, n int) *ListNode {
 	return head
 }
 
-//反转链表
+// 反转链表
 func ReverseList(head *ListNode) *ListNode {
 	var newHead *ListNode = nil
 	for head != nil {
@@ -41,7 +41,7 @@ func ReverseList(head *ListNode) *ListNode {
 	return newHead
 }
 
-//查找第n个节点的值
+// 查找第n个节点的值
 func FindNodeValue(node *ListNode, n int) int {
 	head := node
 	for n > 0 {
@@ -54,7 +54,7 @@ func FindNodeValue(node *ListNode, n int) int {
 	return head.Val
 }
 
-//删除给定值的节点
+// 删除给定值的节点
 func DeleteNodeValue(node *ListNode, target int) *ListNode {
 	head := node
 	for head != nil && head.Next != nil {
@@ -67,7 +67,7 @@ func DeleteNodeValue(node *ListNode, target int) *ListNode {
 	return node
 }
 
-//头部插入节点
+// 头部插入节点
 func InsertHeadNode(node *ListNode, a int) *ListNode {
 	// dummyhead := new(ListNode)
 	// dummyhead.Next = node
