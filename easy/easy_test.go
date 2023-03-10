@@ -32,3 +32,18 @@ func TestRomanToInt(t *testing.T) {
 		fmt.Printf("第%d次测试的结果 : 数组合：%v\n", k+1, result)
 	}
 }
+
+func TestSearchInsert(t *testing.T) {
+	date := []struct {
+		nums   []int
+		target int
+	}{
+		{[]int{1, 3, 5, 6}, 5},
+		{[]int{1, 3, 5, 6}, 2},
+		{[]int{1, 3, 5, 6}, 7},
+	}
+	for k, data := range date {
+		result := SearchInsert(data.nums, data.target)
+		fmt.Printf("第%d次测试的结果 : 插入的下标为：%v\n", k+1, result)
+	}
+}

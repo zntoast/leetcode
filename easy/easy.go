@@ -54,3 +54,34 @@ func RomanToInt(s string) int {
 	}
 	return ans
 }
+
+/*
+LC 35.搜索插入位置
+*/
+func SearchInsert(nums []int, target int) int {
+	for i := 0; i < len(nums); i++ {
+		if nums[i] < target {
+			continue
+		}
+		return i
+	}
+	return len(nums)
+}
+
+/*
+LC 58.最后一个单词的长度
+*/
+func LengthOfLastWord(s string) int {
+	lenght := len(s)
+	ans := 0
+	for i := lenght - 1; i >= 0; i-- {
+		if s[i] == ' ' && ans == 0 {
+			continue
+		}
+		if s[i] == ' ' {
+			return ans
+		}
+		ans++
+	}
+	return ans
+}

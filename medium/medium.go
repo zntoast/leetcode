@@ -239,3 +239,28 @@ func SwapPairs(head *ListNode) *ListNode {
 	}
 	return pre.Next
 }
+
+/*
+LC 29.两数相除
+*/
+func Divide(dividend int, divisor int) int {
+	sign := 1
+	if (dividend ^ divisor) < 0 {
+		sign = -1
+	}
+
+	if dividend < 0 {
+		dividend = -dividend
+	}
+	if divisor < 0 {
+		divisor = -divisor
+	}
+	ans := 0
+	for i := 31; i >= 0; i-- {
+		for dividend > 0 && (dividend>>i)-divisor >= 0 {
+			dividend -= (divisor << i)
+			ans += (1 << i)
+		}
+	}
+	return sign * ans
+}

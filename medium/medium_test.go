@@ -111,3 +111,19 @@ func TestSwapPairs(t *testing.T) {
 	SwapPairs(head)
 	fmt.Printf("head: %v\n", head)
 }
+
+func TestDivide(t *testing.T) {
+	date := []struct {
+		dividend int
+		divisor  int
+	}{
+		{3, -1},
+		{3, 1},
+		{-3, 1},
+		{10, 3},
+	}
+	for k, data := range date {
+		result := Divide(data.dividend, data.divisor)
+		fmt.Printf("第%d次测试的结果 : 结果数组：%v\n", k+1, result)
+	}
+}

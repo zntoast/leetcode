@@ -7,9 +7,9 @@ import (
 	"unicode"
 )
 
-//两数相加 (完成)
-//寻找两个正序数组的中位数(完成)
-//最长回文子串
+// 两数相加 (完成)
+// 寻找两个正序数组的中位数(完成)
+// 最长回文子串
 func LongestPalindrome(s string) string {
 	if s == "" {
 		return ""
@@ -34,7 +34,7 @@ func center(s string, left, right int) (int, int) {
 	return left + 1, right - 1
 }
 
-//7.整数反转 (完成)
+// 7.整数反转 (完成)
 func Reverse(x int) int {
 	sign := 1
 	if x < 0 {
@@ -54,7 +54,7 @@ func Reverse(x int) int {
 	return newX
 }
 
-//8字符串转整数
+// 8字符串转整数
 func MyAtoi(s string) int {
 	//去除前导空格
 	for i := 0; i < len(s); i++ {
@@ -90,7 +90,7 @@ func MyAtoi(s string) int {
 	return sign * num
 }
 
-//9.回文数
+// 9.回文数
 func IsPalindrome(x int) bool {
 	aa := x
 	if x < 0 {
@@ -105,7 +105,7 @@ func IsPalindrome(x int) bool {
 	return newNum == aa
 }
 
-//14.最长公共前缀
+// 14.最长公共前缀
 func LongestCommonPrefix(strs []string) string {
 	if len(strs) == 0 {
 		return ""
@@ -120,7 +120,7 @@ func LongestCommonPrefix(strs []string) string {
 	return strs[0]
 }
 
-//15.三数之和
+// 15.三数之和
 func ThreeSum(nums []int) [][]int {
 	anx := make([][]int, 0)
 	n := len(nums)
@@ -149,12 +149,12 @@ func ThreeSum(nums []int) [][]int {
 	return anx
 }
 
-//16.最接近的三数之和
+// 16.最接近的三数之和
 func ThreeSumClosest(nums []int, target int) int {
 	return 0
 }
 
-//46.全排列
+// 46.全排列
 func Permute(nums []int) [][]int {
 	n := len(nums)
 	res := [][]int{}
@@ -186,7 +186,7 @@ func Permute(nums []int) [][]int {
 	return res
 }
 
-//53.最大子数组和
+// 53.最大子数组和
 func MaxSubArray(nums []int) int {
 	max := nums[0]
 	for i := 1; i < len(nums); i++ {
@@ -200,7 +200,8 @@ func MaxSubArray(nums []int) int {
 	return max
 }
 
-//54.螺旋矩阵
+// 54.螺旋矩阵
 func SpiralOrder(matrix [][]int) []int {
+
 	return []int{}
 }
