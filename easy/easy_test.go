@@ -47,3 +47,29 @@ func TestSearchInsert(t *testing.T) {
 		fmt.Printf("第%d次测试的结果 : 插入的下标为：%v\n", k+1, result)
 	}
 }
+
+func TestMySqrt(t *testing.T) {
+	date := []struct {
+		num int
+	}{
+		//{4},
+		//{8},
+		{1},
+	}
+	for k, data := range date {
+		result := MySqrt(data.num)
+		fmt.Printf("第%d次测试的结果 : 插入的下标为：%v\n", k+1, result)
+	}
+}
+
+func TestDeleteDuplicates(t *testing.T) {
+	n2 := &ListNode{2, nil}
+	n1 := &ListNode{1, n2}
+	head := &ListNode{1, n1}
+	newHead := DeleteDuplicates(head)
+	node := newHead
+	for node != nil {
+		fmt.Printf("node.Val: %v\n", node.Val)
+		node = node.Next
+	}
+}
