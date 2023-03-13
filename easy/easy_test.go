@@ -73,3 +73,39 @@ func TestDeleteDuplicates(t *testing.T) {
 		node = node.Next
 	}
 }
+
+func TestMerge(t *testing.T) {
+	date := []struct {
+		num1 []int
+		m    int
+		num2 []int
+		n    int
+	}{
+		{[]int{1, 2, 3, 0, 0, 0}, 3, []int{2, 5, 6}, 3},
+	}
+	for _, data := range date {
+		Merge(data.num1, data.m, data.num2, data.n)
+		fmt.Printf("data.num1: %v\n", data.num1)
+	}
+}
+
+func TestMaxDepth(t *testing.T) {
+	right3 := &TreeNode{7, nil, nil}
+	right2 := &TreeNode{15, nil, nil}
+	right1 := &TreeNode{20, right2, right3}
+	left1 := &TreeNode{9, nil, nil}
+	root := &TreeNode{3, left1, right1}
+	i := MaxDepth(root)
+	fmt.Printf("i: %v\n", i)
+}
+
+func TestSortedArrayToBST(t *testing.T) {
+	date := []struct {
+		num1 []int
+	}{
+		{[]int{-10, -3, 0, 5, 9}},
+	}
+	for _, data := range date {
+		SortedArrayToBST(data.num1)
+	}
+}

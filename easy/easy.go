@@ -187,3 +187,81 @@ func IsSameTree(p *TreeNode, q *TreeNode) bool {
 	dfs(p, q)
 	return ans
 }
+
+/*
+LC 88.合并两个有序数组
+*/
+func Merge(nums1 []int, m int, nums2 []int, n int) {
+	i := m + n
+	for n > 0 {
+		if m > 0 && nums1[m-1] > nums2[n-1] {
+			i--
+			m--
+			nums1[i] = nums1[m]
+		} else {
+			i--
+			n--
+			nums1[i] = nums2[n]
+		}
+	}
+}
+
+/*
+LC 101. 对称二叉树
+*/
+func IsSymmetric(root *TreeNode) bool {
+	isMirror := func(l, r *TreeNode) bool { return false }
+	isMirror = func(l, r *TreeNode) bool {
+		if l == nil && r == nil {
+			return true
+		}
+		if l == nil || r == nil {
+			return false
+		}
+		return l.Val == r.Val && isMirror(l.Left, r.Right) && isMirror(l.Right, r.Left)
+	}
+	return isMirror(root, root)
+}
+
+/*
+LC 104. 二叉树的最大深度
+深度优先算法
+*/
+func MaxDepth(root *TreeNode) int {
+	ans := 0
+	dfs := func(r *TreeNode, depth int) {}
+	max := func(a, b int) int {
+		if a > b {
+			return a
+		}
+		return b
+	}
+	dfs = func(r *TreeNode, depth int) {
+		if r == nil {
+			return
+		}
+		ans = max(depth, ans)
+		dfs(r.Left, depth+1)
+		dfs(r.Right, depth+1)
+	}
+	dfs(root, 1)
+	return ans
+}
+
+/*
+LC 108.将有序数组转换为二叉搜索树
+*/
+func SortedArrayToBST(nums []int) *TreeNode {
+	dfs := func(nums []int, l, r int) *TreeNode { return nil }
+	dfs = func(nums []int, l, r int) *TreeNode {
+		if l < r {
+			return nil
+		}
+		mid := l + (r-l)/2
+		node := &TreeNode{nums[mid], nil, nil}
+		node.Left = dfs(nums, l, mid-1)
+		node.Right = dfs(nums, mid+1, r)
+		return node
+	}
+	return dfs(nums, 0, len(nums)-1)
+}
