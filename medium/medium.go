@@ -248,7 +248,6 @@ func Divide(dividend int, divisor int) int {
 	if (dividend ^ divisor) < 0 {
 		sign = -1
 	}
-
 	if dividend < 0 {
 		dividend = -dividend
 	}

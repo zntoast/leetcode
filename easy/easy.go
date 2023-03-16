@@ -1,6 +1,8 @@
 package easy
 
 import (
+	"fmt"
+	"math"
 	"sort"
 	"strconv"
 )
@@ -264,4 +266,168 @@ func SortedArrayToBST(nums []int) *TreeNode {
 		return node
 	}
 	return dfs(nums, 0, len(nums)-1)
+}
+
+/*
+LC 110.平衡二叉树
+*/
+func IsBalanced(root *TreeNode) bool {
+	return false
+}
+
+/*
+LC 111.二叉树的最小深度
+*/
+func MinDepth(root *TreeNode) int {
+	if root == nil {
+		return 0
+	}
+	if root.Left == nil && root.Right == nil {
+		return 1
+	}
+	minD := math.MaxInt32
+	if root.Left != nil {
+		minD = min(MinDepth(root.Left), minD)
+	}
+	if root.Right != nil {
+		minD = min(MinDepth(root.Right), minD)
+	}
+	return minD + 1
+}
+
+func min(a, b int) int {
+	if a > b {
+		return b
+	}
+	return a
+}
+
+/*
+LC 112.路径总和
+*/
+func HasPathSum(root *TreeNode, targetSum int) bool {
+	result := false
+	nums := make([]int, 0)
+	dfs := func(node *TreeNode, count int) {}
+	dfs = func(node *TreeNode, count int) {
+		if node == nil {
+			return
+		}
+		// 到达叶子节点的时候
+		if node.Left == nil && node.Right == nil {
+			count += node.Val
+			// 判断下路径总和是否等于tag
+			if count == targetSum {
+				result = true
+			}
+			nums = append(nums, count)
+		}
+		if node.Left != nil {
+			dfs(node.Left, count+node.Val)
+		}
+		if node.Right != nil {
+			dfs(node.Right, count+node.Val)
+		}
+
+	}
+	dfs(root, 0)
+	fmt.Printf("nums: %v\n", nums)
+	return result
+}
+
+/*
+Lc 118.杨辉三角
+*/
+func Generate(numRows int) [][]int {
+	nums := make([][]int, numRows)
+	for i := 0; i < numRows; i++ {
+		for j := 0; j <= i; j++ {
+			// 当横坐标在0 或者 numRows - 1的位置 赋值为1
+			if j == 0 || j == i {
+				nums[i] = append(nums[i], 1)
+				continue
+			}
+			nums[i] = append(nums[i], nums[i-1][j]+nums[i-1][j-1])
+		}
+	}
+	return nums
+}
+
+/*
+Lc 119.杨辉三角II
+*/
+func GetRow(rowIndex int) []int {
+	nums := make([][]int, rowIndex+1)
+	for i := 0; i <= rowIndex; i++ {
+		for j := 0; j <= i; j++ {
+			// 当横坐标在0 或者 numRows - 1的位置 赋值为1
+			if j == 0 || j == i {
+				nums[i] = append(nums[i], 1)
+				continue
+			}
+			nums[i] = append(nums[i], nums[i-1][j]+nums[i-1][j-1])
+		}
+	}
+	return nums[rowIndex]
+}
+
+/*
+lC 141.环形链表
+*/
+func HasCycle(head *ListNode) bool {
+	//使用map记录
+	/* node := head*/
+	/*temp := make(map[*ListNode]bool)*/
+	/*for node != nil && node.Next != nil {*/
+	/*if ok := temp[node]; !ok {*/
+	/*temp[node] = true*/
+	/*}*/
+	/*if ok := temp[node.Next]; ok {*/
+	/*return true*/
+	/*}*/
+	/*node = node.Next*/
+	/*}*/
+	/*return false*/
+
+	// 将经过的节点的指针指向自己, 等到后面指向这个节点时只需要判断 head == head.Next
+	for head != nil {
+		temp := head.Next
+		if head != head.Next {
+			head.Next = head
+		} else {
+			return true
+		}
+		head = temp
+	}
+	return false
+}
+
+/*
+LC 168.Excel表列名称
+*/
+func ConvertToTitle(columnNumber int) string {
+	ans := ""
+	// 相当于26进制转换
+	for columnNumber > 0 {
+		columnNumber--
+		ans = string(rune(columnNumber%26+'A')) + ans
+		columnNumber /= 26
+	}
+	return ans
+}
+
+/*
+LC 169.多数元素
+*/
+func MajorityElement(nums []int) int {
+	numMap := make(map[int]int)
+	for _, v := range nums {
+		numMap[v] += 1
+	}
+	for k, v := range numMap {
+		if v > len(nums)/2 {
+			return k
+		}
+	}
+	return 0
 }

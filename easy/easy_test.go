@@ -109,3 +109,30 @@ func TestSortedArrayToBST(t *testing.T) {
 		SortedArrayToBST(data.num1)
 	}
 }
+
+func TestGenerate(t *testing.T) {
+	date := []struct {
+		num int
+	}{
+		{5},
+	}
+	for k, data := range date {
+		result := Generate(data.num)
+		fmt.Printf("第%d次测试的结果 : 输出数组：%v\n", k+1, result)
+	}
+}
+
+func TestConvertToTitle(t *testing.T) {
+	date := []struct {
+		num int
+	}{
+		{5},
+		{26},
+		// {701},
+		//{2147483647},
+	}
+	for k, data := range date {
+		result := ConvertToTitle(data.num)
+		fmt.Printf("第%d次测试的结果 输入:%v 字符串：%v\n", k+1, data.num, result)
+	}
+}
