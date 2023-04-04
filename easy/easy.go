@@ -431,3 +431,111 @@ func MajorityElement(nums []int) int {
 	}
 	return 0
 }
+
+/*
+LC 171.Excel 表列序号
+*/
+func TitleToNumber(columnTitle string) int {
+	ans := 0
+	for k := range columnTitle {
+		ans = ans*26 + int((columnTitle[k] - 'A' + 1))
+		fmt.Printf("ans: %v\n", ans)
+	}
+	return ans
+}
+
+/*
+LC 190. 颠倒二进制位
+*/
+func ReverseBits(num uint32) uint32 {
+	return 0
+}
+
+/*
+LC 191.位1的个数
+*/
+func HammingWeight(num uint32) int {
+	ans := 0
+	for i := 0; i < 32; i++ {
+		fmt.Println(1 << i & num)
+		if 1<<i&num > 0 {
+			ans++
+		}
+	}
+	return ans
+}
+
+/*
+LC 219.存在重复元素II
+*/
+func ContainsNearbyDuplicate(nums []int, k int) bool {
+	indexMap := make(map[int]int)
+	for i := 0; i < len(nums); i++ {
+		// 判断是否value是否存在，如果存在了 则计算 j-i <= k
+		if _, ok := indexMap[nums[i]]; ok && (i-indexMap[nums[i]]) <= k {
+			return true
+		} else {
+			// 存储下标
+			indexMap[nums[i]] = i
+		}
+	}
+	return false
+}
+
+/*
+LC 203. 移除链表元素
+*/
+func RemoveElements(head *ListNode, val int) *ListNode {
+	newNode := &ListNode{}
+	newNode.Next = head
+	node := newNode
+	for node.Next != nil {
+		for node.Next != nil && node.Next.Val == val {
+			node.Next = node.Next.Next
+		}
+		if node.Next == nil {
+			break
+		}
+		node = node.Next
+	}
+	return newNode.Next
+}
+
+/*
+LC 225.用队列实现栈
+*/
+type MyStack struct {
+	nums []int
+}
+
+func Constructor() MyStack {
+	return MyStack{}
+}
+func (this *MyStack) Push(x int) {
+	this.nums = append(this.nums, x)
+	return
+}
+func (this *MyStack) Pop() int {
+	re_len := len(this.nums)
+	if re_len == 0 {
+		return 0
+	}
+	result := this.nums[re_len-1]
+	this.nums = this.nums[0 : re_len-1]
+	return result
+}
+func (this *MyStack) Top() int {
+	re_len := len(this.nums)
+	if re_len == 0 {
+		return 0
+	}
+	result := this.nums[re_len-1]
+	return result
+}
+func (this *MyStack) Empty() bool {
+	re_len := len(this.nums)
+	if re_len == 0 {
+		return true
+	}
+	return false
+}

@@ -136,3 +136,73 @@ func TestConvertToTitle(t *testing.T) {
 		fmt.Printf("第%d次测试的结果 输入:%v 字符串：%v\n", k+1, data.num, result)
 	}
 }
+
+func TestTitleToNumber(t *testing.T) {
+	date := []struct {
+		columnTitle string
+	}{
+		{"A"},
+		{"AB"},
+		{"ZY"},
+	}
+	for k, data := range date {
+		result := TitleToNumber(data.columnTitle)
+		fmt.Printf("第%d次测试的结果 输入:%v 字符串：%v\n", k+1, data.columnTitle, result)
+	}
+}
+
+func TestHammingWeight(t *testing.T) {
+	date := []struct {
+		num uint32
+	}{
+		{00000000000000000000000000001011},
+	}
+	for k, data := range date {
+		result := HammingWeight(data.num)
+		fmt.Printf("第%d次测试的结果 输入:%v 存在：%v 个1\n", k+1, data.num, result)
+	}
+}
+
+func TestContainsNearbyDuplicate(t *testing.T) {
+	date := []struct {
+		nums []int
+		k    int
+	}{
+		{[]int{1, 2, 3, 1}, 3},
+		{[]int{1, 2, 3, 1, 2, 3}, 2},
+	}
+	for k, data := range date {
+		result := ContainsNearbyDuplicate(data.nums, data.k)
+		fmt.Printf("第%d次测试的结果 %v \n", k+1, result)
+	}
+}
+
+func TestRemoveElements(t *testing.T) {
+	node5 := &ListNode{5, nil}
+	node4 := &ListNode{4, node5}
+	node3 := &ListNode{3, node4}
+	node2 := &ListNode{6, node3}
+	node1 := &ListNode{2, node2}
+	head := &ListNode{1, node1}
+
+	// node3 := &ListNode{7, nil}
+	// node2 := &ListNode{7, node3}
+	// node1 := &ListNode{7, node2}
+	// head := &ListNode{7, node1}
+	result := RemoveElements(head, 6)
+	fmt.Printf("result: %v\n", result)
+}
+
+func TestMyStack(t *testing.T) {
+	m := MyStack{}
+	for i := 0; i < 5; i++ {
+		m.Push(i)
+	}
+	fmt.Printf("插入数据m: %v\n", m)
+	i := m.Pop()
+	fmt.Printf("i: %v\n", i)
+	fmt.Printf("剩余数据i: %v\n", m)
+	i1 := m.Top()
+	fmt.Printf("i1: %v\n", i1)
+	fmt.Printf("剩余数据i1: %v\n", m)
+}
