@@ -127,3 +127,43 @@ func TestDivide(t *testing.T) {
 		fmt.Printf("第%d次测试的结果 : 结果数组：%v\n", k+1, result)
 	}
 }
+
+func TestNextPermutation(t *testing.T) {
+	date := []struct {
+		nums []int
+	}{
+		{[]int{1, 2, 3}},
+	}
+	for k, data := range date {
+		NextPermutation(data.nums)
+		fmt.Printf("第%d次测试的结果 : 结果数组：%v\n", k+1, data.nums)
+	}
+}
+
+func TestPermutation(t *testing.T) {
+	date := []struct {
+		S string
+	}{
+		{"abd"},
+	}
+	for k, data := range date {
+		result := Permutation(data.S)
+		fmt.Printf("第%d次测试的结果 : 结果数组：%v\n", k+1, result)
+	}
+}
+
+func TestCountAndSay(t *testing.T) {
+	date := []struct {
+		n int
+	}{
+		{3},
+		{1},
+		{4},
+		{5},
+		{6},
+	}
+	for k, data := range date {
+		result := CountAndSay(data.n)
+		fmt.Printf("第%d次测试的结果 : %d 对应的值为 %s\n", k+1, data.n, result)
+	}
+}

@@ -1,7 +1,9 @@
 package medium
 
 import (
+	"bytes"
 	"container/list"
+	"fmt"
 	"sort"
 	"strconv"
 )
@@ -262,4 +264,95 @@ func Divide(dividend int, divisor int) int {
 		}
 	}
 	return sign * ans
+}
+
+/*
+LC 31. 下一个排列
+*/
+func NextPermutation(nums []int) {
+	n := len(nums)
+	i := n - 2
+	reverse := func(num []int) {
+		for i, n := 0, len(num); i < n/2; i++ {
+			num[i], num[n-1-i] = num[n-1-i], num[i]
+		}
+	}
+	for i >= 0 && nums[i] >= nums[i+1] {
+		i--
+	}
+	if i >= 0 {
+		j := n - 1
+		for j >= 0 && nums[i] >= nums[j] {
+			j--
+		}
+		nums[i], nums[j] = nums[j], nums[i]
+	}
+	reverse(nums[i+1:])
+}
+
+/*
+面试题 08.07. 无重复字符串的排列组合
+*/
+func Permutation(S string) []string {
+	S_len := len(S)
+	ans := []string{}
+	used := make([]bool, S_len)
+	dfs := func(path bytes.Buffer) {}
+	dfs = func(path bytes.Buffer) {
+		if path.Len() == len(S) {
+			ans = append(ans, path.String())
+			return
+		}
+		for i := 0; i < S_len; i++ {
+			// 判断是否被使用
+			if !used[i] {
+				path.WriteByte(S[i])
+				used[i] = true
+				dfs(path)
+				used[i] = false
+				path.Truncate(path.Len() - 1)
+				fmt.Printf("path.String(): %v\n", path.String())
+			}
+		}
+	}
+	dfs(bytes.Buffer{})
+	return ans
+}
+
+/*
+LC 34. 在排序数组中查找元素的第一个和最后一个位置
+*/
+func SearchRange(nums []int, target int) []int {
+	left := sort.SearchInts(nums, target)
+	if left == len(nums) || nums[left] != target {
+		return []int{-1, -1}
+	}
+	right := sort.SearchInts(nums, target+1) - 1
+	return []int{left, right}
+}
+
+/*
+LC 38. 外观数列
+*/
+func CountAndSay(n int) string {
+	n_map := make(map[int]string, n)
+	n_map[1] = "1"
+	// 1 - n 记录 对应的string
+	for i := 2; i <= n; i++ {
+		temp := ""
+		s := n_map[i-1]
+		// 循环删除前面相同的字符并记录出现次数
+		for s != "" {
+			i := 0
+			top := s[0]
+			for i+1 < len(s) && s[i+1] == top {
+				i++
+			}
+			temp += fmt.Sprintf("%d%d", i+1, top-'0')
+			s = s[i+1:]
+		}
+		n_map[i] = temp
+
+	}
+	return n_map[n]
 }
