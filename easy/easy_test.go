@@ -206,3 +206,132 @@ func TestMyStack(t *testing.T) {
 	fmt.Printf("i1: %v\n", i1)
 	fmt.Printf("剩余数据i1: %v\n", m)
 }
+
+func TestSummaryRanges(t *testing.T) {
+	date := []struct {
+		nums []int
+	}{
+		{[]int{0, 1, 2, 4, 5, 7}},
+		{[]int{0, 2, 3, 4, 6, 8, 9}},
+	}
+	for k, data := range date {
+		result := SummaryRanges(data.nums)
+		fmt.Printf("第%d次测试的结果  result：%v 个\n", k+1, result)
+	}
+}
+
+func TestIsPowerOfTwo(t *testing.T) {
+	date := []struct {
+		num int
+	}{
+		{1},
+		{16},
+		{32},
+		{64},
+		{128},
+		{256},
+		{512},
+		{1056},
+	}
+	for k, data := range date {
+		result := IsPowerOfTwo(data.num)
+		fmt.Printf("第%d次测试的结果  输入:%v 输入%v是2的ning \n", k+1, data.num, result)
+	}
+}
+
+func testadddigits(t *testing.T) {
+	date := []struct {
+		num int
+	}{
+		{1},
+		{0},
+		{100},
+	}
+	for k, data := range date {
+		result := AddDigits(data.num)
+		fmt.Printf("第%d次测试的结果  输入:%v 输出:%v\n", k+1, data.num, result)
+	}
+}
+
+func TestIsUgly(t *testing.T) {
+	date := []struct {
+		num int
+	}{
+		{6},
+		{1},
+		{14},
+	}
+	for k, data := range date {
+		result := IsUgly(data.num)
+		fmt.Printf("第%d次测试的结果  输入:%v IS丑数:%v\n", k+1, data.num, result)
+	}
+}
+
+func TestMissingNumber(t *testing.T) {
+	date := []struct {
+		nums []int
+	}{
+		{[]int{3, 0, 1}},
+		{[]int{0, 1}},
+		{[]int{9, 6, 4, 2, 3, 5, 7, 0, 1}},
+	}
+	for k, data := range date {
+		result := MissingNumber(data.nums)
+		fmt.Printf("第%d次测试的结果  输入:%v value:%v\n", k+1, data.nums, result)
+	}
+}
+
+func TestWordPattern(t *testing.T) {
+	date := []struct {
+		pattern string
+		s       string
+	}{
+		{"abba", "dog cat cat dog"},
+		{"abba", "dog cat cat fish"},
+		{"aaaa", "dog cat cat dog"},
+	}
+	for k, data := range date {
+		result := WordPattern(data.pattern, data.s)
+		fmt.Printf("第%d次测试的结果  value:%v\n", k+1, result)
+	}
+}
+
+func TestCountBits(t *testing.T) {
+	date := []struct {
+		n int
+	}{
+		{5},
+	}
+	for k, data := range date {
+		result := CountBits(data.n)
+		fmt.Printf("第%d次测试的结果  value:%v\n", k+1, result)
+	}
+}
+
+func TestCount(t *testing.T) {
+	date := []struct {
+		n int
+	}{
+		{5},
+		{3},
+		{2},
+		{10},
+		{16},
+	}
+	for k, data := range date {
+		result := Count(data.n)
+		fmt.Printf("第%d次测试的结果  value:%v\n", k+1, result)
+	}
+}
+
+func TestGuessNumber(t *testing.T) {
+	date := []struct {
+		n int
+	}{
+		{10},
+	}
+	for k, data := range date {
+		result := GuessNumber(data.n)
+		fmt.Printf("第%d次测试的结果  value:%v\n", k+1, result)
+	}
+}

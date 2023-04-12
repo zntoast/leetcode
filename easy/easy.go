@@ -5,6 +5,7 @@ import (
 	"math"
 	"sort"
 	"strconv"
+	"strings"
 )
 
 /*
@@ -538,4 +539,232 @@ func (this *MyStack) Empty() bool {
 		return true
 	}
 	return false
+}
+
+/*
+LC 226.翻转二叉树
+*/
+func InvertTree(root *TreeNode) *TreeNode {
+	if root == nil {
+		return nil
+	}
+	temp := root.Right
+	// 左右节点互换
+	root.Right = InvertTree(root.Left)
+	root.Left = InvertTree(temp)
+	return root
+}
+
+/*
+LC 228.汇总区间
+*/
+func SummaryRanges(nums []int) []string {
+	left := 0
+	ans := []string{}
+	for i := 1; i < len(nums); i++ {
+		// 判断是否连续
+		if nums[i-1]+1 == nums[i] {
+			continue
+		} else {
+			if left == i-1 {
+				ans = append(ans, fmt.Sprintf("%v", nums[left]))
+			} else {
+				ans = append(ans, fmt.Sprintf("%v->%v", nums[left], nums[i-1]))
+			}
+			left = i
+		}
+	}
+	return ans
+}
+
+/*
+LC 231. 2 的幂
+*/
+func IsPowerOfTwo(n int) bool {
+	i := 0
+	for (2 << 0) <= n {
+		fmt.Println(2 << i)
+		if 2<<i == n {
+			return true
+		}
+		i++
+	}
+	return false
+}
+
+/*
+LC 258.各位相加
+*/
+func AddDigits(num int) int {
+	ans := 0
+	if num < 10 {
+		return num
+	}
+	for num >= 10 {
+		temp := num
+		total := 0
+		for temp > 0 {
+			total += temp % 10
+			temp /= 10
+		}
+		if total < 10 {
+			ans = total
+			break
+		} else {
+			num = total
+		}
+	}
+	return ans
+}
+
+/*
+LC 263.丑数
+*/
+func IsUgly(n int) bool {
+	if n <= 0 {
+		return false
+	}
+	for n > 0 {
+		if n%2 == 0 {
+			n /= 2
+		} else if n%3 == 0 {
+			n /= 3
+		} else if n%5 == 0 {
+			n /= 5
+		} else if n == 1 {
+			return true
+		} else {
+			return false
+		}
+	}
+	return true
+}
+
+/*
+LC 268.丢失的数字
+*/
+func MissingNumber(nums []int) int {
+	//sort.Ints(nums)
+	//for k, v := range nums {
+	//if k != v {
+	//return k
+	//}
+	//}
+	//return len(nums)
+	n := len(nums)
+	total := n * (n + 1) / 2
+	num := 0
+	for _, v := range nums {
+		num += v
+	}
+	return total - num
+}
+
+/*
+LC 290.单词规律
+*/
+func WordPattern(pattern string, s string) bool {
+	word2ch := map[string]byte{}
+	ch2word := map[byte]string{}
+	words := strings.Split(s, " ")
+	if len(pattern) != len(words) {
+		return false
+	}
+	for i, word := range words {
+		ch := pattern[i]
+		if word2ch[word] > 0 && word2ch[word] != ch || ch2word[ch] != "" && ch2word[ch] != word {
+			return false
+		}
+		word2ch[word] = ch
+		ch2word[ch] = word
+	}
+	return true
+}
+
+/*
+lC 292. Nim 游戏
+*/
+func CanWinNim(n int) bool {
+	// 如果被4整除必输
+	if n%4 == 0 {
+		return false
+	}
+	return true
+}
+
+/*
+LC 326.3的幂
+*/
+func IsPowerOfThree(n int) bool {
+	for n > 0 && n%3 == 0 {
+		n /= 3
+	}
+	return n == 1
+}
+
+/*
+LC 338. 比特位计数
+*/
+func CountBits(n int) []int {
+	// Brian Kernighan 算法 统计 二进制有多少个1 ,每次执行会把最右边的1删除
+	result := make([]int, n+1)
+	count := func(n int) (count int) {
+		for n > 0 {
+			count++
+			n &= n - 1
+		}
+		return
+	}
+	for i := range result {
+		result[i] = count(i)
+	}
+	return result
+}
+
+func Count(n int) int {
+	ans := 0
+	for n > 0 {
+		ans++
+		n &= (n - 1)
+	}
+	return ans
+}
+
+/*
+LC 374.猜数字大小
+*/
+func GuessNumber(n int) int {
+	left := 0
+	right := n
+	ans := 0
+	for left <= right {
+		mid := (right-left)/2 + left
+		fmt.Printf("mid: %v\n", mid)
+		switch guese(mid) {
+		// pick > mid
+		case 1:
+			{
+				left = mid + 1
+			}
+		case -1:
+			{
+				right = mid - 1
+			}
+		default:
+			{
+				ans = mid
+				return ans
+			}
+		}
+	}
+	return ans
+}
+func guese(i int) int {
+	if i > 6 {
+		return 1
+	} else if i < 6 {
+		return -1
+	} else {
+		return 6
+	}
 }
