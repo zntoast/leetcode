@@ -26,3 +26,16 @@ func TestMaxTaskAssign(t *testing.T) {
 		fmt.Printf("第%d次测试的结果 :count: %v\n", k+1, count)
 	}
 }
+
+func TestTrap(t *testing.T) {
+	date := []struct {
+		height []int
+	}{
+		{[]int{0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1}},
+		{[]int{4, 2, 0, 3, 2, 5}},
+	}
+	for k, d := range date {
+		result := Trap(d.height)
+		fmt.Printf("第%d次测试的结果 :result: %v\n", k+1, result)
+	}
+}

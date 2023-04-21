@@ -167,3 +167,17 @@ func TestCountAndSay(t *testing.T) {
 		fmt.Printf("第%d次测试的结果 : %d 对应的值为 %s\n", k+1, data.n, result)
 	}
 }
+
+func TestCanJump(t *testing.T) {
+	date := []struct {
+		nums []int
+	}{
+		// {[]int{2, 3, 1, 1, 4}},
+		// {[]int{3, 2, 1, 0, 4}},
+		{[]int{1, 2}},
+	}
+	for k, data := range date {
+		result := CanJump(data.nums)
+		fmt.Printf("第%d次测试的结果  是否能到达最后一个下标为%v\n", k+1, result)
+	}
+}
