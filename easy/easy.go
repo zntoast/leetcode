@@ -768,3 +768,7 @@ func guese(i int) int {
 		return 6
 	}
 }
+
+/*
+LC
+*/

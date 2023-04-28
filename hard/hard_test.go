@@ -39,3 +39,14 @@ func TestTrap(t *testing.T) {
 		fmt.Printf("第%d次测试的结果 :result: %v\n", k+1, result)
 	}
 }
+
+func TestDinnerPlates(t *testing.T) {
+	test := Constructor(5)
+	for i := 0; i < 10; i++ {
+		test.Push(i)
+	}
+	for i := 0; i < 10; i++ {
+		v := test.Pop()
+		fmt.Printf("v: %v\n", v)
+	}
+}

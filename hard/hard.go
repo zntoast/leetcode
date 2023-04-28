@@ -92,3 +92,68 @@ func Trap(height []int) int {
 	}
 	return ans
 }
+
+/*
+LC 1172.餐盘栈
+*/
+type DinnerPlates struct {
+	Data     [][]int
+	Capacity int
+}
+
+func Constructor(capacity int) DinnerPlates {
+	return DinnerPlates{
+		Data:     make([][]int, 0),
+		Capacity: capacity,
+	}
+}
+
+func (this *DinnerPlates) Push(val int) {
+	if len(this.Data) == 0 {
+		this.Data = append(this.Data, []int{val})
+		return
+	}
+	for i := 0; i < len(this.Data); i++ {
+		// 未装满时
+		if len(this.Data[i]) < this.Capacity {
+			this.Data[i] = append(this.Data[i], val)
+			return
+			// 装满并且是最后一个
+		} else if len(this.Data[i]) == this.Capacity && i == len(this.Data)-1 {
+			this.Data = append(this.Data, []int{val})
+			return
+			// 装满
+		} else {
+			continue
+		}
+	}
+}
+
+func (this *DinnerPlates) Pop() int {
+	ans := -1
+	if len(this.Data) == 0 {
+		return ans
+	}
+	temp := this.Data[len(this.Data)-1]
+	temp_len := len(temp)
+	ans = temp[temp_len-1]
+	this.Data[len(this.Data)-1] = this.Data[len(this.Data)-1][:temp_len-1]
+	if len(this.Data[len(this.Data)-1]) == 0 {
+		this.Data = this.Data[:len(this.Data)-1]
+	}
+	return ans
+}
+
+func (this *DinnerPlates) PopAtStack(index int) int {
+	if index < 0 || index >= len(this.Data) {
+		return -1
+	}
+	temp := this.Data[index]
+	temp_len := len(temp)
+	if temp_len == 0 {
+		return -1
+	}
+	ans := temp[temp_len-1]
+	this.Data[index] = this.Data[index][:temp_len-1]
+	return ans
+}
