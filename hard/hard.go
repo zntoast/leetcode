@@ -108,6 +108,7 @@ func Constructor(capacity int) DinnerPlates {
 	}
 }
 
+// 插入数据
 func (this *DinnerPlates) Push(val int) {
 	if len(this.Data) == 0 {
 		this.Data = append(this.Data, []int{val})
@@ -129,6 +130,7 @@ func (this *DinnerPlates) Push(val int) {
 	}
 }
 
+// 获取数据并删除
 func (this *DinnerPlates) Pop() int {
 	ans := -1
 	if len(this.Data) == 0 {
