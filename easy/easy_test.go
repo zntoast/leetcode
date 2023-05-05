@@ -363,3 +363,16 @@ func TestFindMaxConsecutiveOnes(t *testing.T) {
 		fmt.Printf("第%d次测试的结果  数组:%v value:%v\n", k+1, data.nums, result)
 	}
 }
+
+func TestConstructRectangle(t *testing.T) {
+	date := []struct {
+		area int
+	}{
+		{4},
+		{37},
+	}
+	for k, data := range date {
+		result := ConstructRectangle(data.area)
+		fmt.Printf("第%d次测试的结果  数组:%v value:%v\n", k+1, data.area, result)
+	}
+}

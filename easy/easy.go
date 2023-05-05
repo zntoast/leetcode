@@ -812,3 +812,14 @@ func FindMaxConsecutiveOnes(nums []int) int {
 	maxAns = max(maxAns, cut)
 	return maxAns
 }
+
+/*
+LC 492. 构造矩形
+*/
+func ConstructRectangle(area int) []int {
+	w := int(math.Sqrt(float64(area)))
+	for area%w > 0 {
+		w--
+	}
+	return []int{area / w, w}
+}
