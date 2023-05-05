@@ -786,3 +786,29 @@ func DistributeCandies(candyType []int) int {
 		return ans
 	}
 }
+
+/*
+LC 485. 最大连续 1 的个数
+*/
+func FindMaxConsecutiveOnes(nums []int) int {
+	max := func(a, b int) int {
+		if a > b {
+			return a
+		}
+		return b
+	}
+
+	cut := 0
+	maxAns := 0
+	for _, v := range nums {
+		if v == 1 {
+			cut++
+		} else {
+			maxAns = max(cut, maxAns)
+			cut = 0
+		}
+
+	}
+	maxAns = max(maxAns, cut)
+	return maxAns
+}

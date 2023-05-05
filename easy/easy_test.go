@@ -349,3 +349,17 @@ func TestDistributeCandies(t *testing.T) {
 		fmt.Printf("第%d次测试的结果  value:%v\n", k+1, result)
 	}
 }
+
+func TestFindMaxConsecutiveOnes(t *testing.T) {
+	date := []struct {
+		nums []int
+	}{
+		{[]int{1, 1, 0, 1, 1, 1}},
+		{[]int{1, 1, 0, 1, 0, 0}},
+		{[]int{1, 1, 1, 1}},
+	}
+	for k, data := range date {
+		result := FindMaxConsecutiveOnes(data.nums)
+		fmt.Printf("第%d次测试的结果  数组:%v value:%v\n", k+1, data.nums, result)
+	}
+}
