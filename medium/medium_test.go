@@ -181,3 +181,17 @@ func TestCanJump(t *testing.T) {
 		fmt.Printf("第%d次测试的结果  是否能到达最后一个下标为%v\n", k+1, result)
 	}
 }
+
+func TestCombine(t *testing.T) {
+	date := []struct {
+		n int
+		k int
+	}{
+		{4, 2},
+		{1, 1},
+	}
+	for k, data := range date {
+		result := Combine(data.n, data.k)
+		fmt.Printf("第%d次测试的结果  是否能到达最后一个下标为%v\n", k+1, result)
+	}
+}

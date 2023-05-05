@@ -370,3 +370,38 @@ func CanJump(nums []int) bool {
 	}
 	return last == 0
 }
+
+/*
+LC 	77. 组合
+*/
+func Combine(n int, k int) [][]int {
+	ans := [][]int{}
+	temp := []int{}
+	var dfs func(cur int)
+	dfs = func(cur int) {
+		if len(temp)+(n-cur+1) < k {
+			return
+		}
+		if len(temp) == k {
+			comb := make([]int, k)
+			copy(comb, temp)
+			ans = append(ans, comb)
+			return
+		}
+		temp = append(temp, cur)
+		dfs(cur + 1)
+		temp = temp[:len(temp)-1]
+		dfs(cur + 1)
+	}
+	dfs(1)
+	return ans
+}
+
+/*
+LC 	39. 组合总和
+*/
+func CombinationSum(candidates []int, target int) [][]int {
+	res := [][]int{}
+
+	return res
+}
