@@ -204,7 +204,7 @@ func MergeSort(a []int, left, right int) {
 	}
 }
 
-//合并数组
+// 合并数组
 func Merge(a []int, left, right int) {
 	m := right - left + 1
 	//临时数组b
@@ -305,8 +305,8 @@ func PivotIndex(nums []int) int {
 }
 
 /*
- 在不使用官方包情况, 算x的平方根 取整数
- 二分查找
+在不使用官方包情况, 算x的平方根 取整数
+二分查找
 */
 func BinarySearch(x int) int {
 	if x < 2 {

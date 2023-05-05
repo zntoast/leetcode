@@ -335,3 +335,17 @@ func TestGuessNumber(t *testing.T) {
 		fmt.Printf("第%d次测试的结果  value:%v\n", k+1, result)
 	}
 }
+
+func TestDistributeCandies(t *testing.T) {
+	date := []struct {
+		candyType []int
+	}{
+		{[]int{1, 1, 2, 2, 3, 3}},
+		{[]int{1, 1, 2, 3}},
+		{[]int{6, 6, 6, 6}},
+	}
+	for k, data := range date {
+		result := DistributeCandies(data.candyType)
+		fmt.Printf("第%d次测试的结果  value:%v\n", k+1, result)
+	}
+}

@@ -770,5 +770,19 @@ func guese(i int) int {
 }
 
 /*
-LC
+LC 575. 分糖果
 */
+func DistributeCandies(candyType []int) int {
+	ans := 0
+	mid := len(candyType) / 2
+	type_map := make(map[int]int, 0)
+	for _, v := range candyType {
+		type_map[v] = 1
+	}
+	ans = len(type_map)
+	if ans > mid {
+		return mid
+	} else {
+		return ans
+	}
+}
