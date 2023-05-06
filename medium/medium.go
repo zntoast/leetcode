@@ -19,26 +19,26 @@ LC 763. 划分字母区间
 func PartitionLabels(s string) []int {
 	temp := map[byte]int{}
 	for i := 0; i < len(s); i++ {
+		// 记录字母最后一次出现位置的下标
 		temp[s[i]] = i
 	}
-	result := make([]int, 0)
+	res := make([]int, 0)
 	left := 0
 	right := 0
 	max := func(a, b int) int {
 		if a > b {
 			return a
-		} else {
-			return b
 		}
+		return b
 	}
 	for j := 0; j < len(s); j++ {
 		right = max(right, temp[s[j]])
 		if right == j {
-			result = append(result, right-left+1)
+			res = append(res, right-left+1)
 			left = right + 1
 		}
 	}
-	return result
+	return res
 }
 
 /*
