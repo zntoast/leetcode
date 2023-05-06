@@ -13,24 +13,29 @@ import (
 */
 func LargestSumAfterKNegations(nums []int, k int) int {
 	min_index := 0
-	result := 0
+	res := 0
+	// 排序
 	sort.Ints(nums)
 	for i := range nums {
+		//  让负数进行反转
 		if nums[i] < 0 && k > 0 {
 			nums[i] *= -1
 			k--
 		}
+		// 获取最小值的下标
 		if nums[min_index] > nums[i] {
 			min_index = i
 		}
 	}
+	//k还剩余时全部用于最小的那个数进行反转
 	if k%2 == 1 {
 		nums[min_index] *= -1
 	}
+	// 计算数组总和
 	for _, v := range nums {
-		result += v
+		res += v
 	}
-	return result
+	return res
 }
 
 /*
@@ -129,6 +134,7 @@ func MySqrt(x int) int {
 	l, r := 0, x
 	ans := -1
 	for l < r {
+		// 二分查找
 		mid := l + (r-l)/2
 		if mid*mid <= x {
 			ans = mid
