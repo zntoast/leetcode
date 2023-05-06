@@ -376,3 +376,16 @@ func TestConstructRectangle(t *testing.T) {
 		fmt.Printf("第%d次测试的结果  数组:%v value:%v\n", k+1, data.area, result)
 	}
 }
+
+func TestGetRow(t *testing.T) {
+	date := []struct {
+		rowIndex int
+	}{
+		{4},
+		{37},
+	}
+	for k, data := range date {
+		result := GetRow(data.rowIndex)
+		fmt.Printf("第%d次测试的结果  value:%v\n", k+1, result)
+	}
+}

@@ -203,6 +203,7 @@ LC 88.合并两个有序数组
 func Merge(nums1 []int, m int, nums2 []int, n int) {
 	i := m + n
 	for n > 0 {
+		// 从数组后面开始排序
 		if m > 0 && nums1[m-1] > nums2[n-1] {
 			i--
 			m--
