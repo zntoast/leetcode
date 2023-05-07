@@ -30,13 +30,13 @@ func TestFastSort(t *testing.T) {
 		5, 10, 2, 1, 6, 7, 45, 10, 2, 1, 6, 7, 45, 10, 2, 1, 6, 7, 45, 10, 2, 1, 6, 7, 45, 10, 2, 1, 6, 7, 45, 10, 2, 1, 6, 7, 45, 10, 2, 1, 6, 7, 45, 10, 2, 1, 6, 7, 44}
 	start := time.Now()
 	// 快速排序
-	// FastSort(list)
+	FastSort(list)
 	// 冒泡排序
 	// BubbleSort(list)
 	// 插入排序
 	// InsertSort(list)
 	// 分治排序
-	MergeSort(list, 0, len(list)-1)
+	//MergeSort(list, 0, len(list)-1)
 	end := time.Now()
 	fmt.Printf("时间开销:%v \n", end.Sub(start))
 	fmt.Printf("list: %v\n", list)

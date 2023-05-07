@@ -141,22 +141,22 @@ func FastSort(nums []int) {
 	}
 	//mid中间值(假定mid = values[0] 为中间值)	, i下标
 	mid, i := nums[0], 1
-	head, end := 0, len(nums)-1
-	for head < end {
+	left, right := 0, len(nums)-1
+	for left < right {
 		// 把 小于mid 的值放到 head前面 反则亦然
 		if nums[i] > mid {
-			nums[i], nums[end] = nums[end], nums[i]
-			end--
+			nums[i], nums[right] = nums[right], nums[i]
+			right--
 		} else {
-			nums[i], nums[head] = nums[head], nums[i]
-			head++
+			nums[i], nums[left] = nums[left], nums[i]
+			left++
 			i++
 		}
 	}
 	// 中间值替换成mid
-	nums[head] = mid
-	FastSort(nums[:head])
-	FastSort(nums[head+1:])
+	nums[left] = mid
+	FastSort(nums[:left])
+	FastSort(nums[left+1:])
 }
 
 /*
@@ -528,3 +528,7 @@ func StrToInt(str string) int {
 	}
 	return ans
 }
+
+/*
+
+ */

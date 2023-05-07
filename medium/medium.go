@@ -32,6 +32,7 @@ func PartitionLabels(s string) []int {
 		return b
 	}
 	for j := 0; j < len(s); j++ {
+		// 不到刷新字母最后出现的位置的下标
 		right = max(right, temp[s[j]])
 		if right == j {
 			res = append(res, right-left+1)
