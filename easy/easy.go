@@ -10,6 +10,7 @@ import (
 
 /*
 1005. K 次取反后最大化的数组和
+1005. K 次取反后最大化的数组和
 */
 func LargestSumAfterKNegations(nums []int, k int) int {
 	min_index := 0
