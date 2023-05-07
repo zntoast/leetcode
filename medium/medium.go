@@ -410,7 +410,9 @@ func CombinationSum(candidates []int, target int) [][]int {
 /*
 lc 	45. 跳跃游戏 II
 */
+// 加点东西
 func Jump(nums []int) int {
+
 	position := len(nums) - 1
 	res := 0
 	for position > 0 {
