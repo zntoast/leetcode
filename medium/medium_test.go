@@ -195,3 +195,16 @@ func TestCombine(t *testing.T) {
 		fmt.Printf("第%d次测试的结果  是否能到达最后一个下标为%v\n", k+1, result)
 	}
 }
+
+func TestJump(t *testing.T) {
+	date := []struct {
+		nums []int
+	}{
+		{[]int{2, 3, 1, 1, 4}},
+		{[]int{2, 3, 0, 1, 4}},
+	}
+	for k, data := range date {
+		result := Jump(data.nums)
+		fmt.Printf("第%d次测试的结果  是否能到达最后一个下标为%v\n", k+1, result)
+	}
+}

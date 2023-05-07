@@ -399,10 +399,28 @@ func Combine(n int, k int) [][]int {
 }
 
 /*
-LC 	39. 组合总和
+lc 	39. 组合总和
 */
 func CombinationSum(candidates []int, target int) [][]int {
 	res := [][]int{}
 
+	return res
+}
+
+/*
+lc 	45. 跳跃游戏 II
+*/
+func Jump(nums []int) int {
+	position := len(nums) - 1
+	res := 0
+	for position > 0 {
+		for i := 0; i < position; i++ {
+			if i+nums[i] >= position {
+				res++
+				position = i
+				break
+			}
+		}
+	}
 	return res
 }
