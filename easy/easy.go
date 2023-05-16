@@ -848,7 +848,6 @@ func FindRestaurant(list1 []string, list2 []string) []string {
 	for i, s := range list1 {
 		index[s] = i
 	}
-
 	indexSum := math.MaxInt32
 	for i, s := range list2 {
 		if j, ok := index[s]; ok {
