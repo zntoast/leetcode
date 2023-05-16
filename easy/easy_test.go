@@ -389,3 +389,18 @@ func TestGetRow(t *testing.T) {
 		fmt.Printf("第%d次测试的结果  value:%v\n", k+1, result)
 	}
 }
+
+func TestFindRestaurant(t *testing.T) {
+	date := []struct {
+		list1 []string
+		list2 []string
+	}{
+		{[]string{"Shogun", "Tapioca Express", "Burger King", "KFC"}, []string{
+			"Piatti", "The Grill at Torrey Pines", "Hungry Hunter Steakhouse", "Shogun"}},
+		{[]string{"happy", "sad", "good"}, []string{"sad", "happy", "good"}},
+	}
+	for k, data := range date {
+		result := FindRestaurant(data.list1, data.list2)
+		fmt.Printf("第%d次测试的结果  共同爱好:%v\n", k+1, result)
+	}
+}

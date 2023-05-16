@@ -831,3 +831,34 @@ func ConstructRectangle(area int) []int {
 	}
 	return []int{area / w, w}
 }
+
+/*
+LC 598.范围求和II
+*/
+func maxCount(m int, n int, ops [][]int) int {
+	return 0
+}
+
+/*
+LC 599.两个列表的最小索引3总和
+*/
+func FindRestaurant(list1 []string, list2 []string) []string {
+	ans := []string{}
+	index := make(map[string]int, len(list1))
+	for i, s := range list1 {
+		index[s] = i
+	}
+
+	indexSum := math.MaxInt32
+	for i, s := range list2 {
+		if j, ok := index[s]; ok {
+			if i+j < indexSum {
+				indexSum = i + j
+				ans = []string{s}
+			} else if i+j == indexSum {
+				ans = append(ans, s)
+			}
+		}
+	}
+	return ans
+}
