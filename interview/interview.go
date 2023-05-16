@@ -530,5 +530,26 @@ func StrToInt(str string) int {
 }
 
 /*
+遍历二叉树
+*/
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
 
- */
+func QueryTree() []int {
+	head := &TreeNode{}
+	ans := []int{}
+	dfs := func(node *TreeNode) {}
+	dfs = func(node *TreeNode) {
+		if node == nil {
+			return
+		}
+		ans = append(ans, node.Val)
+		dfs(node.Left)
+		dfs(node.Right)
+	}
+	dfs(head)
+	return ans
+}
