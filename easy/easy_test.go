@@ -404,3 +404,17 @@ func TestFindRestaurant(t *testing.T) {
 		fmt.Printf("第%d次测试的结果  共同爱好:%v\n", k+1, result)
 	}
 }
+
+func TestSelfDividingNumbers(t *testing.T) {
+	date := []struct {
+		left  int
+		right int
+	}{
+		{1, 22},
+		{47, 85},
+	}
+	for k, data := range date {
+		result := SelfDividingNumbers(data.left, data.right)
+		fmt.Printf("第%d次测试的结果  共同爱好:%v\n", k+1, result)
+	}
+}

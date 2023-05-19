@@ -10,7 +10,6 @@ import (
 
 /*
 1005. K 次取反后最大化的数组和
-1005. K 次取反后最大化的数组和
 */
 func LargestSumAfterKNegations(nums []int, k int) int {
 	min_index := 0
@@ -857,6 +856,30 @@ func FindRestaurant(list1 []string, list2 []string) []string {
 			} else if i+j == indexSum {
 				ans = append(ans, s)
 			}
+		}
+	}
+	return ans
+}
+
+/*
+LC 728.自除数
+*/
+func SelfDividingNumbers(left int, right int) []int {
+	ans := []int{}
+	is_self_divisor := func(num int) bool {
+		temp := num
+		for temp > 0 {
+			i_num := temp % 10
+			temp /= 10
+			if i_num == 0 || num%i_num != 0 {
+				return false
+			}
+		}
+		return true
+	}
+	for i := left; i <= right; i++ {
+		if is_self_divisor(i) {
+			ans = append(ans, i)
 		}
 	}
 	return ans
