@@ -418,3 +418,16 @@ func TestSelfDividingNumbers(t *testing.T) {
 		fmt.Printf("第%d次测试的结果  共同爱好:%v\n", k+1, result)
 	}
 }
+
+func TestCountSegments(t *testing.T) {
+	date := []struct {
+		s string
+	}{
+		{"Hello, my name is John"},
+		{""},
+	}
+	for k, data := range date {
+		result := CountSegments(data.s)
+		fmt.Printf("第%d次测试的结果 一共有%v个单词\n", k+1, result)
+	}
+}

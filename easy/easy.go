@@ -884,3 +884,16 @@ func SelfDividingNumbers(left int, right int) []int {
 	}
 	return ans
 }
+
+/*
+LC 434. 字符串中的单词数
+*/
+func CountSegments(s string) int {
+	ans := 0
+	for i, ch := range s {
+		if (i == 0 || s[i-1] == ' ') && ch != ' ' {
+			ans++
+		}
+	}
+	return ans
+}
