@@ -208,3 +208,17 @@ func TestJump(t *testing.T) {
 		fmt.Printf("第%d次测试的结果  是否能到达最后一个下标为%v\n", k+1, result)
 	}
 }
+
+func TestMultiply(t *testing.T) {
+	date := []struct {
+		num1 string
+		num2 string
+	}{
+		{"2", "3"},
+		{"123", "456"},
+	}
+	for k, data := range date {
+		result := Multiply(data.num1, data.num2)
+		fmt.Printf("第%d次测试的结果  %v * %v乘积%v\n", k+1, data.num1, data.num2, result)
+	}
+}

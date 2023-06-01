@@ -410,7 +410,6 @@ func CombinationSum(candidates []int, target int) [][]int {
 /*
 lc 	45. 跳跃游戏 II
 */
-// 加点东西
 func Jump(nums []int) int {
 
 	position := len(nums) - 1
@@ -425,4 +424,35 @@ func Jump(nums []int) int {
 		}
 	}
 	return res
+}
+
+/*
+LC 43. 字符串相乘
+*/
+func Multiply(num1 string, num2 string) string {
+	if num1 == "0" || num2 == "0" {
+		return "0"
+	}
+	ans := ""
+	m, n := len(num1), len(num2)
+	ansArr := make([]int, m+n)
+	for i := m - 1; i >= 0; i-- {
+		x := int(num1[i] - '0')
+		for j := n - 1; j >= 0; j-- {
+			y := int(num2[j] - '0')
+			ansArr[i+j+1] += x * y
+		}
+	}
+	for i := m + n - 1; i > 0; i-- {
+		ansArr[i-1] += ansArr[i] / 10
+		ansArr[i] %= 10
+	}
+	index := 0
+	if ansArr[0] == 0 {
+		index = 1
+	}
+	for ; index < m+n; index++ {
+		ans += strconv.Itoa(ansArr[index])
+	}
+	return ans
 }
