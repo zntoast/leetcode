@@ -897,3 +897,19 @@ func CountSegments(s string) int {
 	}
 	return ans
 }
+
+/*
+LC 606. 根据二叉树创建字符串
+*/
+func Tree2str(root *TreeNode) string {
+	switch {
+	case root == nil:
+		return ""
+	case root.Left == nil && root.Right == nil:
+		return strconv.Itoa(root.Val)
+	case root.Right == nil:
+		return fmt.Sprintf("%d(%s)", root.Val, Tree2str(root.Left))
+	default:
+		return fmt.Sprintf("%d(%s)(%s)", root.Val, Tree2str(root.Left), Tree2str(root.Right))
+	}
+}
