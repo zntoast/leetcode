@@ -16,8 +16,8 @@ func RemoveDuplicates(nums []int) int {
 	return left + 1
 }
 
-//买股票的最佳时机
-//例子: prices := []int{7, 1, 5, 3, 6, 4}
+// 买股票的最佳时机
+// 例子: prices := []int{7, 1, 5, 3, 6, 4}
 func MaxProfit(prices []int) int {
 	price := 0
 	if len(prices) == 0 {
@@ -31,8 +31,8 @@ func MaxProfit(prices []int) int {
 	return price
 }
 
-//旋转数组
-//例子: nums := []int{1, 2, 3, 4, 5, 6, 7}
+// 旋转数组
+// 例子: nums := []int{1, 2, 3, 4, 5, 6, 7}
 func Rotate(nums []int, k int) {
 	array := make([]int, len(nums))
 	for i := 0; i < len(nums); i++ {
@@ -47,7 +47,7 @@ func Rotate(nums []int, k int) {
 	}
 }
 
-//存在重复元素
+// 存在重复元素
 // 例子: nums := []int{1, 2, 3, 1}
 func ContainsDuplicate(nums []int) bool {
 	if len(nums) <= 1 {
@@ -63,7 +63,7 @@ func ContainsDuplicate(nums []int) bool {
 	return false
 }
 
-//只出现一次的数字
+// 只出现一次的数字
 // 例子: nums := []int{4, 1, 2, 1, 2}
 func SingleNumber(nums []int) int {
 	value := 0
@@ -73,7 +73,7 @@ func SingleNumber(nums []int) int {
 	return value
 }
 
-//两个数组的交集
+// 两个数组的交集
 func Intersect(nums1 []int, nums2 []int) []int {
 	Sort(nums1)
 	Sort(nums2)
@@ -101,7 +101,7 @@ func Intersect(nums1 []int, nums2 []int) []int {
 	return array
 }
 
-//冒泡排序
+// 冒泡排序
 func Sort(num []int) {
 	for i := 0; i < len(num); i++ {
 		for j := i + 1; j < len(num); j++ {
@@ -115,7 +115,7 @@ func Sort(num []int) {
 	}
 }
 
-//加一
+// 加一
 func PlusOne(digits []int) []int {
 	for i := len(digits) - 1; i >= 0; i-- {
 		if digits[i] != 9 {
@@ -130,7 +130,7 @@ func PlusOne(digits []int) []int {
 	return array
 }
 
-//移动零
+// 移动零
 func MoveZeroes(nums []int) {
 	for i := 0; i < len(nums); i++ {
 		if nums[i] == 0 {
@@ -145,7 +145,7 @@ func MoveZeroes(nums []int) {
 	}
 }
 
-//两数之和
+// 两数之和
 func TwoSum(nums []int, target int) []int {
 	array := make([]int, 2)
 	for i := 0; i < len(nums); i++ {
@@ -158,4 +158,35 @@ func TwoSum(nums []int, target int) []int {
 		}
 	}
 	return array
+}
+
+func NoRepetitionNums(nums1, nums2 []int64) []int64 {
+	existed := map[int64]struct{}{}
+	result := []int64{}
+	for _, i := range nums1 {
+		existed[i] = struct{}{}
+	}
+	for _, i := range nums2 {
+		if _, ok := existed[i]; ok {
+			continue
+		}
+		result = append(result, i)
+	}
+	// result := make([]int64, 0)
+	// contains := func(n1 int64, ns2 []int64) bool {
+	// 	found := false
+	// 	for _, s := range ns2 {
+	// 		if s == n1 {
+	// 			found = true
+	// 			break
+	// 		}
+	// 	}
+	// 	return found
+	// }
+	// for i := 0; i < len(nums1); i++ {
+	// 	if !contains(nums1[i], nums2) {
+	// 		result = append(result, nums1[i])
+	// 	}
+	// }
+	return result
 }

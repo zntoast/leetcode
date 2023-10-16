@@ -21,3 +21,38 @@ func TestAddNode(T *testing.T) {
 		head.TreeAdd(v)
 	}
 }
+
+func TestupdateCounts(T *testing.T) {
+	// Mocking the data
+	data := &CustomerChoroplethMap{
+		Adcode: "parent",
+		Name:   "Parent Area",
+		Sub: []*CustomerChoroplethMap{
+			{
+				Adcode: "child1",
+				Name:   "Child Area 1",
+				Sub: []*CustomerChoroplethMap{
+					{
+						Adcode: "grandchild1",
+						Name:   "Grandchild Area 1",
+						Sub:    nil,
+					},
+				},
+			},
+			{
+				Adcode: "child2",
+				Name:   "Child Area 2",
+				Sub:    nil,
+			},
+		},
+	}
+	countMap := map[string]int64{
+		"parent":      10,
+		"child1":      5,
+		"grandchild1": 2,
+		"child2":      3,
+	}
+	updateCounts(data, countMap)
+
+	fmt.Printf("Updated Counts:\n%+v\n", data)
+}

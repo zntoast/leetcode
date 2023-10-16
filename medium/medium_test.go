@@ -222,3 +222,17 @@ func TestMultiply(t *testing.T) {
 		fmt.Printf("第%d次测试的结果  %v * %v乘积%v\n", k+1, data.num1, data.num2, result)
 	}
 }
+
+func TestSingleNumber(t *testing.T) {
+	date := []struct {
+		num []int
+	}{
+		{[]int{1, 2, 1, 3, 2, 5}},
+		{[]int{-1, 0}},
+		{[]int{0, 1}},
+	}
+	for k, data := range date {
+		result := SingleNumber(data.num)
+		fmt.Printf("第%d次测试的结果  %v \n", k+1, result)
+	}
+}

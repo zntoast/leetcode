@@ -456,3 +456,31 @@ func Multiply(num1 string, num2 string) string {
 	}
 	return ans
 }
+
+/*
+LC 1488. 避免洪水泛滥
+*/
+func AvoidFlood(rains []int) []int {
+	return nil
+}
+
+/*
+LC 260. 只出现一次的数字 III
+*/
+func SingleNumber(nums []int) []int {
+	exist := make(map[int]bool)
+	for _, v := range nums {
+		if _, ok := exist[v]; ok {
+			exist[v] = false
+		} else {
+			exist[v] = true
+		}
+	}
+	ans := make([]int, 0)
+	for k, v := range exist {
+		if v {
+			ans = append(ans, k)
+		}
+	}
+	return ans
+}

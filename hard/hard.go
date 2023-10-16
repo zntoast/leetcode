@@ -3,6 +3,7 @@ package hard
 import (
 	"fmt"
 	"sort"
+	"strings"
 )
 
 /*
@@ -158,4 +159,58 @@ func (this *DinnerPlates) PopAtStack(index int) int {
 	ans := temp[temp_len-1]
 	this.Data[index] = this.Data[index][:temp_len-1]
 	return ans
+}
+
+// 串联所有单词的字串
+func FindSubstring(s string, words []string) []int {
+	result := []string{}
+	w_len := len(words)
+	used := map[int]bool{}
+	for k := range words {
+		used[k] = false
+	}
+	dfs := func(buff string, deep int) {}
+	dfs = func(buff string, deep int) {
+		if deep == w_len {
+			result = append(result, buff)
+			return
+		}
+		for i := 0; i < w_len; i++ {
+			if !used[i] {
+				used[i] = true
+				buff += words[i]
+				dfs(buff, deep+1)
+				used[i] = false
+				buff = buff[:len(buff)-len(words[0])]
+			}
+		}
+	}
+	dfs("", 0)
+	ans := []int{}
+	exist := map[int]struct{}{}
+	for _, v := range result {
+		indexs := findAllSubstringIndices(s, v)
+		for _, index := range indexs {
+			_, ok := exist[index]
+			if index != -1 && !ok {
+				ans = append(ans, index)
+				exist[index] = struct{}{}
+			}
+		}
+	}
+	return ans
+}
+
+func findAllSubstringIndices(s, sub string) []int {
+	indices := []int{}
+	start := 0
+	for {
+		index := strings.Index(s[start:], sub)
+		if index == -1 {
+			break
+		}
+		indices = append(indices, start+index)
+		start += index + 1
+	}
+	return indices
 }

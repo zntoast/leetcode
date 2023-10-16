@@ -50,3 +50,21 @@ func TestDinnerPlates(t *testing.T) {
 		fmt.Printf("v: %v\n", v)
 	}
 }
+
+func TestFindSubstring(t *testing.T) {
+	datas := []struct {
+		s     string
+		words []string
+	}{
+		// {"barfoothefoobarman", []string{"foo", "bar"}},
+		// {"wordgoodgoodgoodbestword", []string{"word", "good", "best", "word"}},
+		// {"barfoofoobarthefoobarman", []string{"bar", "foo", "the"}},
+		// {"wordgoodgoodgoodbestword", []string{"word", "good", "best", "good"}},
+		// {"foobarfoobar", []string{"foo", "bar"}},
+		{"aaa", []string{"a", "a"}},
+	}
+	for k, data := range datas {
+		result := FindSubstring(data.s, data.words)
+		fmt.Printf("第%d条数据 , 结果 ：%v\n", k+1, result)
+	}
+}

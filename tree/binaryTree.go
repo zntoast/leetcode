@@ -38,7 +38,7 @@ func add(fater *TreeNode, num int) {
 }
 
 // 递归········································
-//1、前序遍历
+// 1、前序遍历
 func PreorderTraversal(head *TreeNode) []int {
 	list := make([]int, 0)
 	pre := func(node *TreeNode) {}
@@ -54,7 +54,7 @@ func PreorderTraversal(head *TreeNode) []int {
 	return list
 }
 
-//2、中序遍历
+// 2、中序遍历
 func InorderTraversal(root *TreeNode) []int {
 	list := make([]int, 0)
 	pre := func(node *TreeNode) {}
@@ -70,7 +70,7 @@ func InorderTraversal(root *TreeNode) []int {
 	return list
 }
 
-//3、后序遍历
+// 3、后序遍历
 func PostorderTraversal(root *TreeNode) []int {
 	list := make([]int, 0)
 	pre := func(node *TreeNode) {}
@@ -124,4 +124,25 @@ func PreorderTraversal2(head *TreeNode) []int {
 		root = root.Right
 	}
 	return result
+}
+
+type CustomerChoroplethMap struct {
+	Adcode string                   `json:"adcode" validate:"max=255"`   // 区域码
+	Count  int64                    `json:"count"`                       // 地区客户数量
+	Name   string                   `json:"name" validate:"max=255"`     // 地区名称
+	Sub    []*CustomerChoroplethMap `json:"sub" validate:"max=255,dive"` // 子地区
+}
+
+var mp map[string]int64
+
+func updateCounts(node *CustomerChoroplethMap, mp map[string]int64) int64 {
+	count := mp[node.Adcode]
+
+	// Recursively update counts for child nodes
+	for _, subNode := range node.Sub {
+		count += updateCounts(subNode, mp)
+	}
+
+	node.Count = count
+	return count
 }
