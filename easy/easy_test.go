@@ -431,3 +431,17 @@ func TestCountSegments(t *testing.T) {
 		fmt.Printf("第%d次测试的结果 一共有%v个单词\n", k+1, result)
 	}
 }
+
+func TestSumOfMultiples(t *testing.T) {
+	date := []struct {
+		n int64
+	}{
+		{99999},
+		{10},
+		{666666},
+	}
+	for k, data := range date {
+		result := SumOfMultiples(data.n)
+		fmt.Printf("第%d次测试的结果 倍数和为%v\n", k+1, result)
+	}
+}

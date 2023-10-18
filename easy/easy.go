@@ -913,3 +913,21 @@ func Tree2str(root *TreeNode) string {
 		return fmt.Sprintf("%d(%s)(%s)", root.Val, Tree2str(root.Left), Tree2str(root.Right))
 	}
 }
+
+/*
+LC 2652. 倍数求和
+*/
+func SumOfMultiples(n int64) int64 {
+	var ans int64
+	var i int64 = 1
+	for ; i <= n; i++ {
+		if i%3 == 0 || i%5 == 0 || i%7 == 0 {
+			ans += i
+		}
+	}
+	return ans
+	// fn := func(n, m int) int {
+	// 	return (m + n/m*m) * (n / m) / 2
+	// }
+	// return fn(n, 3) + fn(n, 5) + fn(n, 7) - fn(n, 3*5) - fn(n, 3*7) - fn(n, 5*7) + fn(n, 3*5*7)
+}
