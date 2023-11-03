@@ -445,3 +445,16 @@ func TestSumOfMultiples(t *testing.T) {
 		fmt.Printf("第%d次测试的结果 倍数和为%v\n", k+1, result)
 	}
 }
+
+func TestCountPoints(t *testing.T) {
+	date := []struct {
+		n string
+	}{
+		{"R3G2B1"},
+		{"B0B6G0R6R0R6G9"},
+	}
+	for k, data := range date {
+		result := CountPoints(data.n)
+		fmt.Printf("第%d次测试的结果 杆的数量%v\n", k+1, result)
+	}
+}

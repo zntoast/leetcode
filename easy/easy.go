@@ -931,3 +931,32 @@ func SumOfMultiples(n int64) int64 {
 	// }
 	// return fn(n, 3) + fn(n, 5) + fn(n, 7) - fn(n, 3*5) - fn(n, 3*7) - fn(n, 5*7) + fn(n, 3*5*7)
 }
+
+/*
+LC 2103. 环和杆
+*/
+func CountPoints(rings string) int {
+	ans := 0
+	nums := [10][3]int{}
+	slice := []rune(rings)
+	for k, v := range slice {
+		if v-'R' == 0 {
+			nums[slice[k+1]-'0'][0] = 1
+		} else if v-'G' == 0 {
+			nums[slice[k+1]-'0'][1] = 1
+		} else if v-'B' == 0 {
+			nums[slice[k+1]-'0'][2] = 1
+		}
+	}
+	for _, num := range nums {
+		i := 1
+		for _, v := range num {
+			i &= v
+		}
+		if i == 1 {
+			ans++
+		}
+	}
+	fmt.Printf("nums : %v\n", nums)
+	return ans
+}
