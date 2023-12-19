@@ -236,3 +236,17 @@ func TestSingleNumber(t *testing.T) {
 		fmt.Printf("第%d次测试的结果  %v \n", k+1, result)
 	}
 }
+
+func TestCombinationSum(t *testing.T) {
+	datas := []struct {
+		candidates []int
+		target     int
+	}{
+		{[]int{2, 3, 6, 7}, 7},
+		{[]int{2, 3, 5}, 8},
+	}
+	for k, data := range datas {
+		result := CombinationSum(data.candidates, data.target)
+		fmt.Printf("第%d次测试的结果  %v \n", k+1, result)
+	}
+}

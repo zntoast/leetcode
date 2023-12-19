@@ -399,15 +399,6 @@ func Combine(n int, k int) [][]int {
 }
 
 /*
-lc 	39. 组合总和
-*/
-func CombinationSum(candidates []int, target int) [][]int {
-	res := [][]int{}
-
-	return res
-}
-
-/*
 lc 	45. 跳跃游戏 II
 */
 func Jump(nums []int) int {
@@ -482,5 +473,31 @@ func SingleNumber(nums []int) []int {
 			ans = append(ans, k)
 		}
 	}
+	return ans
+}
+
+/*
+LC 39. 组合总和
+*/
+func CombinationSum(candidates []int, target int) [][]int {
+	temp := []int{}
+	ans := [][]int{}
+	dfs := func(target, idx int) {}
+	dfs = func(target, idx int) {
+		if idx == len(candidates) {
+			return
+		}
+		if target == 0 {
+			ans = append(ans, append([]int{}, temp...))
+			return
+		}
+		dfs(target, idx+1)
+		if target-candidates[idx] >= 0 {
+			temp = append(temp, candidates[idx])
+			dfs(target-candidates[idx], idx)
+			temp = temp[:len(temp)-1]
+		}
+	}
+	dfs(target, 0)
 	return ans
 }
