@@ -960,3 +960,19 @@ func CountPoints(rings string) int {
 	fmt.Printf("nums : %v\n", nums)
 	return ans
 }
+
+/*
+LC 2399. 检查相同字母间的距离
+*/
+func CheckDistances(s string, distance []int) bool {
+	ans := true
+	mp := map[rune]int{}
+	for index, v := range s {
+		if _, ok := mp[v]; ok && (index-mp[v]-1) != distance[v-'a'] {
+			return false
+		} else {
+			mp[v] = index
+		}
+	}
+	return ans
+}
