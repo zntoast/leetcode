@@ -501,3 +501,30 @@ func CombinationSum(candidates []int, target int) [][]int {
 	dfs(target, 0)
 	return ans
 }
+
+/*
+LC 2400. 恰好移动 k 步到达某一位置的方法数目
+*/
+func NumberOfWays(startPos int, endPos int, k int) int {
+	mod := 1000000007
+	d := abs(startPos - endPos)
+	if (d+k)%2 == 1 || d > k {
+		return 0
+	}
+	f := make([][]int, k+1)
+	for i := 0; i <= k; i++ {
+		f[i] = make([]int, k+1)
+		f[i][0] = 1
+		for j := 1; j <= i; j++ {
+			f[i][j] = (f[i-1][j] + f[i-1][j-1]) % mod
+		}
+	}
+	return f[k][(d+k)/2]
+}
+
+func abs(a int) int {
+	if a < 0 {
+		return -a
+	}
+	return a
+}

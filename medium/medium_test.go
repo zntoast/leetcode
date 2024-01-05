@@ -250,3 +250,18 @@ func TestCombinationSum(t *testing.T) {
 		fmt.Printf("第%d次测试的结果  %v \n", k+1, result)
 	}
 }
+
+func TestNumberOfWays(t *testing.T) {
+	datas := []struct {
+		StartPos int
+		EndPos   int
+		K        int
+	}{
+		{1, 2, 3},
+		{2, 5, 10},
+	}
+	for k, data := range datas {
+		result := NumberOfWays(data.StartPos, data.EndPos, data.K)
+		fmt.Printf("第%d次测试的结果  %v \n", k+1, result)
+	}
+}
