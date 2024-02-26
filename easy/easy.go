@@ -976,3 +976,21 @@ func CheckDistances(s string, distance []int) bool {
 	}
 	return ans
 }
+
+// Lc 938. 二叉搜索树的范围和
+func RangeSumBST(root *TreeNode, low int, high int) int {
+	ans := 0
+	dfs := func(node *TreeNode) {}
+	dfs = func(node *TreeNode) {
+		if node == nil {
+			return
+		}
+		if node.Val >= low && node.Val <= high {
+			ans += node.Val
+		}
+		dfs(node.Left)
+		dfs(node.Right)
+	}
+	dfs(root)
+	return ans
+}
