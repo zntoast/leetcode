@@ -2,6 +2,7 @@ package hard
 
 import (
 	"fmt"
+	"math"
 	"sort"
 	"strings"
 )
@@ -213,4 +214,41 @@ func findAllSubstringIndices(s, sub string) []int {
 		start += index + 1
 	}
 	return indices
+}
+
+// LC 514. 自由之路
+func FindRotateSteps(ring string, key string) int {
+	ans := math.MaxInt32
+	dfs := func(nums []byte, index, left, right, value int) {}
+	dfs = func(nums []byte, index, left, right, value int) {
+		if index == len(key) {
+			ans = min(ans, value)
+			return
+		}
+		for {
+			// 逆时针
+			if nums[left] == key[index] {
+				//  我们只需要1步来拼写这个字符
+				value++
+				// 当前转盘顺序
+				dfs(append(nums[left:], nums[:left]...), index+1, 0, 0, value)
+			}
+			// 顺时针
+			if nums[right] == key[index] {
+				//  我们只需要1步来拼写这个字符
+				value++
+				// 当前转盘顺序
+				dfs(append(nums[right:], nums[:right]...), index+1, 0, 0, value)
+			}
+			// 移动转盘
+			right = len(ring) - left - 1
+			left++
+			value++
+			if right <= left {
+				break
+			}
+		}
+	}
+	dfs([]byte(ring), 0, 0, 0, 0)
+	return ans
 }

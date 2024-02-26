@@ -68,3 +68,19 @@ func TestFindSubstring(t *testing.T) {
 		fmt.Printf("第%d条数据 , 结果 ：%v\n", k+1, result)
 	}
 }
+
+func TestFindRotateSteps(t *testing.T) {
+	datas := []struct {
+		Ring string
+		Key  string
+	}{
+		// {"godding", "gd"},
+		// {"godding", "godding"},
+		// {"pqwcx", "cpqwx"},
+		{"nyngl", "yyynnnnnnlllggg"},
+	}
+	for k, data := range datas {
+		result := FindRotateSteps(data.Ring, data.Key)
+		fmt.Printf("第%d条数据 , 结果 ：%v\n", k+1, result)
+	}
+}
