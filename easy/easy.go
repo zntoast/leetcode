@@ -994,3 +994,17 @@ func RangeSumBST(root *TreeNode, low int, high int) int {
 	dfs(root)
 	return ans
 }
+
+// LC 2129. 将标题首字母大写
+func CapitalizeTitle(title string) string {
+	ans := []string{}
+	items := strings.Split(title, " ")
+	for _, item := range items {
+		if len(item) < 3 {
+			ans = append(ans, strings.ToLower(item))
+		} else {
+			ans = append(ans, strings.ToUpper(string(item[0]))+strings.ToLower(item[1:]))
+		}
+	}
+	return strings.Join(ans, " ")
+}

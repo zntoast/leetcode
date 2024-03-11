@@ -458,3 +458,16 @@ func TestCountPoints(t *testing.T) {
 		fmt.Printf("第%d次测试的结果 杆的数量%v\n", k+1, result)
 	}
 }
+
+func TestCapitalizeTitle(t *testing.T) {
+	date := []struct {
+		n string
+	}{
+		{"capiTalIze tHe titLe"},
+		{"First leTTeR of EACH Word"},
+	}
+	for k, data := range date {
+		result := CapitalizeTitle(data.n)
+		fmt.Printf("第%d次测试的结果 : %v\n", k+1, result)
+	}
+}
