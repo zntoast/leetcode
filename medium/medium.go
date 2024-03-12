@@ -528,3 +528,44 @@ func abs(a int) int {
 	}
 	return a
 }
+
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
+
+// LC 1261. 在受污染的二叉树中查找元素
+type FindElements struct {
+	Val map[int]bool
+}
+
+func Constructor(root *TreeNode) FindElements {
+	element := FindElements{
+		Val: map[int]bool{
+			0: true,
+		},
+	}
+	dfs := func(node *TreeNode, val int64) {}
+	dfs = func(node *TreeNode, val int64) {
+		if node == nil {
+			return
+		}
+		if node.Left != nil {
+			temp := val*2 + 1
+			element.Val[int(temp)] = true
+			dfs(node.Left, temp)
+		}
+		if node.Right != nil {
+			temp := val*2 + 2
+			element.Val[int(temp)] = true
+			dfs(node.Right, temp)
+		}
+	}
+	dfs(root, 0)
+	return element
+}
+
+func (this *FindElements) Find(target int) bool {
+	return this.Val[int(target)]
+}
