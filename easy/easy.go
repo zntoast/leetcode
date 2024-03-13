@@ -1008,3 +1008,23 @@ func CapitalizeTitle(title string) string {
 	}
 	return strings.Join(ans, " ")
 }
+
+// LC 2864. 最大二进制奇数
+func MaximumOddBinaryNumber(s string) string {
+	result := ""
+	sMap := map[rune]int{}
+	for _, v := range s {
+		sMap[v] += 1
+	}
+	if v := sMap['1']; v > 0 {
+		result += "1"
+		sMap['1']--
+	}
+	for i := 0; i < sMap['0']; i++ {
+		result = "0" + result
+	}
+	for i := 0; i < sMap['1']; i++ {
+		result = "1" + result
+	}
+	return result
+}
