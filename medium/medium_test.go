@@ -265,3 +265,15 @@ func TestNumberOfWays(t *testing.T) {
 		fmt.Printf("第%d次测试的结果  %v \n", k+1, result)
 	}
 }
+
+func TestMaxArrayValue(t *testing.T) {
+	datas := []struct {
+		nums []int
+	}{
+		{[]int{5, 7, 9, 3}},
+	}
+	for k, data := range datas {
+		result := MaxArrayValue(data.nums)
+		fmt.Printf("第%d次测试的结果  %v \n", k+1, result)
+	}
+}

@@ -569,3 +569,22 @@ func Constructor(root *TreeNode) FindElements {
 func (this *FindElements) Find(target int) bool {
 	return this.Val[int(target)]
 }
+
+// LC 2789. 合并后数组中的最大元素
+func MaxArrayValue(nums []int) int64 {
+	var dfs func(nums []int)
+	dfs = func(nums []int) {
+		if len(nums) < 2 {
+			return
+		}
+		for i := len(nums) - 1; i >= 0; i-- {
+			if i-1 >= 0 && nums[i] >= nums[i-1] {
+				nums[i] += nums[i-1]
+				dfs(append(nums[:i-1], nums[i:]...))
+				return
+			}
+		}
+	}
+	dfs(nums)
+	return int64(nums[0])
+}
