@@ -277,3 +277,17 @@ func TestMaxArrayValue(t *testing.T) {
 		fmt.Printf("第%d次测试的结果  %v \n", k+1, result)
 	}
 }
+
+func TestLongestEqualSubarray(t *testing.T) {
+	datas := []struct {
+		nums []int
+		k    int
+	}{
+		{[]int{1, 3, 2, 3, 1, 3}, 3},
+		{[]int{1, 1, 2, 2, 1, 1}, 2},
+	}
+	for k, data := range datas {
+		result := LongestEqualSubarray(data.nums, data.k)
+		t.Logf("第%d次测试的结果  %v \n", k+1, result)
+	}
+}
