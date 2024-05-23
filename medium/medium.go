@@ -592,14 +592,20 @@ func MaxArrayValue(nums []int) int64 {
 // LC 2831. 找出最长等值子数组
 func LongestEqualSubarray(nums []int, k int) int {
 	ans := 0
-	numMap := map[int]int{}
-	for _, num := range nums {
-		numMap[num]++
-	}
-	numsLen := len(nums)
-	for k, v := range numMap {
-		if v+k >= numsLen && v > ans {
-			ans = v
+	for i := 0; i < len(nums); i++ {
+		temp := 1
+		for j := i; j < len(nums); j++ {
+			if k == 0 {
+				break
+			}
+			if nums[i] == nums[j] {
+				temp++
+			} else {
+				k--
+			}
+		}
+		if temp > ans {
+			ans = temp
 		}
 	}
 	return ans
