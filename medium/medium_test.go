@@ -10,8 +10,10 @@ func TestAlertNames(t *testing.T) {
 		keyName []string
 		keyTime []string
 	}{
-		{[]string{"daniel", "daniel", "daniel", "luis", "luis", "luis", "luis"},
-			[]string{"10:00", "10:40", "11:00", "09:00", "11:00", "13:00", "15:00"}},
+		{
+			[]string{"daniel", "daniel", "daniel", "luis", "luis", "luis", "luis"},
+			[]string{"10:00", "10:40", "11:00", "09:00", "11:00", "13:00", "15:00"},
+		},
 	}
 	for k, d := range date {
 		count := AlertNames(d.keyName, d.keyTime)
@@ -288,6 +290,20 @@ func TestLongestEqualSubarray(t *testing.T) {
 	}
 	for k, data := range datas {
 		result := LongestEqualSubarray(data.nums, data.k)
+		t.Logf("第%d次测试的结果  %v \n", k+1, result)
+	}
+}
+
+func TestMaximumLength(t *testing.T) {
+	datas := []struct {
+		s string
+	}{
+		{"aaaa"},
+		{"abcdef"},
+		{"abcaba"},
+	}
+	for k, data := range datas {
+		result := MaximumLength(data.s)
 		t.Logf("第%d次测试的结果  %v \n", k+1, result)
 	}
 }

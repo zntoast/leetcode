@@ -159,7 +159,7 @@ func DailyTemperatures(temperatures []int) []int {
 LC 12.整数转罗马数字
 */
 func IntToRoman(num int) string {
-	//罗马数字对应的阿拉伯数字
+	// 罗马数字对应的阿拉伯数字
 	symbols := []struct {
 		value  int
 		symbol string
@@ -221,7 +221,7 @@ func GenerateParenthesis(n int) []string {
 LC 18.四数之和
 */
 func FourSum(nums []int, target int) [][]int {
-	//暂时不写
+	// 暂时不写
 	return [][]int{}
 }
 
@@ -402,7 +402,6 @@ func Combine(n int, k int) [][]int {
 lc 	45. 跳跃游戏 II
 */
 func Jump(nums []int) int {
-
 	position := len(nums) - 1
 	res := 0
 	for position > 0 {
@@ -610,6 +609,38 @@ func LongestEqualSubarray(nums []int, k int) int {
 			}
 			ans = mas(ans, i-j+1)
 		}
+	}
+	return ans
+}
+
+// 2981. 找出出现至少三次的最长特殊子字符串 I
+func MaximumLength(s string) int {
+	tempMap := map[string]int{}
+	for k := range s {
+		s1 := string(s[k])
+		tempMap[s1]++
+		if k+1 < len(s) && s[k] == s[k+1] {
+			s2 := string(s[k+1])
+			tempMap[s1+s2]++
+		}
+		if k+2 < len(s) && s[k] == s[k+1] && s[k+1] == s[k+2] {
+			s2 := string(s[k+1])
+			s3 := string(s[k+2])
+			tempMap[s1+s2+s3]++
+		}
+	}
+	max := func(a, b int) int {
+		if a > b {
+			return a
+		}
+		return b
+	}
+	ans := -1
+	for ss, v := range tempMap {
+		if v < 3 {
+			continue
+		}
+		ans = max(ans, len(ss))
 	}
 	return ans
 }
