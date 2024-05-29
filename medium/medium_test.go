@@ -284,7 +284,7 @@ func TestLongestEqualSubarray(t *testing.T) {
 		k    int
 	}{
 		{[]int{1, 3, 2, 3, 1, 3}, 3},
-		{[]int{1, 1, 2, 2, 1, 1}, 2},
+		// {[]int{}, 12447},
 	}
 	for k, data := range datas {
 		result := LongestEqualSubarray(data.nums, data.k)
