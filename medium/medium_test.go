@@ -301,6 +301,7 @@ func TestMaximumLength(t *testing.T) {
 		{"aaaa"},
 		{"abcdef"},
 		{"abcaba"},
+		{"azzyyyyyyy"},
 	}
 	for k, data := range datas {
 		result := MaximumLength(data.s)

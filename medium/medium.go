@@ -641,7 +641,12 @@ func MaximumLength(s string) int {
 		if len(ss) < len(a.key) {
 			continue
 		}
-		if a.val < v {
+		if len(ss) == len(a.key) {
+			if a.val < v {
+				a.key = ss
+				a.val = v
+			}
+		} else {
 			a.key = ss
 			a.val = v
 		}
