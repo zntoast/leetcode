@@ -629,18 +629,22 @@ func MaximumLength(s string) int {
 			tempMap[s1+s2+s3]++
 		}
 	}
-	max := func(a, b int) int {
-		if a > b {
-			return a
-		}
-		return b
+	type ans struct {
+		key string // 最长特殊子字符串
+		val int    // 出现次数
 	}
-	ans := -1
+	a := ans{"", -1}
 	for ss, v := range tempMap {
 		if v < 3 {
 			continue
 		}
-		ans = max(ans, len(ss))
+		if len(ss) < len(a.key) {
+			continue
+		}
+		if a.val < v {
+			a.key = ss
+			a.val = v
+		}
 	}
-	return ans
+	return a.val
 }
