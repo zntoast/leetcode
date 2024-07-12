@@ -45,7 +45,6 @@ func Array1(list []int) []int {
 // 题解二、
 func Array(list []int) []int {
 	for i := 0; i < len(list); i++ {
-
 	}
 	return nil
 }
@@ -91,6 +90,7 @@ func FindString(s1, s2 string) string {
 	}
 	return str
 }
+
 func do(min, max string) string {
 	len1 := len(min)
 	str := ""
@@ -139,7 +139,7 @@ func FastSort(nums []int) {
 	if len(nums) <= 1 {
 		return
 	}
-	//mid中间值(假定mid = values[0] 为中间值)	, i下标
+	// mid中间值(假定mid = values[0] 为中间值)	, i下标
 	mid, i := nums[0], 1
 	left, right := 0, len(nums)-1
 	for left < right {
@@ -196,7 +196,7 @@ func MergeSort(a []int, left, right int) {
 		return
 	}
 	if left < right {
-		//拆分成n份进行排序
+		// 拆分成n份进行排序
 		mid := (left + right) / 2
 		MergeSort(a, left, mid)
 		MergeSort(a, mid+1, right)
@@ -207,12 +207,12 @@ func MergeSort(a []int, left, right int) {
 // 合并数组
 func Merge(a []int, left, right int) {
 	m := right - left + 1
-	//临时数组b
+	// 临时数组b
 	b := make([]int, m)
 	left0 := left
 	// 数组下标
 	i := 0
-	//中间数组的中间值
+	// 中间数组的中间值
 	mid := (left + right) / 2
 	k := mid + 1
 	for left <= mid && k <= right {
@@ -258,11 +258,11 @@ func Eratosthenes(n int) int {
 	// 素数存储
 	isPrims := make([]bool, n)
 	for i := 2; i < n; i++ {
-		//判断是否为素数 ,是则进入
+		// 判断是否为素数 ,是则进入
 		if !isPrims[i] {
 			count++
 			for j := 2 * i; j < n; j += i {
-				//将非素数改为true
+				// 将非素数改为true
 				isPrims[j] = true
 			}
 		}
@@ -489,7 +489,7 @@ func StrToInt(str string) int {
 	ans := 0
 	isSigna := 0
 	sign := 1
-	//删除前面的空格
+	// 删除前面的空格
 	for str[0] == ' ' && len(str) >= 2 {
 		str = str[1:]
 	}
@@ -552,4 +552,51 @@ func QueryTree() []int {
 	}
 	dfs(head)
 	return ans
+}
+
+// 华为机试题
+// 给定一个非空字符串S，其被N个‘-’分隔成N+1的子串，给定正整数K，
+// 要求除第一个子串外，其余的子串每K个字符组成新的子串，并用‘-’分隔。
+// 对于新组成的每一个子串，如果它含有的小写字母比大写字母多，
+// 则将这个子串的所有大写字母转换为小写字母；反之，如果它含有的大写字母比小写字母多，
+// 则将这个子串的所有小写字母转换为大写字母；大小写字母的数量相等时，不做转换
+// 示例1 输入
+// 3
+// 12abc-abCABc-4aB@
+// 输出
+// 12abc-abc-ABC-4aB-@
+func HuaWeiStringHanle(S string, K int) string {
+	s := strings.Split(S, "-")
+	news := ""
+	if len(s) == 0 {
+		return ""
+	}
+	if len(s) > 1 {
+		news = strings.Join(s[1:], "")
+	}
+	temp := ""
+	isUpNum := 0
+	isLowNum := 0
+	result := s[0]
+	for k, v := range news {
+		temp += string(v)
+		if 'a' <= v && v <= 'z' {
+			isLowNum++
+		}
+		if 'A' <= v && v <= 'Z' {
+			isUpNum++
+		}
+		if len(temp) == K || k == len(news)-1 {
+			if isUpNum > isLowNum {
+				temp = strings.ToUpper(temp)
+			} else if isUpNum < isLowNum {
+				temp = strings.ToLower(temp)
+			}
+			result += "-" + temp
+			temp = ""
+			isUpNum = 0
+			isLowNum = 0
+		}
+	}
+	return result
 }
