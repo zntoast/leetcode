@@ -396,7 +396,8 @@ func TestFindRestaurant(t *testing.T) {
 		list2 []string
 	}{
 		{[]string{"Shogun", "Tapioca Express", "Burger King", "KFC"}, []string{
-			"Piatti", "The Grill at Torrey Pines", "Hungry Hunter Steakhouse", "Shogun"}},
+			"Piatti", "The Grill at Torrey Pines", "Hungry Hunter Steakhouse", "Shogun",
+		}},
 		{[]string{"happy", "sad", "good"}, []string{"sad", "happy", "good"}},
 	}
 	for k, data := range date {
@@ -468,6 +469,19 @@ func TestCapitalizeTitle(t *testing.T) {
 	}
 	for k, data := range date {
 		result := CapitalizeTitle(data.n)
+		fmt.Printf("第%d次测试的结果 : %v\n", k+1, result)
+	}
+}
+
+func TestNumberGame(t *testing.T) {
+	date := []struct {
+		n []int
+	}{
+		{[]int{5, 4, 2, 3}},
+		{[]int{2, 5}},
+	}
+	for k, data := range date {
+		result := NumberGame(data.n)
 		fmt.Printf("第%d次测试的结果 : %v\n", k+1, result)
 	}
 }

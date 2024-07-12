@@ -27,7 +27,7 @@ func LargestSumAfterKNegations(nums []int, k int) int {
 			min_index = i
 		}
 	}
-	//k还剩余时全部用于最小的那个数进行反转
+	// k还剩余时全部用于最小的那个数进行反转
 	if k%2 == 1 {
 		nums[min_index] *= -1
 	}
@@ -42,7 +42,7 @@ func LargestSumAfterKNegations(nums []int, k int) int {
 LC 13. 罗马数字转整数
 */
 func RomanToInt(s string) int {
-	//罗马数字对应的阿拉伯数字
+	// 罗马数字对应的阿拉伯数字
 	symbolValues := map[byte]int{
 		'M': 1000,
 		'D': 500,
@@ -56,7 +56,7 @@ func RomanToInt(s string) int {
 	n := len(s)
 	for i := range s {
 		value := symbolValues[s[i]]
-		//下一个字符对应的数值大于当前字符对应数值
+		// 下一个字符对应的数值大于当前字符对应数值
 		if i < n-1 && value < symbolValues[s[i+1]] {
 			ans -= value
 		} else {
@@ -336,7 +336,6 @@ func HasPathSum(root *TreeNode, targetSum int) bool {
 		if node.Right != nil {
 			dfs(node.Right, count+node.Val)
 		}
-
 	}
 	dfs(root, 0)
 	fmt.Printf("nums: %v\n", nums)
@@ -519,10 +518,12 @@ type MyStack struct {
 func Constructor() MyStack {
 	return MyStack{}
 }
+
 func (this *MyStack) Push(x int) {
 	this.nums = append(this.nums, x)
 	return
 }
+
 func (this *MyStack) Pop() int {
 	re_len := len(this.nums)
 	if re_len == 0 {
@@ -532,6 +533,7 @@ func (this *MyStack) Pop() int {
 	this.nums = this.nums[0 : re_len-1]
 	return result
 }
+
 func (this *MyStack) Top() int {
 	re_len := len(this.nums)
 	if re_len == 0 {
@@ -540,6 +542,7 @@ func (this *MyStack) Top() int {
 	result := this.nums[re_len-1]
 	return result
 }
+
 func (this *MyStack) Empty() bool {
 	re_len := len(this.nums)
 	if re_len == 0 {
@@ -766,6 +769,7 @@ func GuessNumber(n int) int {
 	}
 	return ans
 }
+
 func guese(i int) int {
 	if i > 6 {
 		return 1
@@ -814,7 +818,6 @@ func FindMaxConsecutiveOnes(nums []int) int {
 			maxAns = max(cut, maxAns)
 			cut = 0
 		}
-
 	}
 	maxAns = max(maxAns, cut)
 	return maxAns
@@ -1027,4 +1030,15 @@ func MaximumOddBinaryNumber(s string) string {
 		result = "1" + result
 	}
 	return result
+}
+
+// LC 2974. 最小数字游戏
+func NumberGame(nums []int) []int {
+	sort.Ints(nums)
+	i := 0
+	for i+1 < len(nums) {
+		nums[i], nums[i+1] = nums[i+1], nums[i]
+		i += 2
+	}
+	return nums
 }
