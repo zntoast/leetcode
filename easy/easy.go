@@ -1042,3 +1042,34 @@ func NumberGame(nums []int) []int {
 	}
 	return nums
 }
+
+// LC 2956. 找到两个数组中的公共元素
+func FindIntersectionValues(nums1 []int, nums2 []int) []int {
+	a := 0
+	b := 0
+	aMap := make(map[int]bool, len(nums1))
+	bMap := make(map[int]bool, len(nums2))
+	i, j := 0, 0
+	for i < len(nums1) || j < len(nums2) {
+		if i < len(nums1) {
+			aMap[nums1[i]] = true
+		}
+		if j < len(nums2) {
+			bMap[nums2[j]] = true
+		}
+	}
+
+	i, j = 0, 0
+	for i < len(nums1) || j < len(nums2) {
+		// num1 在 num2 中存在
+		if i < len(nums1) && bMap[nums1[i]] {
+			a++
+		}
+		if j < len(nums2) && aMap[nums2[j]] {
+			b++
+		}
+		i++
+		j++
+	}
+	return []int{a, b}
+}
