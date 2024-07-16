@@ -653,3 +653,22 @@ func MaximumLength(s string) int {
 	}
 	return a.val
 }
+
+// LC 2957. 消除相邻近似相等字符
+func RemoveAlmostEqualCharacters(word string) int {
+	ans := 0
+	abs := func(x int) int {
+		if x < 0 {
+			return -x
+		} else {
+			return x
+		}
+	}
+	for i := 1; i < len(word); i++ {
+		if abs(int(word[i-1])-int(word[i])) <= 1 {
+			ans++
+			i++
+		}
+	}
+	return ans
+}

@@ -308,3 +308,17 @@ func TestMaximumLength(t *testing.T) {
 		t.Logf("第%d次测试的结果  %v \n", k+1, result)
 	}
 }
+
+func TestRemoveAlmostEqualCharacters(t *testing.T) {
+	datas := []struct {
+		s string
+	}{
+		// {"aaaa"},
+		{"abddez"},
+		{"zyxyxyz"},
+	}
+	for k, data := range datas {
+		result := RemoveAlmostEqualCharacters(data.s)
+		t.Logf("第%d次测试的结果  %v \n", k+1, result)
+	}
+}
