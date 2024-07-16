@@ -1057,6 +1057,8 @@ func FindIntersectionValues(nums1 []int, nums2 []int) []int {
 		if j < len(nums2) {
 			bMap[nums2[j]] = true
 		}
+		i++
+		j++
 	}
 
 	i, j = 0, 0
