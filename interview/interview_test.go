@@ -219,3 +219,21 @@ func TestHuaWeiStringHanle(t *testing.T) {
 		fmt.Printf("第 %d 次测试 值:%v \n", k+1, reuslt)
 	}
 }
+
+func TestLeastOpt(t *testing.T) {
+	date := []struct {
+		n int
+	}{
+		{3},
+		{10},
+		{100},
+		{1880},
+		{1002183},
+		{9230371},
+		{90230371},
+	}
+	for k, v := range date {
+		reuslt := MinOpt(v.n)
+		fmt.Printf("第 %d 次测试 n:%v  value1:%v  \n", k+1, v, reuslt)
+	}
+}

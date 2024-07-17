@@ -600,3 +600,18 @@ func HuaWeiStringHanle(S string, K int) string {
 	}
 	return result
 }
+
+// 给定一个整数n，你可以进行以下三种操作
+// 操作1: +1
+// 操作2;+2
+// 操作3: x2
+// 问最少需要多少次操作可以将 0 转为为 n。
+func MinOpt(n int) int {
+	ans := 0
+	for n >= 2 {
+		n = n / 2
+		ans++
+	}
+	ans++
+	return ans
+}
