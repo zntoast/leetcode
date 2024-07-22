@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"container/list"
 	"fmt"
+	"math"
 	"sort"
 	"strconv"
 )
@@ -673,6 +674,65 @@ func RemoveAlmostEqualCharacters(word string) int {
 			ans++
 			i += 2
 		}
+	}
+	return ans
+}
+
+// LC 2101. 引爆最多的炸弹
+func MaximumDetonation(bombs [][]int) int {
+	abs := func(a int) int {
+		if a > 0 {
+			return a
+		} else {
+			return -a
+		}
+	}
+	max := func(a, b int) int {
+		if a > b {
+			return a
+		} else {
+			return b
+		}
+	}
+	bombMap := map[int][]int{}
+	// 判断每个点是否可以引爆其他节点
+	for i := 0; i < len(bombs); i++ {
+		for j := 0; j < len(bombs); j++ {
+			// 节点重合
+			if i == j {
+				continue
+			}
+			// 两节点的距离
+			var diff float64 = 0
+			length := abs(bombs[i][0] - bombs[j][0])
+			width := abs(bombs[i][1] - bombs[j][1])
+			if width == 0 { // 同行
+				diff = float64(length)
+			} else if length == 0 { // 同列
+				diff = float64(width)
+			} else { // 不同行不同列
+				diff = math.Sqrt(float64(length*length + width*width))
+			}
+			if diff <= float64(bombs[i][2]) {
+				bombMap[i] = append(bombMap[i], j)
+			}
+		}
+	}
+	dfs := func(nums []int, hasBombs map[int]bool, temp int) int { return 0 }
+	dfs = func(nums []int, hasBombs map[int]bool, temp int) int {
+		for _, num := range nums {
+			if hasBombs[num] {
+				continue
+			}
+			hasBombs[num] = true
+			temp++
+			temp += dfs(bombMap[num], hasBombs, 0)
+		}
+		return temp
+	}
+	ans := 1
+	for k, nums := range bombMap {
+		ans = max(ans, dfs(nums, map[int]bool{k: true}, 1))
 	}
 	return ans
 }

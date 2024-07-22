@@ -322,3 +322,18 @@ func TestRemoveAlmostEqualCharacters(t *testing.T) {
 		t.Logf("第%d次测试的结果  %v \n", k+1, result)
 	}
 }
+
+func TestMaximumDetonation(t *testing.T) {
+	datas := []struct {
+		s [][]int
+	}{
+		// {[][]int{{2, 1, 3}, {6, 1, 4}}},
+		// {[][]int{{1, 1, 5}, {10, 10, 5}}},
+		// {[][]int{{1, 2, 3}, {2, 3, 1}, {3, 4, 2}, {4, 5, 3}, {5, 6, 4}}},
+		{[][]int{{4, 4, 3}, {4, 4, 3}}},
+	}
+	for k, data := range datas {
+		result := MaximumDetonation(data.s)
+		t.Logf("第%d次测试的结果  %v \n", k+1, result)
+	}
+}
