@@ -337,3 +337,17 @@ func TestMaximumDetonation(t *testing.T) {
 		t.Logf("第%d次测试的结果  %v \n", k+1, result)
 	}
 }
+
+func TestNumberOfRightTriangles(t *testing.T) {
+	datas := []struct {
+		s [][]int
+	}{
+		{[][]int{{0, 1, 0}, {0, 1, 1}, {0, 1, 0}}},
+		{[][]int{{1, 0, 0, 0}, {0, 1, 0, 1}, {1, 0, 0, 0}}},
+		{[][]int{{1, 0, 1}, {1, 0, 0}, {1, 0, 0}}},
+	}
+	for k, data := range datas {
+		result := NumberOfRightTriangles(data.s)
+		t.Logf("第%d次测试的结果  %v \n", k+1, result)
+	}
+}

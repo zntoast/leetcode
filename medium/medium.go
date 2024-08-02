@@ -763,3 +763,26 @@ func MinimumOperations(num string) int {
 	}
 	return n
 }
+
+// LC 3128. 直角三角形
+func NumberOfRightTriangles(grid [][]int) int64 {
+	var ans int64 = 0
+	// 计算每行每列 中 1的数量
+	rowMap, colMap := map[int]int{}, map[int]int{}
+	for i := 0; i < len(grid); i++ {
+		for j := 0; j < len(grid[i]); j++ {
+			if grid[i][j] == 1 {
+				rowMap[i]++
+				colMap[j]++
+			}
+		}
+	}
+	for i := 0; i < len(grid); i++ {
+		for j := 0; j < len(grid[i]); j++ {
+			if grid[i][j] == 1 {
+				ans += int64(rowMap[i]-1) * int64(colMap[j]-1)
+			}
+		}
+	}
+	return ans
+}
