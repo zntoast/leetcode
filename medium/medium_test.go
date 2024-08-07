@@ -351,3 +351,18 @@ func TestNumberOfRightTriangles(t *testing.T) {
 		t.Logf("第%d次测试的结果  %v \n", k+1, result)
 	}
 }
+
+func TestNumberOfStableArrays(t *testing.T) {
+	datas := []struct {
+		zero, one, limit int
+	}{
+		// {1, 1, 2},
+		// {1, 2, 1},
+		// {3, 3, 2},
+		{13, 20, 93},
+	}
+	for k, data := range datas {
+		result := NumberOfStableArrays(data.zero, data.one, data.limit)
+		t.Logf("第%d次测试的结果  %v \n", k+1, result)
+	}
+}

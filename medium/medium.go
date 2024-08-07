@@ -786,3 +786,34 @@ func NumberOfRightTriangles(grid [][]int) int64 {
 	}
 	return ans
 }
+
+// LC 3129. 找出所有稳定的二进制数组 I
+func NumberOfStableArrays(zero int, one int, limit int) int {
+	ans := 0
+	l := zero + one
+	dfs := func(zero int, one int, v int, last int, num int, arr []int) {}
+	dfs = func(zero, one int, v int, last int, num int, arr []int) {
+		if last == v {
+			num++
+		} else {
+			num = 0
+		}
+		arr = append(arr, v)
+		if num == limit {
+			return
+		}
+		if len(arr) == l {
+			ans++
+			return
+		}
+		if zero > 0 {
+			dfs(zero-1, one, 0, v, num, arr)
+		}
+		if one > 0 {
+			dfs(zero, one-1, 1, v, num, arr)
+		}
+	}
+	dfs(zero-1, one, 0, 1, 0, make([]int, 0, l))
+	dfs(zero, one-1, 1, 0, 0, make([]int, 0, l))
+	return ans
+}
