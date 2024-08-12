@@ -366,3 +366,14 @@ func TestNumberOfStableArrays(t *testing.T) {
 		t.Logf("第%d次测试的结果  %v \n", k+1, result)
 	}
 }
+
+func TestMagicDictionary(t *testing.T) {
+	m := Constructor1()
+	m.BuildDict([]string{"hello", "leetcode"})
+	fmt.Printf("m.Search(\"hello\"): %v\n", m.Search("hello"))
+	fmt.Printf("m.Search(\"hhllo\"): %v\n", m.Search("hhllo"))
+	fmt.Printf("m.Search(\"hhglo\"): %v\n", m.Search("heglo"))
+	fmt.Printf("m.Search(\"hell\"): %v\n", m.Search("hell"))
+	fmt.Printf("m.Search(\"leetcoded\"): %v\n", m.Search("leetcoded"))
+
+}

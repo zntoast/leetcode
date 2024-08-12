@@ -817,3 +817,49 @@ func NumberOfStableArrays(zero int, one int, limit int) int {
 	dfs(zero, one-1, 1, 0, 0, make([]int, 0, l))
 	return ans
 }
+
+// LC 676. 实现一个魔法字典
+type MagicDictionary struct {
+	wordLen map[int][]string
+}
+
+func Constructor1() MagicDictionary {
+	return MagicDictionary{
+		wordLen: make(map[int][]string),
+	}
+}
+
+func (this *MagicDictionary) BuildDict(dictionary []string) {
+	for _, v := range dictionary {
+		this.wordLen[len(v)] = append(this.wordLen[len(v)], v)
+	}
+}
+
+func (this *MagicDictionary) Search(searchWord string) bool {
+next:
+	for _, word := range this.wordLen[len(searchWord)] {
+		left := 0
+		right := len(word) - 1
+		temp := 0
+		for left <= right {
+			if word[left] != searchWord[left] && left != right {
+				temp++
+			}
+			if word[right] != searchWord[right] && left != right {
+				temp++
+			}
+			if word[right] != searchWord[right] && left == right {
+				temp++
+			}
+			if temp > 1 {
+				continue next
+			}
+			left++
+			right--
+		}
+		if temp == 1 {
+			return true
+		}
+	}
+	return false
+}
