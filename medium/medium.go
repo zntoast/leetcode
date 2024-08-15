@@ -836,7 +836,6 @@ func (this *MagicDictionary) BuildDict(dictionary []string) {
 }
 
 func (this *MagicDictionary) Search(searchWord string) bool {
-next:
 	for _, word := range this.wordLen[len(searchWord)] {
 		left := 0
 		right := len(word) - 1
@@ -852,7 +851,7 @@ next:
 				temp++
 			}
 			if temp > 1 {
-				continue next
+				break
 			}
 			left++
 			right--
@@ -862,4 +861,24 @@ next:
 		}
 	}
 	return false
+}
+
+// LC 3152. 特殊数组 II
+func IsArraySpecial(nums []int, queries [][]int) []bool {
+	n := len(nums)
+	dp := make([]int, n)
+	for i := 0; i < n; i++ {
+		dp[i] = 1
+	}
+	for i := 1; i < n; i++ {
+		if (nums[i]^nums[i-1])&1 == 1 {
+			dp[i] = dp[i-1] + 1
+		}
+	}
+	res := make([]bool, len(queries))
+	for i, q := range queries {
+		x, y := q[0], q[1]
+		res[i] = dp[y] >= y-x+1
+	}
+	return res
 }

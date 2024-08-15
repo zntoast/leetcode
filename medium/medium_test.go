@@ -375,5 +375,18 @@ func TestMagicDictionary(t *testing.T) {
 	fmt.Printf("m.Search(\"hhglo\"): %v\n", m.Search("heglo"))
 	fmt.Printf("m.Search(\"hell\"): %v\n", m.Search("hell"))
 	fmt.Printf("m.Search(\"leetcoded\"): %v\n", m.Search("leetcoded"))
+}
 
+func TestIsArraySpecial(t *testing.T) {
+	datas := []struct {
+		nums    []int
+		queries [][]int
+	}{
+		{[]int{3, 4, 1, 2, 6}, [][]int{{0, 4}}},
+		{[]int{4, 3, 1, 6}, [][]int{{0, 2}, {2, 3}}},
+	}
+	for k, data := range datas {
+		result := IsArraySpecial(data.nums, data.queries)
+		t.Logf("第%d次测试的结果  %v \n", k+1, result)
+	}
 }
