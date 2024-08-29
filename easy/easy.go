@@ -1082,3 +1082,19 @@ func AddedInteger(nums1 []int, nums2 []int) int {
 	sort.Ints(nums2)
 	return nums2[0] - nums1[0]
 }
+
+// LC 3142. 判断矩阵是否满足条件
+func SatisfiesConditions(grid [][]int) bool {
+	ans := true
+	for i := 0; i < len(grid); i++ {
+		for j := 0; j < len(grid[i]); j++ {
+			if i+1 < len(grid) && grid[i][j] != grid[i+1][j] {
+				return false
+			}
+			if j+1 < len(grid[i]) && grid[i][j] == grid[i][j+1] {
+				return false
+			}
+		}
+	}
+	return ans
+}
