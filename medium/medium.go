@@ -882,3 +882,52 @@ func IsArraySpecial(nums []int, queries [][]int) []bool {
 	}
 	return res
 }
+
+// LC 3143. 正方形中的最多点数
+func MaxPointsInsideSquare(points [][]int, s string) int {
+	ans := 0
+	abs := func(a int) int {
+		if a < 0 {
+			return -a
+		}
+		return a
+	}
+	// 同一个标签在坐标轴上的分布情况
+	stemp := map[byte][]int{}
+	for k, point := range points {
+		length := 0
+		if abs(point[0]) > abs(point[1]) {
+			length = abs(point[0])
+		} else {
+			length = abs(point[1])
+		}
+		stemp[s[k]] = append(stemp[s[k]], length)
+	}
+	max := math.MaxUint32
+	// 计算正方形的最大长度
+	for _, v := range stemp {
+		if len(v) < 2 {
+			continue
+		}
+		sort.Ints(v)
+		var l int
+		if v[0] >= v[1] {
+			l = v[0] - 1
+		} else {
+			l = v[1] - 1
+		}
+
+		if max > l {
+			max = l
+		}
+	}
+	// 统计点在正方形中的数据
+	for _, nums := range stemp {
+		for _, v := range nums {
+			if v <= max {
+				ans++
+			}
+		}
+	}
+	return ans
+}

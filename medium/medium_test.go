@@ -390,3 +390,18 @@ func TestIsArraySpecial(t *testing.T) {
 		t.Logf("第%d次测试的结果  %v \n", k+1, result)
 	}
 }
+
+func TestMaxPointsInsideSquare(t *testing.T) {
+	datas := []struct {
+		points [][]int
+		s      string
+	}{
+		{[][]int{{2, 2}, {-1, -2}, {-4, 4}, {-3, 1}, {3, -3}}, "abdca"},
+		{[][]int{{1, 1}, {-2, -2}, {-2, 2}}, "abb"},
+		{[][]int{{1, 1}, {-1, -1}, {2, -2}}, "ccd"},
+	}
+	for k, data := range datas {
+		result := MaxPointsInsideSquare(data.points, data.s)
+		t.Logf("第%d次测试的结果  %v \n", k+1, result)
+	}
+}
