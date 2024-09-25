@@ -280,7 +280,21 @@ func SortedArrayToBST(nums []int) *TreeNode {
 LC 110.平衡二叉树
 */
 func IsBalanced(root *TreeNode) bool {
-	return false
+	ans := true
+	dfs := func(node *TreeNode) int { return 0 }
+	dfs = func(node *TreeNode) int {
+		if node == nil {
+			return 0
+		}
+		left := dfs(node.Left)
+		right := dfs(node.Right)
+		if math.Abs(float64(right-left)) > 1 {
+			ans = false
+		}
+		return max(left, right) + 1
+	}
+	dfs(root)
+	return ans
 }
 
 /*
