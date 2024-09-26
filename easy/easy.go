@@ -1125,3 +1125,19 @@ func DifferenceOfSum(nums []int) int {
 	}
 	return int(math.Abs(total - num))
 }
+
+// LC 2540. 最小公共值
+func GetCommon(nums1 []int, nums2 []int) int {
+	var index1, index2 int
+	for index1 < len(nums1) && index2 < len(nums2) {
+		if nums1[index1] == nums2[index2] {
+			return nums1[index1]
+		}
+		if nums1[index1] > nums2[index2] {
+			index2++
+		} else {
+			index1++
+		}
+	}
+	return -1
+}
