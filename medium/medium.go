@@ -931,3 +931,29 @@ func MaxPointsInsideSquare(points [][]int, s string) int {
 	}
 	return ans
 }
+
+// LC 2554. 从一个范围内选择最多整数 I
+func MaxCount(banned []int, n int, maxSum int) int {
+	sort.Ints(banned)
+	exist := map[int]bool{}
+	for i := range banned {
+		exist[banned[i]] = true
+	}
+	pass := []int{}
+	for i := 1; i <= n; i++ {
+		if exist[i] {
+			continue
+		}
+		pass = append(pass, i)
+	}
+	ans := 0
+	num := 0
+	for _, v := range pass {
+		if num+v > maxSum {
+			break
+		}
+		ans++
+		num += v
+	}
+	return ans
+}

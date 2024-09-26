@@ -405,3 +405,19 @@ func TestMaxPointsInsideSquare(t *testing.T) {
 		t.Logf("第%d次测试的结果  %v \n", k+1, result)
 	}
 }
+
+func TestMaxCount(t *testing.T) {
+	datas := []struct {
+		banned []int
+		n      int
+		maxSum int
+	}{
+		{banned: []int{1, 6, 5}, n: 5, maxSum: 6},
+		{banned: []int{1, 2, 3, 4, 5, 6, 7}, n: 8, maxSum: 1},
+		{banned: []int{11}, n: 7, maxSum: 50},
+	}
+	for k, data := range datas {
+		result := MaxCount(data.banned, data.n, data.maxSum)
+		t.Logf("第%d次测试的结果  %v \n", k+1, result)
+	}
+}
