@@ -1141,3 +1141,7 @@ func AlternateDigitSum(n int) int {
 	}
 	return ans
 }
+
+// LC 2549. 统计桌面上的不同数字
+func DistinctIntegers(n int) int {
+}
