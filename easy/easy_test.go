@@ -485,3 +485,17 @@ func TestNumberGame(t *testing.T) {
 		fmt.Printf("第%d次测试的结果 : %v\n", k+1, result)
 	}
 }
+
+func TestDifferenceOfSum(t *testing.T) {
+	date := []struct {
+		n []int
+	}{
+		// {[]int{1, 15, 6, 3}},
+		// {[]int{2, 5}},
+		{[]int{2, 7, 8, 10, 8, 10, 1, 10, 5, 9}},
+	}
+	for k, data := range date {
+		result := DifferenceOfSum(data.n)
+		fmt.Printf("第%d次测试的结果 : %v\n", k+1, result)
+	}
+}

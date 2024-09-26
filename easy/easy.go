@@ -1112,3 +1112,16 @@ func SatisfiesConditions(grid [][]int) bool {
 	}
 	return ans
 }
+
+// LC 2535. 数组元素和与数字和的绝对差
+func DifferenceOfSum(nums []int) int {
+	var total, num float64
+	for _, v := range nums {
+		total += float64(v)
+		for v > 0 {
+			num += float64(v % 10)
+			v /= 10
+		}
+	}
+	return int(math.Abs(total - num))
+}
