@@ -1129,3 +1129,15 @@ func GetCommon(nums1 []int, nums2 []int) int {
 	}
 	return -1
 }
+
+// LC 2544. 交替数字和
+func AlternateDigitSum(n int) int {
+	ans := 0
+	s := strconv.Itoa(n)
+	temp := 1 // 符号
+	for _, v := range s {
+		ans += int(v-'0') * temp
+		temp = -temp
+	}
+	return ans
+}
