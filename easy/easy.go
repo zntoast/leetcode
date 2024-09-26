@@ -878,9 +878,7 @@ func FindRestaurant(list1 []string, list2 []string) []string {
 	return ans
 }
 
-/*
-LC 728.自除数
-*/
+// LC 728.自除数
 func SelfDividingNumbers(left int, right int) []int {
 	ans := []int{}
 	is_self_divisor := func(num int) bool {
@@ -902,9 +900,7 @@ func SelfDividingNumbers(left int, right int) []int {
 	return ans
 }
 
-/*
-LC 434. 字符串中的单词数
-*/
+// LC 434. 字符串中的单词数
 func CountSegments(s string) int {
 	ans := 0
 	for i, ch := range s {
@@ -915,9 +911,7 @@ func CountSegments(s string) int {
 	return ans
 }
 
-/*
-LC 606. 根据二叉树创建字符串
-*/
+// LC 606. 根据二叉树创建字符串
 func Tree2str(root *TreeNode) string {
 	switch {
 	case root == nil:
@@ -931,9 +925,7 @@ func Tree2str(root *TreeNode) string {
 	}
 }
 
-/*
-LC 2652. 倍数求和
-*/
+// LC 2652. 倍数求和
 func SumOfMultiples(n int64) int64 {
 	var ans int64
 	var i int64 = 1
@@ -949,9 +941,7 @@ func SumOfMultiples(n int64) int64 {
 	// return fn(n, 3) + fn(n, 5) + fn(n, 7) - fn(n, 3*5) - fn(n, 3*7) - fn(n, 5*7) + fn(n, 3*5*7)
 }
 
-/*
-LC 2103. 环和杆
-*/
+// LC 2103. 环和杆
 func CountPoints(rings string) int {
 	ans := 0
 	nums := [10][3]int{}
@@ -978,9 +968,7 @@ func CountPoints(rings string) int {
 	return ans
 }
 
-/*
-LC 2399. 检查相同字母间的距离
-*/
+// LC 2399. 检查相同字母间的距离
 func CheckDistances(s string, distance []int) bool {
 	ans := true
 	mp := map[rune]int{}
