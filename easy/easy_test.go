@@ -499,3 +499,18 @@ func TestDifferenceOfSum(t *testing.T) {
 		fmt.Printf("第%d次测试的结果 : %v\n", k+1, result)
 	}
 }
+
+func TestTimeRequiredToBuy(t *testing.T) {
+	date := []struct {
+		tickets []int
+		k       int
+	}{
+		// {[]int{2, 3, 2}, 2},
+		// {[]int{5, 1, 1, 1}, 0},
+		{[]int{84, 49, 5, 24, 70, 77, 87, 8}, 3},
+	}
+	for k, data := range date {
+		result := TimeRequiredToBuy(data.tickets, data.k)
+		fmt.Printf("第%d次测试的结果 : %v\n", k+1, result)
+	}
+}

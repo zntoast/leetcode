@@ -1146,3 +1146,24 @@ func AlternateDigitSum(n int) int {
 func DistinctIntegers(n int) int {
 	return max(1, n-1)
 }
+
+// LC 2073. 买票需要的时间
+func TimeRequiredToBuy(tickets []int, k int) int {
+	ans := 0
+	for index := range tickets {
+		if index <= k {
+			if tickets[index] <= tickets[k] {
+				ans += tickets[index]
+			} else {
+				ans += tickets[k]
+			}
+		} else {
+			if tickets[index] <= tickets[k]-1 {
+				ans += tickets[index]
+			} else {
+				ans += tickets[k] - 1
+			}
+		}
+	}
+	return ans
+}
