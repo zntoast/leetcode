@@ -421,3 +421,25 @@ func TestMaxCount(t *testing.T) {
 		t.Logf("第%d次测试的结果  %v \n", k+1, result)
 	}
 }
+
+func TestSeatManager(t *testing.T) {
+	seatManager := NewConstructor(5)
+	reserve := seatManager.Reserve()
+	fmt.Printf(" 座位 % v 被预定 \n", reserve)
+	reserve = seatManager.Reserve()
+	fmt.Printf(" 座位 % v 被预定 \n", reserve)
+	seatManager.Unreserve(2)
+	seatManager.Unreserve(4)
+	seatManager.Unreserve(8)
+	seatManager.Unreserve(5)
+	reserve = seatManager.Reserve()
+	fmt.Printf(" 座位 % v 被预定 \n", reserve)
+	reserve = seatManager.Reserve()
+	fmt.Printf(" 座位 % v 被预定 \n", reserve)
+	reserve = seatManager.Reserve()
+	fmt.Printf(" 座位 % v 被预定 \n", reserve)
+	reserve = seatManager.Reserve()
+	fmt.Printf(" 座位 % v 被预定 \n", reserve)
+	seatManager.Unreserve(2)
+
+}
