@@ -514,3 +514,18 @@ func TestTimeRequiredToBuy(t *testing.T) {
 		fmt.Printf("第%d次测试的结果 : %v\n", k+1, result)
 	}
 }
+
+func TestMaxHeightOfTriangle(t *testing.T) {
+	date := []struct {
+		red  int
+		blue int
+	}{
+		{2, 4},
+		{2, 1},
+		{1, 1},
+	}
+	for k, data := range date {
+		result := MaxHeightOfTriangle(data.red, data.blue)
+		fmt.Printf("第%d次测试的结果 : %v\n", k+1, result)
+	}
+}

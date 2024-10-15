@@ -1180,3 +1180,23 @@ func NumberOfPairs(nums1 []int, nums2 []int, k int) int {
 	}
 	return ans
 }
+
+func MaxHeightOfTriangle(red int, blue int) int {
+	var dfs func(red int, blue int, deep int) int
+	dfs = func(red int, blue int, deep int) int {
+		if red < deep && blue < deep {
+			return 0
+		}
+		temp1 := math.MinInt // 设置默认值
+		temp2 := math.MinInt // 设置默认值
+		if red >= deep {
+			temp1 = dfs(red-deep, blue, deep+1)
+		}
+		if blue >= deep {
+			temp2 = dfs(red, blue-deep, deep+1)
+		}
+		return int(math.Max(float64(temp2), float64(temp1))) + 1
+	}
+
+	return dfs(red, blue, 1)
+}
