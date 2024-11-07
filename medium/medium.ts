@@ -41,3 +41,18 @@ function MinimumArea(grid: number[][]): number {
 
   return ans;
 };
+
+// LC 3255. 长度为 K 的子数组的能量值 II
+function ResultsArray(nums: number[], k: number): number[] {
+  let n :number = nums.length,cnt :number= 0;
+  const ans: number[] = Array(n-k+1).fill(-1);
+  for (let i: number = 0; i < n; i++) {
+    cnt = (i === 0 || nums[i] - nums[i-1] !==1)?1:cnt+1;
+    if (cnt >= k ){
+      ans[i-k+1] = nums[i];
+    }
+  }
+  return ans;
+};
+
+ResultsArray([1,2,3,4,3,2,5], 3);
