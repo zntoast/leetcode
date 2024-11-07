@@ -4,7 +4,7 @@
  * @param {number} blue
  * @return {number}
  */
-var MaxHeightOfTriangle = function (red, blue) {
+var MaxHeightOfTriangle = function (red: number, blue: number) {
   const masHeight = (x: number, y: number) => {
     for (let i = 1; ; i++) {
       if (i % 2 == 1) {
