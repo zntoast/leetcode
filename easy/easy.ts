@@ -41,3 +41,34 @@ function MinimumAverage(nums: number[]): number {
   }
   return ans
 };
+
+
+// LC 999. 可以被一步捕获的棋子数
+function numRookCaptures(board: string[][]): number {
+  let rus :number = 0
+  let R :Array<number> = new Array(2)
+  for (let i = 0; i < 8; i++){
+    for (let j = 0; j < 8; j++){
+      if (board[i][j] === 'R'){
+        R = [i,j]
+      }
+    }
+  }
+
+  for (let k = 1; k <= 8; k++){
+    if (R[0] - k >= 0 && board[R[0] - k][R[1]] === 'B'){
+      rus++
+    }
+    if (R[0] + k < 8 && board[R[0] + k][R[1]] === 'B'){
+      rus++
+    }
+    if (R[1] - k >= 0 && board[R[0]][R[1] - k] === 'B'){
+      rus++
+    }
+    if (R[1] + k < 8 && board[R[0]][R[1] + k] === 'B'){
+      rus++
+    }
+  }
+
+  return rus
+};
