@@ -1,7 +1,9 @@
 package medium
 
 import (
+	"container/heap"
 	"fmt"
+	"sort"
 	"testing"
 )
 
@@ -441,5 +443,22 @@ func TestSeatManager(t *testing.T) {
 	reserve = seatManager.Reserve()
 	fmt.Printf(" 座位 % v 被预定 \n", reserve)
 	seatManager.Unreserve(2)
+
+}
+func TestHeapSort(t *testing.T) {
+	h := &Heap{}
+	heap.Init(h)
+	heap.Push(h, 10)
+	heap.Push(h, 0)
+	heap.Push(h, 17)
+	heap.Push(h, 90)
+	heap.Push(h, 109)
+	heap.Push(h, 1)
+	l := h.Len()
+	for i := 0; i < l; i++ {
+		fmt.Printf("%d ", heap.Pop(h))
+	}
+	sort.Sort(h)
+	fmt.Println(h)
 
 }
