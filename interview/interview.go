@@ -1,6 +1,7 @@
 package interview
 
 import (
+	"container/heap"
 	"fmt"
 	"leetcode/array"
 	"math"
@@ -614,4 +615,55 @@ func MinOpt(n int) int {
 	}
 	ans++
 	return ans
+}
+
+// 华为外包机考
+// 题目描述
+// 某个打印机根据打印队列执行打印任务。打印任务分为九个优先级，分别用数字1-9表示，数字越大优先级越高。打印机每次从队列头部取出第一个任务A，
+// 然后检查队列余下任务中有没有比A优先级更高的任务，如果有比A优先级高的任务，则将任务A放到队列尾部，否则就执行任务A的打印。
+// 请编写一个程序，根据输入的打印队列，输出实际的打印顺序
+func HuaWeiQueuePrint(tasks []int) []int {
+	length := len(tasks)
+	h := &Heap{}
+	for i := 0; i < length; i++ {
+		heap.Push(h, []int{i, tasks[i]})
+	}
+	heapLen := h.Len()
+	order := 0
+	result := make([]int, length)
+	for i := 0; i < heapLen; i++ {
+		task := heap.Pop(h).([]int)
+		index := task[0]
+		result[index] = order
+		order++
+	}
+	return result
+}
+
+type Heap [][]int
+
+func (h Heap) Len() int { return len(h) }
+func (h Heap) Less(i, j int) bool {
+	key1, key2 := h[i][0], h[j][0]
+	value1, value2 := h[i][1], h[j][1]
+	if value1 < value2 {
+		return false
+	} else if value1 > value2 {
+		return true
+	} else {
+		return key1 < key2
+	}
+}
+func (h Heap) Swap(i, j int) { h[i], h[j] = h[j], h[i] }
+
+func (h *Heap) Push(x interface{}) {
+	*h = append(*h, x.([]int))
+}
+
+func (h *Heap) Pop() interface{} {
+	old := *h
+	n := len(old)
+	x := old[n-1]
+	*h = old[0 : n-1]
+	return x
 }

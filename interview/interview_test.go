@@ -221,7 +221,7 @@ func TestHuaWeiStringHanle(t *testing.T) {
 }
 
 func TestLeastOpt(t *testing.T) {
-	date := []struct {
+	datas := []struct {
 		n int
 	}{
 		{3},
@@ -232,8 +232,22 @@ func TestLeastOpt(t *testing.T) {
 		{9230371},
 		{90230371},
 	}
-	for k, v := range date {
+	for k, v := range datas {
 		reuslt := MinOpt(v.n)
 		fmt.Printf("第 %d 次测试 n:%v  value1:%v  \n", k+1, v, reuslt)
+	}
+}
+
+func TestHuaWeiQueuePrint(t *testing.T) {
+	datas := []struct {
+		tasks []int
+	}{
+		{[]int{9, 3, 5}},
+		{[]int{1, 2, 2}},
+		{[]int{1, 6, 5, 2, 2, 4, 8, 7, 6, 2}},
+	}
+	for k, v := range datas {
+		reuslt := HuaWeiQueuePrint(v.tasks)
+		fmt.Printf("第 %d 次测试  tasks:%v   value1:%v  \n", k+1, v, reuslt)
 	}
 }
