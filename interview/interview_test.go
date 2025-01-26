@@ -244,10 +244,10 @@ func TestHuaWeiQueuePrint(t *testing.T) {
 	}{
 		{[]int{9, 3, 5}},
 		{[]int{1, 2, 2}},
-		{[]int{1, 6, 5, 2, 2, 4, 8, 7, 6, 2}},
+		{[]int{6, 5, 2, 2, 4, 8, 7, 6, 2}},
 	}
 	for k, v := range datas {
-		reuslt := HuaWeiQueuePrint(v.tasks)
+		reuslt := HuaWeiQueuePrint1(v.tasks)
 		fmt.Printf("第 %d 次测试  tasks:%v   value1:%v  \n", k+1, v, reuslt)
 	}
 }

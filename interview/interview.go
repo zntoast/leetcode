@@ -640,6 +640,41 @@ func HuaWeiQueuePrint(tasks []int) []int {
 	return result
 }
 
+func HuaWeiQueuePrint1(t []int) []int {
+	tasks := make([]Task, len(t))
+	for i := 0; i < len(t); i++ {
+		tasks[i] = Task{i, t[i]}
+	}
+
+	result := make([]int, len(tasks))
+	queue := make([]Task, len(tasks))
+	copy(queue, tasks)
+	order := 0
+	for len(queue) > 0 {
+		current := queue[0]
+		queue = queue[1:]
+		hasHigher := false
+		for _, t := range queue {
+			if t.priority > current.priority {
+				hasHigher = true
+				break
+			}
+		}
+		if hasHigher {
+			queue = append(queue, current)
+		} else {
+			result[current.Index] = order
+			order++
+		}
+	}
+	return result
+}
+
+type Task struct {
+	Index    int
+	priority int
+}
+
 type Heap [][]int
 
 func (h Heap) Len() int { return len(h) }
