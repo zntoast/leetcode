@@ -51,3 +51,17 @@ func TestMinFallingPathSumII(t *testing.T) {
 	i := MinFallingPathSumII(grid)
 	fmt.Printf("i: %v\n", i)
 }
+
+func TestRob(t *testing.T) {
+	date := []struct {
+		nums []int
+	}{
+		{[]int{1, 2, 3, 1}},
+		{[]int{2, 7, 9, 3, 1}},
+		{[]int{2, 1, 1, 2}}, //
+	}
+	for k, data := range date {
+		result := Rob(data.nums)
+		fmt.Printf("第%d次测试的结果 : %v\n", k+1, result)
+	}
+}

@@ -230,3 +230,20 @@ LC 1575. 统计所有可行路径
 func CountRoutes(locations []int, start int, finish int, fuel int) int {
 	return 0
 }
+
+// LC 198. 打家劫舍
+func Rob(nums []int) int {
+	dp := make(map[int]int)
+	for i, v := range nums {
+		if i == 0 {
+			dp[i] = v
+			continue
+		}
+		if i == 1 {
+			dp[i] = max(nums[0], nums[1])
+			continue
+		}
+		dp[i] = max(dp[i-1], dp[i-2]+v)
+	}
+	return dp[len(nums)-1]
+}
