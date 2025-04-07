@@ -462,3 +462,15 @@ func TestHeapSort(t *testing.T) {
 	fmt.Println(h)
 
 }
+
+func TestCanPartition(t *testing.T) {
+	datas := []struct {
+		nums []int
+	}{
+		{[]int{2, 2, 1, 1}},
+	}
+	for k, data := range datas {
+		result := CanPartition(data.nums)
+		t.Logf("第%d次测试的结果  %v \n", k+1, result)
+	}
+}

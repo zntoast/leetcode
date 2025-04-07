@@ -998,3 +998,42 @@ func (h *Heap) Pop() interface{} {
 	*h = old[0 : n-1]
 	return x
 }
+
+// LC 416. 分割等和子集
+func CanPartition(nums []int) bool {
+	n := len(nums)
+	sum := 0
+	max := 0
+	for i := range nums {
+		sum += nums[i]
+		if nums[i] > max {
+			max = nums[i]
+		}
+	}
+	target := sum / 2
+	if sum%2 == 1 {
+		return false
+	}
+	if max > target {
+		return false
+	}
+	dp := make([][]bool, n)
+	for i := range dp {
+		dp[i] = make([]bool, target+1)
+		dp[i][0] = true
+	}
+
+	dp[0][nums[0]] = true
+	for i := 1; i < n; i++ {
+		v := nums[i]
+		for j := 1; j <= target; j++ {
+			if j >= v {
+				dp[i][j] = dp[i-1][j] || dp[i-1][j-v]
+			} else {
+				dp[i][j] = dp[i-1][j]
+			}
+		}
+	}
+
+	return dp[n-1][target]
+}
