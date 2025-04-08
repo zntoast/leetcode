@@ -65,3 +65,18 @@ func TestRob(t *testing.T) {
 		fmt.Printf("第%d次测试的结果 : %v\n", k+1, result)
 	}
 }
+
+func TestNumDecodings(t *testing.T) {
+	date := []struct {
+		s string
+	}{
+		// {"12"},
+		// {"226"},
+		// {"06"},
+		{"2101"},
+	}
+	for k, data := range date {
+		result := NumDecodings(data.s)
+		fmt.Printf("第%d次测试的结果 : %v\n", k+1, result)
+	}
+}

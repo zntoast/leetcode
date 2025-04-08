@@ -3,6 +3,7 @@ package dp
 import (
 	"math"
 	"sort"
+	"strings"
 )
 
 /*
@@ -246,4 +247,22 @@ func Rob(nums []int) int {
 		dp[i] = max(dp[i-1], dp[i-2]+v)
 	}
 	return dp[len(nums)-1]
+}
+
+// LC 91. 解码方法
+func NumDecodings(s string) int {
+	list := strings.Split(s, "")
+	n := len(list)
+	dp := make([]int, n+1)
+	dp[0] = 1
+	for i := 1; i <= len(list); i++ {
+		if list[i-1] != "0" {
+			dp[i] += dp[i-1]
+		}
+
+		if i > 1 && list[i-2] != "0" && (list[i-2]+list[i-1] <= "26") {
+			dp[i] += dp[i-2]
+		}
+	}
+	return dp[n]
 }
