@@ -251,3 +251,17 @@ func TestHuaWeiQueuePrint(t *testing.T) {
 		fmt.Printf("第 %d 次测试  tasks:%v   value1:%v  \n", k+1, v, reuslt)
 	}
 }
+
+func TestSummationOfArrayPermutations(t *testing.T) {
+	datas := []struct {
+		nums []int
+	}{
+		{[]int{1, 5, 3, 6, 2, 4}},
+		{[]int{1, 3, 2}},
+		{[]int{6, 5, 1, 2, 4, 8, 7, 6, 3, 9}},
+	}
+	for k, v := range datas {
+		reuslt := SummationOfArrayPermutations(v.nums)
+		fmt.Printf("第 %d 次测试  value1:%v  \n", k+1, reuslt)
+	}
+}
