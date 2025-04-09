@@ -1037,3 +1037,17 @@ func CanPartition(nums []int) bool {
 
 	return dp[n-1][target]
 }
+
+// LC 1561. 你可以获得的最大硬币数目
+func MaxCoins(piles []int) int {
+	rus := 0
+	sort.Ints(piles)
+	n := len(piles) / 3
+	index := len(piles) - 2 // 从倒数第二开始
+	for n > 0 {
+		rus += piles[index]
+		n--
+		index -= 2
+	}
+	return rus
+}

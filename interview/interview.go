@@ -712,16 +712,7 @@ func (h *Heap) Pop() interface{} {
 // 例如 数组{ 1，5，3，6，2，4}，如果不移动元素，s = 3+4 =7；
 // 我们可以把3移动到6和2之间得到数组{ 1，5，6，3，2，4}， 此时得到最大的s，s=5+3=8
 func SummationOfArrayPermutations(nums []int) int {
-	rus := 0
-	sort.Ints(nums)
-	n := len(nums) / 3
-	index := len(nums) - 2 // 从倒数第二开始
-	for n > 0 {
-		rus += nums[index]
-		n--
-		index -= 2
-	}
-	return rus
+	return 0
 }
 
 // 例 ： {1，2，3，4，5，6，7，8，9} 永远拿最大数+最小数+倒数第二大 依此类推 {1,8,9} {2,6,7},{3,4,5}
