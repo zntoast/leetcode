@@ -49,3 +49,18 @@ WHERE
 ;
 
 
+# 184. 部门工资最高的员工
+with temp as (
+	SELECT id , name ,salary , departmentId , 
+	DENSE_RANK() over( partition by departmentId ORDER BY salary desc ) as ranking 
+	from employee
+)
+SELECT
+	t2.`name` AS Department,
+	t1.`name` AS Employee,
+	salary AS Salary 
+FROM
+	temp t1
+	LEFT JOIN department t2 ON t1.departmentId = t2.id 
+WHERE
+	t1.ranking IN (1,2,3)
