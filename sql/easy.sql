@@ -64,3 +64,14 @@ FROM
 	LEFT JOIN department t2 ON t1.departmentId = t2.id 
 WHERE
 	t1.ranking IN (1,2,3)
+
+
+# 550. 游戏玩法分析 IV
+WITH p AS ( SELECT player_id, min( event_date ) AS login FROM activity GROUP BY player_id ) 
+
+SELECT
+	round( avg( a.event_date IS NOT NULL ), 2 ) fraction 
+FROM
+	p
+	LEFT JOIN activity a ON p.player_id = a.player_id 
+	AND DATEDIFF( a.event_date, p.login ) = 1
