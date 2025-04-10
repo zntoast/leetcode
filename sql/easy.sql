@@ -88,3 +88,15 @@ HAVING
 	count( managerId )  >= 5)
 	
 SELECT name from employee WHERE id in ( SELECT managerId FROM temp )
+
+# 1045. 买下所有产品的客户
+WITH temp AS ( SELECT DISTINCT customer_id, product_key FROM Customer )
+SELECT
+    customer_id,
+    count( customer_id ) AS num 
+FROM
+	temp 
+GROUP BY
+	customer_id 
+HAVING
+	( SELECT count( 1 ) FROM Product ) = num
