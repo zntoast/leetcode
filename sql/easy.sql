@@ -75,3 +75,16 @@ FROM
 	p
 	LEFT JOIN activity a ON p.player_id = a.player_id 
 	AND DATEDIFF( a.event_date, p.login ) = 1
+
+# 570. 至少有5名直接下属的经理
+WITH temp AS (
+	SELECT
+		managerId 
+	FROM
+		`employee` 
+	GROUP BY
+		managerId 
+HAVING
+	count( managerId )  >= 5)
+	
+SELECT name from employee WHERE id in ( SELECT managerId FROM temp )
