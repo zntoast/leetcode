@@ -100,3 +100,33 @@ GROUP BY
 	customer_id 
 HAVING
 	( SELECT count( 1 ) FROM Product ) = num
+
+
+# 262. 行程和用户
+WITH banned_users AS (
+    SELECT 
+        users_id,
+        role 
+    FROM `users` 
+    WHERE banned = "Yes"
+),
+valid_trips AS (
+    SELECT 
+        request_at,
+        COUNT(*) AS total_trips,
+        SUM(status IN ("cancelled_by_driver", "cancelled_by_client")) AS cancelled_trips
+    FROM trips
+    WHERE 
+        client_id NOT IN (SELECT users_id FROM banned_users WHERE role = "client")
+        AND driver_id NOT IN (SELECT users_id FROM banned_users WHERE role = "driver")
+        AND request_at BETWEEN '2013-10-01' AND '2013-10-03'
+    GROUP BY request_at
+)
+SELECT 
+    request_at AS Day,
+    ROUND(
+        IFNULL(cancelled_trips / NULLIF(total_trips, 0), 0),
+        2
+    ) AS "Cancellation Rate"
+FROM valid_trips
+ORDER BY request_at;
