@@ -1051,3 +1051,20 @@ func MaxCoins(piles []int) int {
 	}
 	return rus
 }
+
+// LC 2145. 统计隐藏数组数目
+func NumberOfArrays(differences []int, lower int, upper int) int {
+
+	v := 1
+	temp := []int{v}
+	for i := range differences {
+		v += differences[i]
+		temp = append(temp, v)
+	}
+	sort.Ints(temp)
+	diff := temp[len(temp)-1] - temp[0]
+	if upper-lower < diff {
+		return 0
+	}
+	return upper + 1 - (lower + diff)
+}

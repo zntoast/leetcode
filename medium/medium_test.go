@@ -474,3 +474,20 @@ func TestCanPartition(t *testing.T) {
 		t.Logf("第%d次测试的结果  %v \n", k+1, result)
 	}
 }
+
+func TestNumberOfArrays(t *testing.T) {
+	datas := []struct {
+		differences []int
+		lower       int
+		upper       int
+	}{
+		{[]int{1, -3, 4}, 1, 6},
+		{[]int{3, -4, 5, 1, -2}, -4, 5},
+		{[]int{4, -7, 2}, 3, 6},
+		{[]int{0}, 0, 0}, //
+	}
+	for k, data := range datas {
+		result := NumberOfArrays(data.differences, data.lower, data.upper)
+		t.Logf("第%d次测试的结果  %v \n", k+1, result)
+	}
+}
