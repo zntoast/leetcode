@@ -265,3 +265,7 @@ func TestSummationOfArrayPermutations(t *testing.T) {
 		fmt.Printf("第 %d 次测试  value1:%v  \n", k+1, reuslt)
 	}
 }
+
+func TestGoroutinePritABC(t *testing.T) {
+	GoroutinePritABC()
+}

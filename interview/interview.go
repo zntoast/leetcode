@@ -8,6 +8,7 @@ import (
 	"math/big"
 	"sort"
 	"strings"
+	"sync"
 	"time"
 )
 
@@ -716,3 +717,27 @@ func SummationOfArrayPermutations(nums []int) int {
 }
 
 // 例 ： {1，2，3，4，5，6，7，8，9} 永远拿最大数+最小数+倒数第二大 依此类推 {1,8,9} {2,6,7},{3,4,5}
+
+// 用三个线程分别打印出 a b c，然后让其循环打印 abcabcabc。
+func GoroutinePritABC() {
+	var mu sync.Mutex
+	cond := sync.NewCond(&mu)
+	current := 0 // 0=a, 1=b, 2=c
+
+	for id := range 3 {
+		go func(id int) {
+			for {
+				mu.Lock()
+				for current != id { // 如果不是自己该打印的时候，就等待
+					cond.Wait()
+				}
+				fmt.Print(string(rune('a' + id)))
+				current = (current + 1) % 3 // 更新下一个该打印的字母
+				// cond.Broadcast()            // 唤醒其他 goroutine
+				mu.Unlock()
+				time.Sleep(time.Millisecond * 100)
+			}
+		}(id)
+	}
+	select {} // 防止退出
+}
