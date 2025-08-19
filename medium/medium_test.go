@@ -491,3 +491,17 @@ func TestNumberOfArrays(t *testing.T) {
 		t.Logf("第%d次测试的结果  %v \n", k+1, result)
 	}
 }
+
+func TestZeroFilledSubarray(t *testing.T) {
+	datas := []struct {
+		nums []int
+	}{
+		// {[]int{1, 3, 0, 0, 2, 0, 0, 4}},
+		{[]int{0, 0, 0, 2, 0, 0}},
+		// {[]int{2, 10, 2019}},
+	}
+	for k, data := range datas {
+		result := ZeroFilledSubarray(data.nums)
+		t.Logf("第%d次测试的结果  %v \n", k+1, result)
+	}
+}

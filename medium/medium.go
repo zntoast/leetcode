@@ -1068,3 +1068,18 @@ func NumberOfArrays(differences []int, lower int, upper int) int {
 	}
 	return upper + 1 - (lower + diff)
 }
+
+// LC 2348. 全 0 子数组的数目
+func ZeroFilledSubarray(nums []int) int64 {
+	ans := int64(0)
+	cursor := 0
+	for i := 0; i < len(nums); i++ {
+		if nums[i] == 0 {
+			cursor++
+			ans += int64(cursor)
+		} else {
+			cursor = 0
+		}
+	}
+	return ans
+}
